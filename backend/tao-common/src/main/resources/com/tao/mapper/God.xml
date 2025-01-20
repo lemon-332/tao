@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjj.mapper.GodMapper">
+
+	<!--实体映射-->
+	<resultMap id="god" type="com.hjj.entity.po.God">
+		<!--商品Id-->
+		<result column="godId" property="godId"/>
+		<!--商品名称-->
+		<result column="godName" property="godName"/>
+		<!--商品图片-->
+		<result column="godImage" property="godImage"/>
+		<!--商品描述-->
+		<result column="godDesc" property="godDesc"/>
+		<!--商品总数-->
+		<result column="godCount" property="godCount"/>
+		<!--已卖商品数量-->
+		<result column="godBoughtCount" property="godBoughtCount"/>
+		<!--商品star个数-->
+		<result column="godStar" property="godStar"/>
+		<!--商家id-->
+		<result column="sellerId" property="sellerId"/>
+		<!--所有的评论Id-->
+		<result column="commentIds" property="commentIds"/>
+		<!--商品上架时间-->
+		<result column="startTime" property="startTime"/>
+	</resultMap>
+
+	<!--通用查询结果列-->
+	<sql id="base_column_list">
+		godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime
+	</sql>
+
+	<!--基本条件查询-->
+	<sql id="base_condition">
+		<if test="query.godId != null">
+			and godId = #{query.godId}
+		</if>
+		<if test="query.godName != null">
+			and godName = #{query.godName}
+		</if>
+		<if test="query.godImage != null">
+			and godImage = #{query.godImage}
+		</if>
+		<if test="query.godDesc != null">
+			and godDesc = #{query.godDesc}
+		</if>
+		<if test="query.godCount != null">
+			and godCount = #{query.godCount}
+		</if>
+		<if test="query.godBoughtCount != null">
+			and godBoughtCount = #{query.godBoughtCount}
+		</if>
+		<if test="query.godStar != null">
+			and godStar = #{query.godStar}
+		</if>
+		<if test="query.sellerId != null">
+			and sellerId = #{query.sellerId}
+		</if>
+		<if test="query.commentIds != null">
+			and commentIds = #{query.commentIds}
+		</if>
+		<if test="query.startTime != null">
+			and startTime = #{query.startTime}
+		</if>
+	</sql>
+
+	<!--扩展条件查询-->
+	<sql id="extend_condition">
+		<if test="query.godIdFuzzy != null and query.godIdFuzzy!=''">
+			and godId like concat('%', #{query.godIdFuzzy}, '%')
+		</if>
+		<if test="query.godNameFuzzy != null and query.godNameFuzzy!=''">
+			and godName like concat('%', #{query.godNameFuzzy}, '%')
+		</if>
+		<if test="query.godImageFuzzy != null and query.godImageFuzzy!=''">
+			and godImage like concat('%', #{query.godImageFuzzy}, '%')
+		</if>
+		<if test="query.godDescFuzzy != null and query.godDescFuzzy!=''">
+			and godDesc like concat('%', #{query.godDescFuzzy}, '%')
+		</if>
+		<if test="query.sellerIdFuzzy != null and query.sellerIdFuzzy!=''">
+			and sellerId like concat('%', #{query.sellerIdFuzzy}, '%')
+		</if>
+		<if test="query.commentIdsFuzzy != null and query.commentIdsFuzzy!=''">
+			and commentIds like concat('%', #{query.commentIdsFuzzy}, '%')
+		</if>
+		<if test="query.startTimeStart != null and query.startTimeStart!=''">
+			<![CDATA[and startTime>=str_to_date(#{query.startTimeStart}, '%Y-%m-%d')]]>
+		</if>
+		<if test="query.startTimeEnd != null and query.startTimeEnd!=''">
+			<![CDATA[and startTime<date_sub(str_to_date(#{query.startTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
+		</if>
+	</sql>
+
+	<!--通用查询条件-->
+	<sql id="base_query">
+		<where>
+			<include refid="base_condition"/>
+			<include refid="extend_condition"/>
+		</where>
+	</sql>
+
+	<select id="selectList" resultMap="god">
+		SELECT
+		<include refid="base_column_list"/>
+		FROM god
+		<include refid="base_query"/>
+		<if test="query.orderBy!=null">
+			order by ${query.orderBy}
+		</if>
+		<if test="query.simplePage!=null">
+			limit #{query.simplePage.start},#{query.simplePage.end}
+		</if>
+	</select>
+
+	<!--查询数量-->
+	<select id="selectCount" resultType="java.lang.Integer">
+		SELECT count(1) FROM god
+		<include refid="base_query"/>
+	</select>
+
+	<!--插入数据-->
+	<insert id="insert" parameterType="com.hjj.entity.po.God">
+		INSERT INTO god
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.godId!= null">
+				godId,
+			</if>
+			<if test="bean.godName!= null">
+				godName,
+			</if>
+			<if test="bean.godImage!= null">
+				godImage,
+			</if>
+			<if test="bean.godDesc!= null">
+				godDesc,
+			</if>
+			<if test="bean.godCount!= null">
+				godCount,
+			</if>
+			<if test="bean.godBoughtCount!= null">
+				godBoughtCount,
+			</if>
+			<if test="bean.godStar!= null">
+				godStar,
+			</if>
+			<if test="bean.sellerId!= null">
+				sellerId,
+			</if>
+			<if test="bean.commentIds!= null">
+				commentIds,
+			</if>
+			<if test="bean.startTime!= null">
+				startTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.godId!= null">
+				#{bean.godId},
+			</if>
+			<if test="bean.godName!= null">
+				#{bean.godName},
+			</if>
+			<if test="bean.godImage!= null">
+				#{bean.godImage},
+			</if>
+			<if test="bean.godDesc!= null">
+				#{bean.godDesc},
+			</if>
+			<if test="bean.godCount!= null">
+				#{bean.godCount},
+			</if>
+			<if test="bean.godBoughtCount!= null">
+				#{bean.godBoughtCount},
+			</if>
+			<if test="bean.godStar!= null">
+				#{bean.godStar},
+			</if>
+			<if test="bean.sellerId!= null">
+				#{bean.sellerId},
+			</if>
+			<if test="bean.commentIds!= null">
+				#{bean.commentIds},
+			</if>
+			<if test="bean.startTime!= null">
+				#{bean.startTime},
+			</if>
+		</trim>
+	</insert>
+
+	<!--插入或者更新-->
+	<insert id="insertOrUpdate" parameterType="com.hjj.entity.po.God">
+		INSERT INTO god
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.godId!= null">
+				godId,
+			</if>
+			<if test="bean.godName!= null">
+				godName,
+			</if>
+			<if test="bean.godImage!= null">
+				godImage,
+			</if>
+			<if test="bean.godDesc!= null">
+				godDesc,
+			</if>
+			<if test="bean.godCount!= null">
+				godCount,
+			</if>
+			<if test="bean.godBoughtCount!= null">
+				godBoughtCount,
+			</if>
+			<if test="bean.godStar!= null">
+				godStar,
+			</if>
+			<if test="bean.sellerId!= null">
+				sellerId,
+			</if>
+			<if test="bean.commentIds!= null">
+				commentIds,
+			</if>
+			<if test="bean.startTime!= null">
+				startTime,
+			</if>
+		</trim>
+		on DUPLICATE key update
+		<trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.godId!= null">
+				godId = VALUES(godId),
+			</if>
+			<if test="bean.godName!= null">
+				godName = VALUES(godName),
+			</if>
+			<if test="bean.godImage!= null">
+				godImage = VALUES(godImage),
+			</if>
+			<if test="bean.godDesc!= null">
+				godDesc = VALUES(godDesc),
+			</if>
+			<if test="bean.godCount!= null">
+				godCount = VALUES(godCount),
+			</if>
+			<if test="bean.godBoughtCount!= null">
+				godBoughtCount = VALUES(godBoughtCount),
+			</if>
+			<if test="bean.godStar!= null">
+				godStar = VALUES(godStar),
+			</if>
+			<if test="bean.sellerId!= null">
+				sellerId = VALUES(sellerId),
+			</if>
+			<if test="bean.commentIds!= null">
+				commentIds = VALUES(commentIds),
+			</if>
+			<if test="bean.startTime!= null">
+				startTime = VALUES(startTime),
+			</if>
+		</trim>
+	</insert>
+
+	<!--批量添加-->
+	<insert id="insertBatch" parameterType="com.hjj.entity.po.God">
+		INSERT INTO god(godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime)
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.godId},#{item.godName},#{item.godImage},#{item.godDesc},#{item.godCount},#{item.godBoughtCount},#{item.godStar},#{item.sellerId},#{item.commentIds},#{item.startTime}
+			)
+		</foreach>
+	</insert>
+
+	<!--批量新增或修改-->
+	<insert id="insertOrUpdateBatch" parameterType="com.hjj.entity.po.God">
+		INSERT INTO god(godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime)
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.godId},#{item.godName},#{item.godImage},#{item.godDesc},#{item.godCount},#{item.godBoughtCount},#{item.godStar},#{item.sellerId},#{item.commentIds},#{item.startTime}
+			)
+		</foreach>
+		on DUPLICATE key update
+		godId = VALUES(godId),
+		godName = VALUES(godName),
+		godImage = VALUES(godImage),
+		godDesc = VALUES(godDesc),
+		godCount = VALUES(godCount),
+		godBoughtCount = VALUES(godBoughtCount),
+		godStar = VALUES(godStar),
+		sellerId = VALUES(sellerId),
+		commentIds = VALUES(commentIds),
+		startTime = VALUES(startTime)
+	</insert>
+
+	<!--根据GodIdAndSellerId删除-->
+	<delete id="deleteByGodIdAndSellerId">
+		delete from god where godId=#{godId} and sellerId=#{sellerId}
+	</delete>
+
+	<!--根据GodIdAndSellerId查询对象-->
+	<select id="selectByGodIdAndSellerId" resultMap="god">
+		select
+		<include refid="base_column_list"/>
+		from god where godId=#{godId} and sellerId=#{sellerId}
+	</select>
+
+	<!--根据GodIdAndSellerId修改-->
+	<update id="updateByGodIdAndSellerId" parameterType="com.hjj.entity.po.God">
+		UPDATE god
+		<set>
+			<if test="bean.godId!= null">
+				godId = #{bean.godId},
+			</if>
+			<if test="bean.godName!= null">
+				godName = #{bean.godName},
+			</if>
+			<if test="bean.godImage!= null">
+				godImage = #{bean.godImage},
+			</if>
+			<if test="bean.godDesc!= null">
+				godDesc = #{bean.godDesc},
+			</if>
+			<if test="bean.godCount!= null">
+				godCount = #{bean.godCount},
+			</if>
+			<if test="bean.godBoughtCount!= null">
+				godBoughtCount = #{bean.godBoughtCount},
+			</if>
+			<if test="bean.godStar!= null">
+				godStar = #{bean.godStar},
+			</if>
+			<if test="bean.sellerId!= null">
+				sellerId = #{bean.sellerId},
+			</if>
+			<if test="bean.commentIds!= null">
+				commentIds = #{bean.commentIds},
+			</if>
+			<if test="bean.startTime!= null">
+				startTime = #{bean.startTime},
+			</if>
+		</set>
+		where godId=#{godId} and sellerId=#{sellerId}
+	</update>
+
+</mapper>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjj.mapper.CartMapper">
+
+	<!--实体映射-->
+	<resultMap id="cart" type="com.hjj.entity.po.Cart">
+		<!--购物车id-->
+		<result column="cartId" property="cartId"/>
+		<!--用户id-->
+		<result column="userId" property="userId"/>
+		<!--多个商品id-->
+		<result column="godIds" property="godIds"/>
+		<!--购物车创建时间-->
+		<result column="startTime" property="startTime"/>
+	</resultMap>
+
+	<!--通用查询结果列-->
+	<sql id="base_column_list">
+		cartId,userId,godIds,startTime
+	</sql>
+
+	<!--基本条件查询-->
+	<sql id="base_condition">
+		<if test="query.cartId != null">
+			and cartId = #{query.cartId}
+		</if>
+		<if test="query.userId != null">
+			and userId = #{query.userId}
+		</if>
+		<if test="query.godIds != null">
+			and godIds = #{query.godIds}
+		</if>
+		<if test="query.startTime != null">
+			and startTime = #{query.startTime}
+		</if>
+	</sql>
+
+	<!--扩展条件查询-->
+	<sql id="extend_condition">
+		<if test="query.cartIdFuzzy != null and query.cartIdFuzzy!=''">
+			and cartId like concat('%', #{query.cartIdFuzzy}, '%')
+		</if>
+		<if test="query.userIdFuzzy != null and query.userIdFuzzy!=''">
+			and userId like concat('%', #{query.userIdFuzzy}, '%')
+		</if>
+		<if test="query.godIdsFuzzy != null and query.godIdsFuzzy!=''">
+			and godIds like concat('%', #{query.godIdsFuzzy}, '%')
+		</if>
+		<if test="query.startTimeStart != null and query.startTimeStart!=''">
+			<![CDATA[and startTime>=str_to_date(#{query.startTimeStart}, '%Y-%m-%d')]]>
+		</if>
+		<if test="query.startTimeEnd != null and query.startTimeEnd!=''">
+			<![CDATA[and startTime<date_sub(str_to_date(#{query.startTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
+		</if>
+	</sql>
+
+	<!--通用查询条件-->
+	<sql id="base_query">
+		<where>
+			<include refid="base_condition"/>
+			<include refid="extend_condition"/>
+		</where>
+	</sql>
+
+	<select id="selectList" resultMap="cart">
+		SELECT
+		<include refid="base_column_list"/>
+		FROM cart
+		<include refid="base_query"/>
+		<if test="query.orderBy!=null">
+			order by ${query.orderBy}
+		</if>
+		<if test="query.simplePage!=null">
+			limit #{query.simplePage.start},#{query.simplePage.end}
+		</if>
+	</select>
+
+	<!--查询数量-->
+	<select id="selectCount" resultType="java.lang.Integer">
+		SELECT count(1) FROM cart
+		<include refid="base_query"/>
+	</select>
+
+	<!--插入数据-->
+	<insert id="insert" parameterType="com.hjj.entity.po.Cart">
+		INSERT INTO cart
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.cartId!= null">
+				cartId,
+			</if>
+			<if test="bean.userId!= null">
+				userId,
+			</if>
+			<if test="bean.godIds!= null">
+				godIds,
+			</if>
+			<if test="bean.startTime!= null">
+				startTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.cartId!= null">
+				#{bean.cartId},
+			</if>
+			<if test="bean.userId!= null">
+				#{bean.userId},
+			</if>
+			<if test="bean.godIds!= null">
+				#{bean.godIds},
+			</if>
+			<if test="bean.startTime!= null">
+				#{bean.startTime},
+			</if>
+		</trim>
+	</insert>
+
+	<!--插入或者更新-->
+	<insert id="insertOrUpdate" parameterType="com.hjj.entity.po.Cart">
+		INSERT INTO cart
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.cartId!= null">
+				cartId,
+			</if>
+			<if test="bean.userId!= null">
+				userId,
+			</if>
+			<if test="bean.godIds!= null">
+				godIds,
+			</if>
+			<if test="bean.startTime!= null">
+				startTime,
+			</if>
+		</trim>
+		on DUPLICATE key update
+		<trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.cartId!= null">
+				cartId = VALUES(cartId),
+			</if>
+			<if test="bean.userId!= null">
+				userId = VALUES(userId),
+			</if>
+			<if test="bean.godIds!= null">
+				godIds = VALUES(godIds),
+			</if>
+			<if test="bean.startTime!= null">
+				startTime = VALUES(startTime),
+			</if>
+		</trim>
+	</insert>
+
+	<!--批量添加-->
+	<insert id="insertBatch" parameterType="com.hjj.entity.po.Cart">
+		INSERT INTO cart(cartId,userId,godIds,startTime)
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.cartId},#{item.userId},#{item.godIds},#{item.startTime}
+			)
+		</foreach>
+	</insert>
+
+	<!--批量新增或修改-->
+	<insert id="insertOrUpdateBatch" parameterType="com.hjj.entity.po.Cart">
+		INSERT INTO cart(cartId,userId,godIds,startTime)
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.cartId},#{item.userId},#{item.godIds},#{item.startTime}
+			)
+		</foreach>
+		on DUPLICATE key update
+		cartId = VALUES(cartId),
+		userId = VALUES(userId),
+		godIds = VALUES(godIds),
+		startTime = VALUES(startTime)
+	</insert>
+
+	<!--根据CartIdAndUserIdAndGodIds删除-->
+	<delete id="deleteByCartIdAndUserIdAndGodIds">
+		delete from cart where cartId=#{cartId} and userId=#{userId} and godIds=#{godIds}
+	</delete>
+
+	<!--根据CartIdAndUserIdAndGodIds查询对象-->
+	<select id="selectByCartIdAndUserIdAndGodIds" resultMap="cart">
+		select
+		<include refid="base_column_list"/>
+		from cart where cartId=#{cartId} and userId=#{userId} and godIds=#{godIds}
+	</select>
+
+	<!--根据CartIdAndUserIdAndGodIds修改-->
+	<update id="updateByCartIdAndUserIdAndGodIds" parameterType="com.hjj.entity.po.Cart">
+		UPDATE cart
+		<set>
+			<if test="bean.cartId!= null">
+				cartId = #{bean.cartId},
+			</if>
+			<if test="bean.userId!= null">
+				userId = #{bean.userId},
+			</if>
+			<if test="bean.godIds!= null">
+				godIds = #{bean.godIds},
+			</if>
+			<if test="bean.startTime!= null">
+				startTime = #{bean.startTime},
+			</if>
+		</set>
+		where cartId=#{cartId} and userId=#{userId} and godIds=#{godIds}
+	</update>
+
+</mapper>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjj.mapper.CommentMapper">
+
+	<!--实体映射-->
+	<resultMap id="comment" type="com.hjj.entity.po.Comment">
+		<!--评论Id-->
+		<result column="commentId" property="commentId"/>
+		<!--商品id-->
+		<result column="godId" property="godId"/>
+		<!--用户Id-->
+		<result column="userId" property="userId"/>
+		<!--评论内容-->
+		<result column="commentDesc" property="commentDesc"/>
+		<!--评论的star个数-->
+		<result column="commentStar" property="commentStar"/>
+		<!--评论出现时间-->
+		<result column="startTime" property="startTime"/>
+	</resultMap>
+
+	<!--通用查询结果列-->
+	<sql id="base_column_list">
+		commentId,godId,userId,commentDesc,commentStar,startTime
+	</sql>
+
+	<!--基本条件查询-->
+	<sql id="base_condition">
+		<if test="query.commentId != null">
+			and commentId = #{query.commentId}
+		</if>
+		<if test="query.godId != null">
+			and godId = #{query.godId}
+		</if>
+		<if test="query.userId != null">
+			and userId = #{query.userId}
+		</if>
+		<if test="query.commentDesc != null">
+			and commentDesc = #{query.commentDesc}
+		</if>
+		<if test="query.commentStar != null">
+			and commentStar = #{query.commentStar}
+		</if>
+		<if test="query.startTime != null">
+			and startTime = #{query.startTime}
+		</if>
+	</sql>
+
+	<!--扩展条件查询-->
+	<sql id="extend_condition">
+		<if test="query.commentIdFuzzy != null and query.commentIdFuzzy!=''">
+			and commentId like concat('%', #{query.commentIdFuzzy}, '%')
+		</if>
+		<if test="query.godIdFuzzy != null and query.godIdFuzzy!=''">
+			and godId like concat('%', #{query.godIdFuzzy}, '%')
+		</if>
+		<if test="query.userIdFuzzy != null and query.userIdFuzzy!=''">
+			and userId like concat('%', #{query.userIdFuzzy}, '%')
+		</if>
+		<if test="query.commentDescFuzzy != null and query.commentDescFuzzy!=''">
+			and commentDesc like concat('%', #{query.commentDescFuzzy}, '%')
+		</if>
+		<if test="query.startTimeStart != null and query.startTimeStart!=''">
+			<![CDATA[and startTime>=str_to_date(#{query.startTimeStart}, '%Y-%m-%d')]]>
+		</if>
+		<if test="query.startTimeEnd != null and query.startTimeEnd!=''">
+			<![CDATA[and startTime<date_sub(str_to_date(#{query.startTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
+		</if>
+	</sql>
+
+	<!--通用查询条件-->
+	<sql id="base_query">
+		<where>
+			<include refid="base_condition"/>
+			<include refid="extend_condition"/>
+		</where>
+	</sql>
+
+	<select id="selectList" resultMap="comment">
+		SELECT
+		<include refid="base_column_list"/>
+		FROM comment
+		<include refid="base_query"/>
+		<if test="query.orderBy!=null">
+			order by ${query.orderBy}
+		</if>
+		<if test="query.simplePage!=null">
+			limit #{query.simplePage.start},#{query.simplePage.end}
+		</if>
+	</select>
+
+	<!--查询数量-->
+	<select id="selectCount" resultType="java.lang.Integer">
+		SELECT count(1) FROM comment
+		<include refid="base_query"/>
+	</select>
+
+	<!--插入数据-->
+	<insert id="insert" parameterType="com.hjj.entity.po.Comment">
+		INSERT INTO comment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.commentId!= null">
+				commentId,
+			</if>
+			<if test="bean.godId!= null">
+				godId,
+			</if>
+			<if test="bean.userId!= null">
+				userId,
+			</if>
+			<if test="bean.commentDesc!= null">
+				commentDesc,
+			</if>
+			<if test="bean.commentStar!= null">
+				commentStar,
+			</if>
+			<if test="bean.startTime!= null">
+				startTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.commentId!= null">
+				#{bean.commentId},
+			</if>
+			<if test="bean.godId!= null">
+				#{bean.godId},
+			</if>
+			<if test="bean.userId!= null">
+				#{bean.userId},
+			</if>
+			<if test="bean.commentDesc!= null">
+				#{bean.commentDesc},
+			</if>
+			<if test="bean.commentStar!= null">
+				#{bean.commentStar},
+			</if>
+			<if test="bean.startTime!= null">
+				#{bean.startTime},
+			</if>
+		</trim>
+	</insert>
+
+	<!--插入或者更新-->
+	<insert id="insertOrUpdate" parameterType="com.hjj.entity.po.Comment">
+		INSERT INTO comment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.commentId!= null">
+				commentId,
+			</if>
+			<if test="bean.godId!= null">
+				godId,
+			</if>
+			<if test="bean.userId!= null">
+				userId,
+			</if>
+			<if test="bean.commentDesc!= null">
+				commentDesc,
+			</if>
+			<if test="bean.commentStar!= null">
+				commentStar,
+			</if>
+			<if test="bean.startTime!= null">
+				startTime,
+			</if>
+		</trim>
+		on DUPLICATE key update
+		<trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.commentId!= null">
+				commentId = VALUES(commentId),
+			</if>
+			<if test="bean.godId!= null">
+				godId = VALUES(godId),
+			</if>
+			<if test="bean.userId!= null">
+				userId = VALUES(userId),
+			</if>
+			<if test="bean.commentDesc!= null">
+				commentDesc = VALUES(commentDesc),
+			</if>
+			<if test="bean.commentStar!= null">
+				commentStar = VALUES(commentStar),
+			</if>
+			<if test="bean.startTime!= null">
+				startTime = VALUES(startTime),
+			</if>
+		</trim>
+	</insert>
+
+	<!--批量添加-->
+	<insert id="insertBatch" parameterType="com.hjj.entity.po.Comment">
+		INSERT INTO comment(commentId,godId,userId,commentDesc,commentStar,startTime)
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.commentId},#{item.godId},#{item.userId},#{item.commentDesc},#{item.commentStar},#{item.startTime}
+			)
+		</foreach>
+	</insert>
+
+	<!--批量新增或修改-->
+	<insert id="insertOrUpdateBatch" parameterType="com.hjj.entity.po.Comment">
+		INSERT INTO comment(commentId,godId,userId,commentDesc,commentStar,startTime)
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.commentId},#{item.godId},#{item.userId},#{item.commentDesc},#{item.commentStar},#{item.startTime}
+			)
+		</foreach>
+		on DUPLICATE key update
+		commentId = VALUES(commentId),
+		godId = VALUES(godId),
+		userId = VALUES(userId),
+		commentDesc = VALUES(commentDesc),
+		commentStar = VALUES(commentStar),
+		startTime = VALUES(startTime)
+	</insert>
+
+	<!--根据CommentId删除-->
+	<delete id="deleteByCommentId">
+		delete from comment where commentId=#{commentId}
+	</delete>
+
+	<!--根据CommentId查询对象-->
+	<select id="selectByCommentId" resultMap="comment">
+		select
+		<include refid="base_column_list"/>
+		from comment where commentId=#{commentId}
+	</select>
+
+	<!--根据CommentId修改-->
+	<update id="updateByCommentId" parameterType="com.hjj.entity.po.Comment">
+		UPDATE comment
+		<set>
+			<if test="bean.commentId!= null">
+				commentId = #{bean.commentId},
+			</if>
+			<if test="bean.godId!= null">
+				godId = #{bean.godId},
+			</if>
+			<if test="bean.userId!= null">
+				userId = #{bean.userId},
+			</if>
+			<if test="bean.commentDesc!= null">
+				commentDesc = #{bean.commentDesc},
+			</if>
+			<if test="bean.commentStar!= null">
+				commentStar = #{bean.commentStar},
+			</if>
+			<if test="bean.startTime!= null">
+				startTime = #{bean.startTime},
+			</if>
+		</set>
+		where commentId=#{commentId}
+	</update>
+
+</mapper>
