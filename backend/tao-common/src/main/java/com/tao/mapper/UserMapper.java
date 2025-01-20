@@ -21,7 +21,7 @@ public interface UserMapper<T, P> extends BaseMapper {
     /**
      * 根据UserId删除
      */
-    Integer deleteByUserId(@Param("userId") String userId);
+    Integer deleteByUserId(@Param("userId") String userId, Integer status);
 
 
     T selectByUserName(String userName);

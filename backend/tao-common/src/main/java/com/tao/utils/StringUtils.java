@@ -1,9 +1,9 @@
 package com.tao.utils;
 
-import java.util.UUID;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class StringUtils {
-    public static String generateUUID() {
-        return UUID.randomUUID().toString().replaceAll("-", "");
+    public static String random16() {
+        return RandomStringUtils.random(16, true, true);
     }
 }

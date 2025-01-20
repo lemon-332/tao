@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         }
         user = new User();
         user.setUserName(userName);
-        user.setUserId(StringUtils.generateUUID());
+        user.setUserId(StringUtils.random16());
         user.setPhone(phone);
         user.setPassword(password);
         user.setDisplayName(displayName);
@@ -61,6 +61,19 @@ public class UserServiceImpl implements UserService {
         user.setStatus(UserStatus.ACTIVE.getUserStatus());
         user.setStartTime(new Date());
         userMapper.insert(user);
+    }
+
+    @Override
+    public String reset(String userName) {
+        User user = userMapper.selectByUserName(userName);
+        if (user == null) {
+            throw new BusinessException(ResponseCode.CODE_904);
+        }
+        String newPassword = StringUtils.random16();
+        while (newPassword.equals(user.getPassword())) {
+            newPassword = StringUtils.random16();
+        }
+        return newPassword;
     }
 
     /**
@@ -137,7 +150,7 @@ public class UserServiceImpl implements UserService {
      * 根据UserId删除对象
      */
     public Integer deleteUserByUserId(String userId) {
-        return userMapper.deleteByUserId(userId);
+        return userMapper.deleteByUserId(userId, UserStatus.DELETE.getUserStatus());
     }
 
 

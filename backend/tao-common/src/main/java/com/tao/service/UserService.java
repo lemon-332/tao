@@ -62,4 +62,6 @@ public interface UserService {
     User login(String username, String password, Integer role);
 
     void register(String userName, String phone, String password, String displayName, Integer role);
+
+    String reset(String userName);
 }

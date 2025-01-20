@@ -278,7 +278,7 @@
 
     <!--根据UserId删除-->
     <delete id="deleteByUserId">
-        delete from user where userId=#{userId}
+        update user set status = #{status} where userId=#{userId}
     </delete>
 
     <!--根据UserId查询对象-->
