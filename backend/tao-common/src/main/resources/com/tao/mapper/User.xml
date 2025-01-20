@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tao.mapper.UserMapper">
+
+	<!--实体映射-->
+	<resultMap id="user" type="com.tao.entity.po.User">
+		<!--用户id-->
+		<result column="userId" property="userId"/>
+		<!--用户账号-->
+		<result column="userName" property="userName"/>
+		<!--用户电话-->
+		<result column="phone" property="phone"/>
+		<!--用户密码-->
+		<result column="password" property="password"/>
+		<!--用户名称-->
+		<result column="displayName" property="displayName"/>
+		<!--用户角色-->
+		<result column="role" property="role"/>
+		<!--注册时间-->
+		<result column="startTime" property="startTime"/>
+		<!--用户状态-->
+		<result column="status" property="status"/>
+		<!--禁用时间-->
+		<result column="disableTime" property="disableTime"/>
+	</resultMap>
+
+	<!--通用查询结果列-->
+	<sql id="base_column_list">
+		userId,userName,phone,password,displayName,role,startTime,status,disableTime
+	</sql>
+
+	<!--基本条件查询-->
+	<sql id="base_condition">
+		<if test="query.userId != null">
+			and userId = #{query.userId}
+		</if>
+		<if test="query.userName != null">
+			and userName = #{query.userName}
+		</if>
+		<if test="query.phone != null">
+			and phone = #{query.phone}
+		</if>
+		<if test="query.password != null">
+			and password = #{query.password}
+		</if>
+		<if test="query.displayName != null">
+			and displayName = #{query.displayName}
+		</if>
+		<if test="query.role != null">
+			and role = #{query.role}
+		</if>
+		<if test="query.startTime != null">
+			and startTime = #{query.startTime}
+		</if>
+		<if test="query.status != null">
+			and status = #{query.status}
+		</if>
+		<if test="query.disableTime != null">
+			and disableTime = #{query.disableTime}
+		</if>
+	</sql>
+
+	<!--扩展条件查询-->
+	<sql id="extend_condition">
+		<if test="query.userIdFuzzy != null and query.userIdFuzzy!=''">
+			and userId like concat('%', #{query.userIdFuzzy}, '%')
+		</if>
+		<if test="query.userNameFuzzy != null and query.userNameFuzzy!=''">
+			and userName like concat('%', #{query.userNameFuzzy}, '%')
+		</if>
+		<if test="query.phoneFuzzy != null and query.phoneFuzzy!=''">
+			and phone like concat('%', #{query.phoneFuzzy}, '%')
+		</if>
+		<if test="query.passwordFuzzy != null and query.passwordFuzzy!=''">
+			and password like concat('%', #{query.passwordFuzzy}, '%')
+		</if>
+		<if test="query.displayNameFuzzy != null and query.displayNameFuzzy!=''">
+			and displayName like concat('%', #{query.displayNameFuzzy}, '%')
+		</if>
+		<if test="query.startTimeStart != null and query.startTimeStart!=''">
+			<![CDATA[and startTime>=str_to_date(#{query.startTimeStart}, '%Y-%m-%d')]]>
+		</if>
+		<if test="query.startTimeEnd != null and query.startTimeEnd!=''">
+			<![CDATA[and startTime<date_sub(str_to_date(#{query.startTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
+		</if>
+		<if test="query.disableTimeStart != null and query.disableTimeStart!=''">
+			<![CDATA[and disableTime>=str_to_date(#{query.disableTimeStart}, '%Y-%m-%d')]]>
+		</if>
+		<if test="query.disableTimeEnd != null and query.disableTimeEnd!=''">
+			<![CDATA[and disableTime<date_sub(str_to_date(#{query.disableTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
+		</if>
+	</sql>
+
+	<!--通用查询条件-->
+	<sql id="base_query">
+		<where>
+			<include refid="base_condition"/>
+			<include refid="extend_condition"/>
+		</where>
+	</sql>
+
+	<select id="selectList" resultMap="user">
+		SELECT
+		<include refid="base_column_list"/>
+		FROM user
+		<include refid="base_query"/>
+		<if test="query.orderBy!=null">
+			order by ${query.orderBy}
+		</if>
+		<if test="query.simplePage!=null">
+			limit #{query.simplePage.start},#{query.simplePage.end}
+		</if>
+	</select>
+
+	<!--查询数量-->
+	<select id="selectCount" resultType="java.lang.Integer">
+		SELECT count(1) FROM user
+		<include refid="base_query"/>
+	</select>
+
+	<!--插入数据-->
+	<insert id="insert" parameterType="com.tao.entity.po.User">
+		INSERT INTO user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.userId!= null">
+				userId,
+			</if>
+			<if test="bean.userName!= null">
+				userName,
+			</if>
+			<if test="bean.phone!= null">
+				phone,
+			</if>
+			<if test="bean.password!= null">
+				password,
+			</if>
+			<if test="bean.displayName!= null">
+				displayName,
+			</if>
+			<if test="bean.role!= null">
+				role,
+			</if>
+			<if test="bean.startTime!= null">
+				startTime,
+			</if>
+			<if test="bean.status!= null">
+				status,
+			</if>
+			<if test="bean.disableTime!= null">
+				disableTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.userId!= null">
+				#{bean.userId},
+			</if>
+			<if test="bean.userName!= null">
+				#{bean.userName},
+			</if>
+			<if test="bean.phone!= null">
+				#{bean.phone},
+			</if>
+			<if test="bean.password!= null">
+				#{bean.password},
+			</if>
+			<if test="bean.displayName!= null">
+				#{bean.displayName},
+			</if>
+			<if test="bean.role!= null">
+				#{bean.role},
+			</if>
+			<if test="bean.startTime!= null">
+				#{bean.startTime},
+			</if>
+			<if test="bean.status!= null">
+				#{bean.status},
+			</if>
+			<if test="bean.disableTime!= null">
+				#{bean.disableTime},
+			</if>
+		</trim>
+	</insert>
+
+	<!--插入或者更新-->
+	<insert id="insertOrUpdate" parameterType="com.tao.entity.po.User">
+		INSERT INTO user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.userId!= null">
+				userId,
+			</if>
+			<if test="bean.userName!= null">
+				userName,
+			</if>
+			<if test="bean.phone!= null">
+				phone,
+			</if>
+			<if test="bean.password!= null">
+				password,
+			</if>
+			<if test="bean.displayName!= null">
+				displayName,
+			</if>
+			<if test="bean.role!= null">
+				role,
+			</if>
+			<if test="bean.startTime!= null">
+				startTime,
+			</if>
+			<if test="bean.status!= null">
+				status,
+			</if>
+			<if test="bean.disableTime!= null">
+				disableTime,
+			</if>
+		</trim>
+		on DUPLICATE key update
+		<trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.userId!= null">
+				userId = VALUES(userId),
+			</if>
+			<if test="bean.userName!= null">
+				userName = VALUES(userName),
+			</if>
+			<if test="bean.phone!= null">
+				phone = VALUES(phone),
+			</if>
+			<if test="bean.password!= null">
+				password = VALUES(password),
+			</if>
+			<if test="bean.displayName!= null">
+				displayName = VALUES(displayName),
+			</if>
+			<if test="bean.role!= null">
+				role = VALUES(role),
+			</if>
+			<if test="bean.startTime!= null">
+				startTime = VALUES(startTime),
+			</if>
+			<if test="bean.status!= null">
+				status = VALUES(status),
+			</if>
+			<if test="bean.disableTime!= null">
+				disableTime = VALUES(disableTime),
+			</if>
+		</trim>
+	</insert>
+
+	<!--批量添加-->
+	<insert id="insertBatch" parameterType="com.tao.entity.po.User">
+		INSERT INTO user(userId,userName,phone,password,displayName,role,startTime,status,disableTime)
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.userId},#{item.userName},#{item.phone},#{item.password},#{item.displayName},#{item.role},#{item.startTime},#{item.status},#{item.disableTime}
+			)
+		</foreach>
+	</insert>
+
+	<!--批量新增或修改-->
+	<insert id="insertOrUpdateBatch" parameterType="com.tao.entity.po.User">
+		INSERT INTO user(userId,userName,phone,password,displayName,role,startTime,status,disableTime)
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.userId},#{item.userName},#{item.phone},#{item.password},#{item.displayName},#{item.role},#{item.startTime},#{item.status},#{item.disableTime}
+			)
+		</foreach>
+		on DUPLICATE key update
+		userId = VALUES(userId),
+		userName = VALUES(userName),
+		phone = VALUES(phone),
+		password = VALUES(password),
+		displayName = VALUES(displayName),
+		role = VALUES(role),
+		startTime = VALUES(startTime),
+		status = VALUES(status),
+		disableTime = VALUES(disableTime)
+	</insert>
+
+	<!--根据UserId删除-->
+	<delete id="deleteByUserId">
+		delete from user where userId=#{userId}
+	</delete>
+
+	<!--根据UserId查询对象-->
+	<select id="selectByUserId" resultMap="user">
+		select
+		<include refid="base_column_list"/>
+		from user where userId=#{userId}
+	</select>
+
+	<!--根据UserId修改-->
+	<update id="updateByUserId" parameterType="com.tao.entity.po.User">
+		UPDATE user
+		<set>
+			<if test="bean.userId!= null">
+				userId = #{bean.userId},
+			</if>
+			<if test="bean.userName!= null">
+				userName = #{bean.userName},
+			</if>
+			<if test="bean.phone!= null">
+				phone = #{bean.phone},
+			</if>
+			<if test="bean.password!= null">
+				password = #{bean.password},
+			</if>
+			<if test="bean.displayName!= null">
+				displayName = #{bean.displayName},
+			</if>
+			<if test="bean.role!= null">
+				role = #{bean.role},
+			</if>
+			<if test="bean.startTime!= null">
+				startTime = #{bean.startTime},
+			</if>
+			<if test="bean.status!= null">
+				status = #{bean.status},
+			</if>
+			<if test="bean.disableTime!= null">
+				disableTime = #{bean.disableTime},
+			</if>
+		</set>
+		where userId=#{userId}
+	</update>
+
+</mapper>
