@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/tao-admin/tao-admin.iml" filepath="$PROJECT_DIR$/tao-admin/tao-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tao-common/tao-common.iml" filepath="$PROJECT_DIR$/tao-common/tao-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tao-web/tao-web.iml" filepath="$PROJECT_DIR$/tao-web/tao-web.iml" />
+    </modules>
+  </component>
+</project>

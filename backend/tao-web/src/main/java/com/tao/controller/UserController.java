@@ -1,86 +1,49 @@
 package com.tao.controller;
 
-import java.util.List;
-import javax.annotation.Resource;
+import com.tao.annotation.GlobalInterceptor;
+import com.tao.annotation.VerifyParam;
+import com.tao.entity.po.User;
+import com.tao.entity.vo.ResponseVo;
+import com.tao.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import com.tao.entity.po.User;
-import com.tao.entity.query.UserQuery;
-import com.tao.service.UserService;
-import com.tao.entity.vo.ResponseVo;
+
+import javax.annotation.Resource;
 
 /**
  * @author lemon
  * @date 2025-01-20 08:37
- * @desc 
+ * @desc
  */
 
 @RestController
 @RequestMapping("user")
-public class UserController extends ABaseController{
+public class UserController extends ABaseController {
 
-	@Resource
-	private UserService userService;
-	/**
-	 * 根据条件分页查询列表
-	 */
-	@RequestMapping("loadDataList")
-	public ResponseVo loadDataList(UserQuery query){
-		return getSuccessResponseVo("haha");
-	}
+    @Resource
+    private UserService userService;
 
-	/**
-	 * 新增
-	 */
-	@RequestMapping("add")
-	public ResponseVo add(User bean){
-		userService.add(bean);
-		return getSuccessResponseVo(null);
-	}
-	/**
-	 * 批量新增
-	 */
-	@RequestMapping("addBatch")
-	public ResponseVo addBatch(@RequestBody List<User> listBean){
-		userService.addBatch(listBean);
-		return getSuccessResponseVo(null);
-	}
+    /**
+     * 登录
+     */
+    @RequestMapping("login")
+    @GlobalInterceptor(checkParams = true)
+    public ResponseVo login(@VerifyParam(required = true) String userName,
+                            @VerifyParam(required = true) String password,
+                            @VerifyParam(required = true) Integer role) {
+        User user = userService.login(userName, password, role);
+        return getSuccessResponseVo(user);
+    }
 
-	/**
-	 * 批量新增/修改对象
-	 */
-	@RequestMapping("addOrUpdateBatch")
-	public ResponseVo addOrUpdateBatch(@RequestBody List<User> listBean){
-		userService.addOrUpdateBatch(listBean);
-		return getSuccessResponseVo(null);
-	}
-
-	/**
-	 * 根据UserId查询对象
-	 */
-	@RequestMapping("getUserByUserId")
-	public ResponseVo getUserByUserId(String userId){
-		return getSuccessResponseVo(userService.getUserByUserId(userId));
-	}
-
-	/**
-	 * 根据UserId更新对象
-	 */
-	@RequestMapping("updateUserByUserId")
-	public ResponseVo updateUserByUserId(User bean, String userId){
-		userService.updateUserByUserId(bean, userId);
-		return getSuccessResponseVo(null);
-	}
-
-	/**
-	 * 根据UserId删除对象
-	 */
-	@RequestMapping("deleteUserByUserId")
-	public ResponseVo deleteUserByUserId(String userId){
-		userService.deleteUserByUserId(userId);
-		return getSuccessResponseVo(null);
-	}
-
+    /**
+     * 注册
+     */
+    @RequestMapping("register")
+    // todo 增加登录验证
+    @GlobalInterceptor(checkParams = true)
+    public ResponseVo register(String userName, String phone, String password, String displayName, Integer role) {
+        userService.register(userName, phone, password, displayName, role);
+        return getSuccessResponseVo(null);
+    }
 
 }

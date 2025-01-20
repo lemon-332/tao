@@ -1,4 +1,4 @@
-package com.tao.taocommon.annotation;
+package com.tao.annotation;
 
 import java.lang.annotation.*;
 
