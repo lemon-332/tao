@@ -54,3 +54,46 @@
 2025-01-20 12:20:06 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-01-20 12:20:06 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
 2025-01-20 12:20:06 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 1 ms
+2025-01-20 16:19:22 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 748 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
+2025-01-20 16:19:22 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
+2025-01-20 16:19:24 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
+2025-01-20 16:19:24 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 1894 ms
+2025-01-20 16:19:24 [WARN][org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext][__refresh][591]-> Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'UserService': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userMapper' defined in file [C:\Users\lemon\Desktop\tao\backend\tao-common\target\classes\com\tao\mapper\UserMapper.class]: Invocation of init method failed; nested exception is java.lang.ClassCastException: class org.apache.ibatis.type.TypeAliasRegistry cannot be cast to class org.zeroturnaround.jrebel.mybatis.JrTypeAliasRegistry (org.apache.ibatis.type.TypeAliasRegistry and org.zeroturnaround.jrebel.mybatis.JrTypeAliasRegistry are in unnamed module of loader 'app')
+2025-01-20 17:50:14 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 21404 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
+2025-01-20 17:50:14 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
+2025-01-20 17:50:16 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
+2025-01-20 17:50:16 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2025-01-20 17:50:16 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2025-01-20 17:50:16 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2025-01-20 17:50:16 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2025-01-20 17:50:16 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-8848"]
+2025-01-20 17:50:16 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2025-01-20 17:50:16 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.58]
+2025-01-20 17:50:17 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2025-01-20 17:50:17 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 1944 ms
+2025-01-20 17:50:18 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-8848"]
+2025-01-20 17:50:18 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 8848 (http) with context path '/api'
+2025-01-20 17:50:18 [INFO][com.tao.TaoWebApplication][logStarted][61]-> Started TaoWebApplication in 3.798 seconds (JVM running for 6.293)
+2025-01-20 17:51:15 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 17:51:55 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-20 17:51:55 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
+2025-01-20 17:51:55 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 2 ms
+2025-01-20 17:51:55 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][110]-> HikariCPDatasource - Starting...
+2025-01-20 17:51:55 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][123]-> HikariCPDatasource - Start completed.
+2025-01-20 17:53:40 [WARN][com.zaxxer.hikari.pool.HikariPool][run][788]-> HikariCPDatasource - Thread starvation or clock leap detected (housekeeper delta=1m15s294ms619µs).
+2025-01-20 17:59:01 [WARN][com.zaxxer.hikari.pool.HikariPool][run][788]-> HikariCPDatasource - Thread starvation or clock leap detected (housekeeper delta=1m20s902ms240µs300ns).
+2025-01-20 18:14:48 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:15:19 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:17:46 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:18:04 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:21:52 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:22:46 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:23:44 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:25:14 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:30:27 [WARN][com.zaxxer.hikari.pool.HikariPool][run][788]-> HikariCPDatasource - Thread starvation or clock leap detected (housekeeper delta=1m18s77ms581µs).
+2025-01-20 18:30:32 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:32:52 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:40:50 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 18:45:48 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
+2025-01-20 19:03:19 [INFO][com.zaxxer.hikari.HikariDataSource][close][350]-> HikariCPDatasource - Shutdown initiated...
+2025-01-20 19:03:19 [INFO][com.zaxxer.hikari.HikariDataSource][close][352]-> HikariCPDatasource - Shutdown completed.
