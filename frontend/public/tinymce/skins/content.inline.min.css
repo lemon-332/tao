@@ -303,14 +303,10 @@ pre[class*='language-'] {
   content: attr(data-mce-placeholder);
   position: absolute;
 }
-.mce-content-body:not([dir='rtl'])[data-mce-placeholder]:not(
-    .mce-visualblocks
-  )::before {
+.mce-content-body:not([dir='rtl'])[data-mce-placeholder]:not(.mce-visualblocks)::before {
   left: 1px;
 }
-.mce-content-body[dir='rtl'][data-mce-placeholder]:not(
-    .mce-visualblocks
-  )::before {
+.mce-content-body[dir='rtl'][data-mce-placeholder]:not(.mce-visualblocks)::before {
   right: 1px;
 }
 .mce-content-body div.mce-resizehandle {

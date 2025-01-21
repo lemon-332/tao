@@ -91,7 +91,8 @@ export default {
     editPermission: 'Modifica',
     roles: 'I tuoi ruoli',
     switchRoles: 'Cambia ruoli',
-    tips: 'In alcuni casi usare v-permission non ha effetto. Per esempio: Element-UI  el-tab o el-table-column e altri componenti che renderizzano il dom dinamicamente. Puoi farlo solo con v-if.',
+    tips:
+      'In alcuni casi usare v-permission non ha effetto. Per esempio: Element-UI  el-tab o el-table-column e altri componenti che renderizzano il dom dinamicamente. Puoi farlo solo con v-if.',
     delete: 'Elimina',
     confirm: 'Conferma',
     cancel: 'Annulla'
@@ -146,7 +147,8 @@ export default {
       "Creare e modificare pagine non può essere tenuto in cache da keep-alive, perchè l'include di keep-alive attualmente non supporta la cache basata sugli indirizzi, per questo ora viene utilizzata la cache basandosi sul nome del componente. Se vuoi utilizzare uno schema di caching basato sul browser come localStorage. O non usare l'include di keep-alive per mettere le pagine in cache direttamente. Vedi dettagli"
   },
   errorLog: {
-    tips: "Per favore clicca l'icona dell'insetto nell'angolo in alto a sinistra",
+    tips:
+      "Per favore clicca l'icona dell'insetto nell'angolo in alto a sinistra",
     description:
       "Ora il sistema di gestione è fondamentalmente il form della spa, aumenta l'esperienza utente, ma incrementa anche le possibilità di problemi nelle pagine, una piccola negligenza può portare al blocco della pagina. Fortunatamente Vue offre un modo di catturare le eccezioni, dove puoi manipolare gli errori o riportare un'eccezione.",
     documentation: 'Introduzione documentazione'
@@ -161,12 +163,14 @@ export default {
     placeholder: 'Per favore inserisci il nome del file(default: file)'
   },
   pdf: {
-    tips: 'Qui usiamo window.print() per implementare la funzionalità del download PDF.'
+    tips:
+      'Qui usiamo window.print() per implementare la funzionalità del download PDF.'
   },
   theme: {
     change: 'Cambia Tema',
     documentation: 'Documentazione Tema',
-    tips: 'Consiglio: It is different from the theme-pick on the navbar is two different skinning methods, each with different application scenarios. Refer to the documentation for details.'
+    tips:
+      'Consiglio: It is different from the theme-pick on the navbar is two different skinning methods, each with different application scenarios. Refer to the documentation for details.'
   },
   tagsView: {
     refresh: 'Ricarica',

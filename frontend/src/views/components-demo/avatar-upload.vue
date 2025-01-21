@@ -2,10 +2,7 @@
   <div class="components-container">
     <aside>
       This is based on
-      <a
-        class="link-type"
-        href="//github.com/dai-siki/vue-image-crop-upload"
-      >
+      <a class="link-type" href="//github.com/dai-siki/vue-image-crop-upload">
         vue-image-crop-upload
       </a>
     </aside>
@@ -46,7 +43,9 @@ import PanThumb from '@/components/PanThumb/index.vue'
 })
 export default class extends Vue {
   private showImageUpload = false
-  private image = 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'
+  private image =
+    'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'
+
   private params = { someParams: 'your_params_goes_here' }
   private headers = { smail: '*_~' }
 

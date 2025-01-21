@@ -5,7 +5,7 @@ export const waves: DirectiveOptions = {
   bind(el, binding) {
     el.addEventListener(
       'click',
-      (e) => {
+      e => {
         const customOpts = Object.assign({}, binding.value)
         const opts = Object.assign(
           {

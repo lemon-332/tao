@@ -34,7 +34,7 @@ const generateArray = (table: HTMLElement) => {
       }
       const cellValue = cell.innerText
       // Skip ranges
-      ranges.forEach(function (range) {
+      ranges.forEach(function(range) {
         if (
           R >= range.s.r &&
           R <= range.e.r &&
@@ -189,7 +189,7 @@ export const exportJson2Excel = (
     if (!ws['!merges']) {
       ws['!merges'] = []
     }
-    merges.forEach((item) => {
+    merges.forEach(item => {
       ws['!merges'].push(XLSX.utils.decode_range(item))
     })
   }

@@ -14,7 +14,7 @@ const checkNeed = () => {
 }
 
 if (checkNeed()) {
-  Vue.config.errorHandler = function (err, vm, info) {
+  Vue.config.errorHandler = function(err, vm, info) {
     ErrorLogModule.AddErrorLog({
       err,
       vm,

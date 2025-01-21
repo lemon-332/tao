@@ -15,7 +15,7 @@ const roles: IRoleData[] = [
     key: 'editor',
     name: 'editor',
     description: 'Normal Editor. Can see all pages except permission page',
-    routes: routes.filter((i) => i.path !== '/permission') // Just a mock
+    routes: routes.filter(i => i.path !== '/permission') // Just a mock
   },
   {
     key: 'visitor',

@@ -32,15 +32,8 @@
       highlight-current-row
       @selection-change="handleSelectionChange"
     >
-      <el-table-column
-        type="selection"
-        align="center"
-      />
-      <el-table-column
-        align="center"
-        label="Id"
-        width="95"
-      >
+      <el-table-column type="selection" align="center" />
+      <el-table-column align="center" label="Id" width="95">
         <template slot-scope="{$index}">
           {{ $index }}
         </template>
@@ -50,29 +43,17 @@
           {{ row.title }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="Author"
-        align="center"
-        width="180"
-      >
+      <el-table-column label="Author" align="center" width="180">
         <template slot-scope="{row}">
           <el-tag>{{ row.author }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column
-        label="Readings"
-        align="center"
-        width="115"
-      >
+      <el-table-column label="Readings" align="center" width="115">
         <template slot-scope="{row}">
           {{ row.pageviews }}
         </template>
       </el-table-column>
-      <el-table-column
-        align="center"
-        label="PDate"
-        width="220"
-      >
+      <el-table-column align="center" label="PDate" width="220">
         <template slot-scope="{row}">
           <i class="el-icon-time" />
           <span>{{ row.timestamp }}</span>
@@ -106,7 +87,9 @@ export default class extends Vue {
 
   private async fetchData() {
     this.listLoading = true
-    const { data } = await getArticles({ /* Your params here */ })
+    const { data } = await getArticles({
+      /* Your params here */
+    })
     this.list = data.items
     // Just to simulate the time of the request
     setTimeout(() => {
@@ -125,8 +108,12 @@ export default class extends Vue {
       const filterVal = ['id', 'title', 'author', 'pageviews', 'timestamp']
       const list = this.multipleSelection
       const data = formatJson(filterVal, list)
-      exportJson2Excel(tHeader, data, this.filename !== '' ? this.filename : undefined);
-      (this.$refs.multipleTable as Table).clearSelection()
+      exportJson2Excel(
+        tHeader,
+        data,
+        this.filename !== '' ? this.filename : undefined
+      )
+      ;(this.$refs.multipleTable as Table).clearSelection()
       this.downloadLoading = false
     } else {
       this.$message({

@@ -37,14 +37,18 @@ export default class extends Vue {
       message: h('div', { class: 'sw-update-popup' }, [
         this.notificationText,
         h('br'),
-        h('button', {
-          on: {
-            click: (e: Event) => {
-              e.preventDefault()
-              this.refreshApp()
+        h(
+          'button',
+          {
+            on: {
+              click: (e: Event) => {
+                e.preventDefault()
+                this.refreshApp()
+              }
             }
-          }
-        }, this.refreshButtonText)
+          },
+          this.refreshButtonText
+        )
       ]),
       position: 'bottom-right',
       duration: 0

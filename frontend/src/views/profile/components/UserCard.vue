@@ -1,9 +1,6 @@
 <template>
   <el-card style="margin-bottom:20px;">
-    <div
-      slot="header"
-      class="clearfix"
-    >
+    <div slot="header" class="clearfix">
       <span>About me</span>
     </div>
 
@@ -32,7 +29,8 @@
     <div class="user-bio">
       <div class="user-education user-bio-section">
         <div class="user-bio-section-header">
-          <svg-icon name="education" /><span>Education</span>
+          <svg-icon name="education" />
+          <span>Education</span>
         </div>
         <div class="user-bio-section-body">
           <div class="text-muted">
@@ -43,7 +41,8 @@
 
       <div class="user-skills user-bio-section">
         <div class="user-bio-section-header">
-          <svg-icon name="skill" /><span>Skills</span>
+          <svg-icon name="skill" />
+          <span>Skills</span>
         </div>
         <div class="user-bio-section-body">
           <div class="progress-item">
@@ -60,10 +59,7 @@
           </div>
           <div class="progress-item">
             <span>ESLint</span>
-            <el-progress
-              :percentage="100"
-              status="success"
-            />
+            <el-progress :percentage="100" status="success" />
           </div>
         </div>
       </div>

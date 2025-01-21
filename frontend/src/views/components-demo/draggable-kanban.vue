@@ -61,7 +61,7 @@ export default class extends Vue {
 .kanban {
   &.todo {
     .board-column-header {
-      background: #4A9FF9;
+      background: #4a9ff9;
     }
   }
 

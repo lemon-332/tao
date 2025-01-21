@@ -1,23 +1,9 @@
 <template>
-  <el-row
-    :gutter="40"
-    class="panel-group"
-  >
-    <el-col
-      :xs="12"
-      :sm="12"
-      :lg="6"
-      class="card-panel-col"
-    >
-      <div
-        class="card-panel"
-        @click="handleSetLineChartData('newVisitis')"
-      >
+  <el-row :gutter="40" class="panel-group">
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
         <div class="card-panel-icon-wrapper icon-people">
-          <svg-icon
-            name="peoples"
-            class="card-panel-icon"
-          />
+          <svg-icon name="peoples" class="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -32,21 +18,10 @@
         </div>
       </div>
     </el-col>
-    <el-col
-      :xs="12"
-      :sm="12"
-      :lg="6"
-      class="card-panel-col"
-    >
-      <div
-        class="card-panel"
-        @click="handleSetLineChartData('messages')"
-      >
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('messages')">
         <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon
-            name="message"
-            class="card-panel-icon"
-          />
+          <svg-icon name="message" class="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -61,21 +36,10 @@
         </div>
       </div>
     </el-col>
-    <el-col
-      :xs="12"
-      :sm="12"
-      :lg="6"
-      class="card-panel-col"
-    >
-      <div
-        class="card-panel"
-        @click="handleSetLineChartData('purchases')"
-      >
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('purchases')">
         <div class="card-panel-icon-wrapper icon-money">
-          <svg-icon
-            name="money"
-            class="card-panel-icon"
-          />
+          <svg-icon name="money" class="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -90,21 +54,10 @@
         </div>
       </div>
     </el-col>
-    <el-col
-      :xs="12"
-      :sm="12"
-      :lg="6"
-      class="card-panel-col"
-    >
-      <div
-        class="card-panel"
-        @click="handleSetLineChartData('shoppings')"
-      >
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('shoppings')">
         <div class="card-panel-icon-wrapper icon-shopping">
-          <svg-icon
-            name="shopping"
-            class="card-panel-icon"
-          />
+          <svg-icon name="shopping" class="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -155,8 +108,8 @@ export default class extends Vue {
     overflow: hidden;
     color: #666;
     background: #fff;
-    box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
-    border-color: rgba(0, 0, 0, .05);
+    box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.05);
 
     &:hover {
       .card-panel-icon-wrapper {
@@ -164,7 +117,7 @@ export default class extends Vue {
       }
 
       .icon-people {
-         background: #40c9c6;
+        background: #40c9c6;
       }
 
       .icon-message {
@@ -176,7 +129,7 @@ export default class extends Vue {
       }
 
       .icon-shopping {
-        background: #34bfa3
+        background: #34bfa3;
       }
     }
 
@@ -193,7 +146,7 @@ export default class extends Vue {
     }
 
     .icon-shopping {
-      color: #34bfa3
+      color: #34bfa3;
     }
 
     .card-panel-icon-wrapper {
@@ -229,7 +182,7 @@ export default class extends Vue {
   }
 }
 
-@media (max-width:550px) {
+@media (max-width: 550px) {
   .card-panel-description {
     display: none;
   }

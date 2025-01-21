@@ -8,40 +8,25 @@
       highlight-current-row
       style="width: 100%"
     >
-      <el-table-column
-        width="80"
-        align="center"
-        label="ID"
-      >
+      <el-table-column width="80" align="center" label="ID">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column
-        width="180px"
-        align="center"
-        label="Date"
-      >
+      <el-table-column width="180px" align="center" label="Date">
         <template slot-scope="{row}">
           <span>{{ row.timestamp | parseTime }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column
-        width="180px"
-        align="center"
-        label="Author"
-      >
+      <el-table-column width="180px" align="center" label="Author">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column
-        width="105px"
-        label="Importance"
-      >
+      <el-table-column width="105px" label="Importance">
         <template slot-scope="{row}">
           <svg-icon
             v-for="n in +row.importance"
@@ -52,11 +37,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column
-        class-name="status-col"
-        label="Status"
-        width="110"
-      >
+      <el-table-column class-name="status-col" label="Status" width="110">
         <template slot-scope="{row}">
           <el-tag :type="row.status | articleStatusFilter">
             {{ row.status }}
@@ -64,32 +45,18 @@
         </template>
       </el-table-column>
 
-      <el-table-column
-        min-width="300px"
-        label="Title"
-      >
+      <el-table-column min-width="300px" label="Title">
         <template slot-scope="{row}">
-          <router-link
-            :to="'/example/edit/'+row.id"
-            class="link-type"
-          >
+          <router-link :to="'/example/edit/' + row.id" class="link-type">
             <span>{{ row.title }}</span>
           </router-link>
         </template>
       </el-table-column>
 
-      <el-table-column
-        align="center"
-        label="Actions"
-        width="120"
-      >
+      <el-table-column align="center" label="Actions" width="120">
         <template slot-scope="{row}">
-          <router-link :to="'/example/edit/'+row.id">
-            <el-button
-              type="primary"
-              size="small"
-              icon="el-icon-edit"
-            >
+          <router-link :to="'/example/edit/' + row.id">
+            <el-button type="primary" size="small" icon="el-icon-edit">
               Edit
             </el-button>
           </router-link>
@@ -98,7 +65,7 @@
     </el-table>
 
     <pagination
-      v-show="total>0"
+      v-show="total > 0"
       :total="total"
       :page.sync="listQuery.page"
       :limit.sync="listQuery.limit"

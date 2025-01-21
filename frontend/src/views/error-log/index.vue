@@ -14,7 +14,9 @@
       </a>
     </aside>
     <a href="#">
-      <img src="https://wpimg.wallstcn.com/360e4842-4db5-42d0-b078-f9a84a825546.gif">
+      <img
+        src="https://wpimg.wallstcn.com/360e4842-4db5-42d0-b078-f9a84a825546.gif"
+      />
     </a>
   </div>
 </template>

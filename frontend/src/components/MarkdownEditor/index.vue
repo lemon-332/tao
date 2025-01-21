@@ -14,7 +14,8 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import Editor, { EditorOptions } from '@toast-ui/editor'
 import defaultOptions from './default-options'
 
-const defaultId = () => 'markdown-editor-' + +new Date() + ((Math.random() * 1000).toFixed(0) + '')
+const defaultId = () =>
+  'markdown-editor-' + +new Date() + ((Math.random() * 1000).toFixed(0) + '')
 
 @Component({
   name: 'MarkdownEditor'

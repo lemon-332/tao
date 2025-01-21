@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--error code-->
-    {{ b = b.b }}
+    {{ (b = b.b) }}
     <!--error code-->
   </div>
 </template>

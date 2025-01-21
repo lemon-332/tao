@@ -7,20 +7,17 @@
         autocomplete="off"
         placeholder="Todo List"
         @keyup.enter="addTodo"
-      >
+      />
     </header>
     <!-- main section -->
-    <section
-      v-show="todos.length"
-      class="main"
-    >
+    <section v-show="todos.length" class="main">
       <input
         id="toggle-all"
         :checked="allChecked"
         class="toggle-all"
         type="checkbox"
         @change="toggleAll({done: !allChecked})"
-      >
+      />
       <label for="toggle-all" />
       <ul class="todo-list">
         <todo
@@ -34,23 +31,19 @@
       </ul>
     </section>
     <!-- footer -->
-    <footer
-      v-show="todos.length"
-      class="footer"
-    >
+    <footer v-show="todos.length" class="footer">
       <span class="todo-count">
         <strong>{{ remaining }}</strong>
         {{ remaining | pluralize('item') }} left
       </span>
       <ul class="filters">
-        <li
-          v-for="(val, key) in filters"
-          :key="key"
-        >
+        <li v-for="(val, key) in filters" :key="key">
           <a
             :class="{selected: visibility === key}"
             @click.prevent="visibility = key"
-          >{{ key | capitalize }}</a>
+          >
+            {{ key | capitalize }}
+          </a>
         </li>
       </ul>
       <!-- <button class="clear-completed" v-show="todos.length > remaining" @click="clearCompleted">
@@ -65,7 +58,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import Todo, { ITodo } from './Todo.vue'
 
 const STORAGE_KEY = 'todos'
-const filters: { [ key: string ]: Function } = {
+const filters: { [key: string]: Function } = {
   all: (todos: ITodo[]) => todos,
   active: (todos: ITodo[]) => todos.filter(todo => !todo.done),
   completed: (todos: ITodo[]) => todos.filter(todo => todo.done)
@@ -87,7 +80,7 @@ const defalutList = [
     Todo
   },
   filters: {
-    pluralize: (n: number, s: string) => n === 1 ? s : s + 's',
+    pluralize: (n: number, s: string) => (n === 1 ? s : s + 's'),
     capitalize: (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
   }
 })
@@ -163,7 +156,7 @@ export default class extends Vue {
   color: #4d4d4d;
   min-width: 230px;
   max-width: 550px;
-  margin: 0 auto ;
+  margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 300;
@@ -273,7 +266,7 @@ export default class extends Vue {
     position: absolute;
   }
 
-  .toggle-all+label {
+  .toggle-all + label {
     width: 60px;
     height: 34px;
     font-size: 0;
@@ -284,14 +277,14 @@ export default class extends Vue {
     transform: rotate(90deg);
   }
 
-  .toggle-all+label:before {
+  .toggle-all + label:before {
     content: '❯';
     font-size: 22px;
     color: #e6e6e6;
     padding: 10px 27px 10px 27px;
   }
 
-  .toggle-all:checked+label:before {
+  .toggle-all:checked + label:before {
     color: #737373;
   }
 
@@ -346,7 +339,7 @@ export default class extends Vue {
     opacity: 0;
   }
 
-  .todo-list li .toggle+label {
+  .todo-list li .toggle + label {
     /*
     Firefox requires `#` to be escaped - https://bugzilla.mozilla.org/show_bug.cgi?id=922433
     IE and Edge requires *everything* to be escaped to render, so we do that instead of just the `#` - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7157459/
@@ -357,7 +350,7 @@ export default class extends Vue {
     background-size: 36px;
   }
 
-  .todo-list li .toggle:checked+label {
+  .todo-list li .toggle:checked + label {
     background-size: 36px;
     background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
   }
@@ -366,8 +359,8 @@ export default class extends Vue {
     word-break: break-all;
     padding: 15px 15px 15px 50px;
     display: block;
-    line-height: 1.0;
-        font-size: 14px;
+    line-height: 1;
+    font-size: 14px;
     transition: color 0.4s;
   }
 
@@ -428,7 +421,9 @@ export default class extends Vue {
     left: 0;
     height: 40px;
     overflow: hidden;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
+      0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
+      0 17px 2px -6px rgba(0, 0, 0, 0.2);
   }
 
   .todo-count {
@@ -508,7 +503,7 @@ export default class extends Vue {
   Hack to remove background from Mobile Safari.
   Can't use it globally since it destroys checkboxes in Firefox
 */
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
     .toggle-all,
     .todo-list li .toggle {
       background: none;

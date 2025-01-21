@@ -91,7 +91,8 @@ export default {
     editPermission: 'Edit',
     roles: 'Your roles',
     switchRoles: 'Switch roles',
-    tips: 'In some cases, using v-permission will have no effect. For example: Element-UI  el-tab or el-table-column and other scenes that dynamically render dom. You can only do this with v-if.',
+    tips:
+      'In some cases, using v-permission will have no effect. For example: Element-UI  el-tab or el-table-column and other scenes that dynamically render dom. You can only do this with v-if.',
     delete: 'Delete',
     confirm: 'Confirm',
     cancel: 'Cancel'
@@ -161,12 +162,14 @@ export default {
     placeholder: 'Please enter the file name (default file)'
   },
   pdf: {
-    tips: 'Here we use window.print() to implement the feature of downloading PDF.'
+    tips:
+      'Here we use window.print() to implement the feature of downloading PDF.'
   },
   theme: {
     change: 'Change Theme',
     documentation: 'Theme documentation',
-    tips: 'Tips: It is different from the theme-pick on the navbar is two different skinning methods, each with different application scenarios. Refer to the documentation for details.'
+    tips:
+      'Tips: It is different from the theme-pick on the navbar is two different skinning methods, each with different application scenarios. Refer to the documentation for details.'
   },
   tagsView: {
     refresh: 'Refresh',

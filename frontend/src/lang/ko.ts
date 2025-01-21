@@ -90,7 +90,8 @@ export default {
     editPermission: '권한 수정',
     roles: '역할',
     switchRoles: '역할 바꾸기',
-    tips: 'v-permission 사용할 때가 있습니다. 예 : Element-UI의 el-tab, el-table-column 및 다른 dom. v-if를 사용해야합니다.',
+    tips:
+      'v-permission 사용할 때가 있습니다. 예 : Element-UI의 el-tab, el-table-column 및 다른 dom. v-if를 사용해야합니다.',
     delete: '삭제',
     confirm: '확인',
     cancel: '취소'
@@ -163,7 +164,8 @@ export default {
   theme: {
     change: '테마 바꾸기',
     documentation: '테마 문서',
-    tips: 'Tips: 탐색 모음의 테마 선택과는 다른 응용 프로그램 시나리오가있는 두 가지 다른 스키닝 방법입니다. 자세한 내용은 설명서를 참조하십시오.'
+    tips:
+      'Tips: 탐색 모음의 테마 선택과는 다른 응용 프로그램 시나리오가있는 두 가지 다른 스키닝 방법입니다. 자세한 내용은 설명서를 참조하십시오.'
   },
   tagsView: {
     refresh: '새로고침',

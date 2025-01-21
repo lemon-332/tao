@@ -7,10 +7,7 @@
     @vdropzone-success="dropzoneSuccess"
   >
     <div class="dropzone-custom-content">
-      <h3
-        class="dropzone-custom-title"
-        :style="{color: themeColor}"
-      >
+      <h3 class="dropzone-custom-title" :style="{color: themeColor}">
         Drag and drop to upload content!
       </h3>
       <div class="subtitle">
@@ -42,8 +39,12 @@ export default class extends Vue {
   @Prop({ default: 5 }) private maxFilesize!: number // In MB
   @Prop({ default: true }) private autoProcessQueue!: boolean
   @Prop({ default: true }) private addRemoveLinks!: boolean
-  @Prop({ default: 'Drop files here to upload' }) private dictDefaultMessage!: string
-  @Prop({ default: 'Your broswer does not support dropzone.js' }) private dictFallbackMessage!: string
+  @Prop({ default: 'Drop files here to upload' })
+  private dictDefaultMessage!: string
+
+  @Prop({ default: 'Your broswer does not support dropzone.js' })
+  private dictFallbackMessage!: string
+
   @Prop({ default: 'Remove' }) private dictRemoveFile!: string
   @Prop({ default: 'Max Files Exceeded' }) private dictMaxFilesExceeded!: string
 

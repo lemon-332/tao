@@ -1,9 +1,6 @@
 <template>
   <div class="chart-container">
-    <mixed-chart
-      height="100%"
-      width="100%"
-    />
+    <mixed-chart height="100%" width="100%" />
   </div>
 </template>
 

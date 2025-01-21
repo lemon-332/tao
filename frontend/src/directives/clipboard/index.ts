@@ -25,11 +25,11 @@ export const clipboard: DirectiveOptions = {
           return binding.arg === 'cut' ? 'cut' : 'copy'
         }
       })
-      clipboardInstance.on('success', (e) => {
+      clipboardInstance.on('success', e => {
         const callback = successCallback
         callback && callback(e)
       })
-      clipboardInstance.on('error', (e) => {
+      clipboardInstance.on('error', e => {
         const callback = errorCallback
         callback && callback(e)
       })

@@ -83,7 +83,7 @@ The removed `inject` wasn't generaly useful for directives so there should be no
 
 ### Revert
 
-If the commit reverts a previous commit, it should begin with `Revert: `, followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
+If the commit reverts a previous commit, it should begin with `Revert:`, followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
 
 ### Type
 

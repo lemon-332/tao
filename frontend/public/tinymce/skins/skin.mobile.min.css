@@ -205,9 +205,7 @@
 .tinymce-mobile-outer-container
   .tinymce-mobile-disabled-mask
   .tinymce-mobile-content-container
-  .tinymce-mobile-content-tap-section:not(
-    .tinymce-mobile-mask-tap-icon-selected
-  )
+  .tinymce-mobile-content-tap-section:not(.tinymce-mobile-mask-tap-icon-selected)
   .tinymce-mobile-mask-tap-icon {
   z-index: 2;
 }
@@ -706,9 +704,7 @@
 .tinymce-mobile-dropup.tinymce-mobile-dropup-closed {
   flex-grow: 0;
 }
-.tinymce-mobile-dropup.tinymce-mobile-dropup-open:not(
-    .tinymce-mobile-dropup-growing
-  ) {
+.tinymce-mobile-dropup.tinymce-mobile-dropup-open:not(.tinymce-mobile-dropup-growing) {
   flex-grow: 1;
 }
 .tinymce-mobile-ios-container

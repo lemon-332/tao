@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="computedClasses"
-    class="material-input__component"
-  >
+  <div :class="computedClasses" class="material-input__component">
     <div :class="{iconClass: icon}">
       <i
         v-if="icon"
@@ -24,7 +21,7 @@
         @focus="handleFocus"
         @blur="handleBlur"
         @input="handleInput"
-      >
+      />
       <input
         v-if="type === 'url'"
         :id="id"
@@ -40,7 +37,7 @@
         @focus="handleFocus"
         @blur="handleBlur"
         @input="handleInput"
-      >
+      />
       <input
         v-if="type === 'number'"
         :id="id"
@@ -61,7 +58,7 @@
         @focus="handleFocus"
         @blur="handleBlur"
         @input="handleInput"
-      >
+      />
       <input
         v-if="type === 'password'"
         :id="id"
@@ -80,7 +77,7 @@
         @focus="handleFocus"
         @blur="handleBlur"
         @input="handleInput"
-      >
+      />
       <input
         v-if="type === 'tel'"
         :id="id"
@@ -96,7 +93,7 @@
         @focus="handleFocus"
         @blur="handleBlur"
         @input="handleInput"
-      >
+      />
       <input
         v-if="type === 'text'"
         :id="id"
@@ -114,7 +111,7 @@
         @focus="handleFocus"
         @blur="handleBlur"
         @input="handleInput"
-      >
+      />
       <span class="material-input-bar" />
       <label class="material-label">
         <slot />
@@ -217,10 +214,10 @@ $index-has-icon: 30px;
 
 // Theme:
 $color-white: white;
-$color-grey: #9E9E9E;
-$color-grey-light: #E0E0E0;
-$color-blue: #2196F3;
-$color-red: #F44336;
+$color-grey: #9e9e9e;
+$color-grey-light: #e0e0e0;
+$color-blue: #2196f3;
+$color-red: #f44336;
 $color-black: black;
 
 // Base clases:
@@ -235,7 +232,7 @@ $color-black: black;
 
 // Mixins:
 @mixin slided-top() {
-  top: - ($font-size-base + $spacer);
+  top: -($font-size-base + $spacer);
   left: 0;
   font-size: $font-size-base;
   font-weight: $font-weight-bold;

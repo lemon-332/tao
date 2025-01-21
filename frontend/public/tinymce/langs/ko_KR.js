@@ -26,8 +26,8 @@ tinymce.addI18n('ko_KR', {
   'Increase indent': '\ub4e4\uc5ec\uc4f0\uae30',
   Close: '\ub2eb\uae30',
   Formats: '\uc11c\uc2dd',
-  "Your browser doesn't support direct access to the clipboard. Please use the Ctrl+X\/C\/V keyboard shortcuts instead.":
-    '\ube0c\ub77c\uc6b0\uc800\uac00 \ud074\ub9bd\ubcf4\ub4dc \uc811\uadfc\uc744 \uc9c0\uc6d0\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. Ctrl+X\/C\/V \ub2e8\ucd95\ud0a4\ub97c \uc774\uc6a9\ud558\uc2ed\uc2dc\uc624.',
+  "Your browser doesn't support direct access to the clipboard. Please use the Ctrl+X/C/V keyboard shortcuts instead.":
+    '\ube0c\ub77c\uc6b0\uc800\uac00 \ud074\ub9bd\ubcf4\ub4dc \uc811\uadfc\uc744 \uc9c0\uc6d0\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. Ctrl+X/C/V \ub2e8\ucd95\ud0a4\ub97c \uc774\uc6a9\ud558\uc2ed\uc2dc\uc624.',
   Headers: '\uba38\ub9ac\uae00',
   'Header 1': '\uba38\ub9ac\uae00 1',
   'Header 2': '\uba38\ub9ac\uae00 2',
@@ -81,8 +81,8 @@ tinymce.addI18n('ko_KR', {
   'Restore last draft': '\ub9c8\uc9c0\ub9c9 \ucd08\uc548 \ubcf5\uc6d0',
   'Special character...': '\ud2b9\uc218 \ubb38\uc790...',
   'Source code': '\uc18c\uc2a4\ucf54\ub4dc',
-  'Insert\/Edit code sample':
-    '\ucf54\ub4dc\uc0d8\ud50c \uc0bd\uc785\/\ud3b8\uc9d1',
+  'Insert/Edit code sample':
+    '\ucf54\ub4dc\uc0d8\ud50c \uc0bd\uc785/\ud3b8\uc9d1',
   Language: '\uc5b8\uc5b4',
   'Code sample...': '\ucf54\ub4dc \uc0d8\ud50c...',
   'Color Picker': '\uc0c9 \uc120\ud0dd\uae30',
@@ -124,7 +124,7 @@ tinymce.addI18n('ko_KR', {
   Plugins: '\ud50c\ub7ec\uadf8\uc778',
   'Handy Shortcuts': '\ub2e8\ucd95\ud0a4',
   'Horizontal line': '\uac00\ub85c',
-  'Insert\/edit image': '\uc774\ubbf8\uc9c0 \uc0bd\uc785\/\uc218\uc815',
+  'Insert/edit image': '\uc774\ubbf8\uc9c0 \uc0bd\uc785/\uc218\uc815',
   'Image description': '\uc774\ubbf8\uc9c0 \uc124\uba85',
   Source: '\uc18c\uc2a4',
   Dimensions: '\ud06c\uae30',
@@ -158,10 +158,10 @@ tinymce.addI18n('ko_KR', {
   Invert: '\ubc18\uc804',
   Apply: '\uc801\uc6a9',
   Back: '\ub4a4\ub85c',
-  'Insert date\/time': '\ub0a0\uc9dc\/\uc2dc\uac04\uc0bd\uc785',
-  'Date\/time': '\ub0a0\uc9dc\/\uc2dc\uac04',
-  'Insert\/Edit Link': '\ub9c1\ud06c \uc0bd\uc785\/\ud3b8\uc9d1',
-  'Insert\/edit link': '\ub9c1\ud06c \uc0bd\uc785\/\uc218\uc815',
+  'Insert date/time': '\ub0a0\uc9dc/\uc2dc\uac04\uc0bd\uc785',
+  'Date/time': '\ub0a0\uc9dc/\uc2dc\uac04',
+  'Insert/Edit Link': '\ub9c1\ud06c \uc0bd\uc785/\ud3b8\uc9d1',
+  'Insert/edit link': '\ub9c1\ud06c \uc0bd\uc785/\uc218\uc815',
   'Text to display': '\ubcf8\ubb38',
   Url: '\uc8fc\uc18c',
   'Open link in...': '...\uc5d0\uc11c \ub9c1\ud06c \uc5f4\uae30',
@@ -175,12 +175,12 @@ tinymce.addI18n('ko_KR', {
     '\ub9c1\ud06c\ub97c \ubd99\uc5ec\ub123\uac70\ub098 \uc785\ub825\ud558\uc138\uc694',
   'The URL you entered seems to be an email address. Do you want to add the required mailto: prefix?':
     '\ud604\uc7ac E-mail\uc8fc\uc18c\ub97c \uc785\ub825\ud558\uc168\uc2b5\ub2c8\ub2e4. E-mail \uc8fc\uc18c\uc5d0 \ub9c1\ud06c\ub97c \uac78\uae4c\uc694?',
-  'The URL you entered seems to be an external link. Do you want to add the required http:\/\/ prefix?':
+  'The URL you entered seems to be an external link. Do you want to add the required http:// prefix?':
     '\ud604\uc7ac \uc6f9\uc0ac\uc774\ud2b8 \uc8fc\uc18c\ub97c \uc785\ub825\ud558\uc168\uc2b5\ub2c8\ub2e4. \ud574\ub2f9 \uc8fc\uc18c\uc5d0 \ub9c1\ud06c\ub97c \uac78\uae4c\uc694?',
   'Link list': '\ub9c1\ud06c \ub9ac\uc2a4\ud2b8',
   'Insert video': '\ube44\ub514\uc624 \uc0bd\uc785',
-  'Insert\/edit video': '\ube44\ub514\uc624 \uc0bd\uc785\/\uc218\uc815',
-  'Insert\/edit media': '\ubbf8\ub514\uc5b4 \uc0bd\uc785\/\uc218\uc815',
+  'Insert/edit video': '\ube44\ub514\uc624 \uc0bd\uc785/\uc218\uc815',
+  'Insert/edit media': '\ubbf8\ub514\uc5b4 \uc0bd\uc785/\uc218\uc815',
   'Alternative source': '\ub300\uccb4 \uc18c\uc2a4',
   'Alternative source URL': '\ub300\uccb4 \uc6d0\ubcf8 URL',
   'Media poster (Image URL)':
@@ -354,8 +354,8 @@ tinymce.addI18n('ko_KR', {
   'yuan character': '\uc704\uc548 \uae30\ud638',
   'yuan character, in hong kong and taiwan':
     '\ub300\ub9cc \uc704\uc548 \uae30\ud638',
-  'yen\/yuan character variant one':
-    '\uc5d4\/\uc704\uc548 \ubb38\uc790 \ubcc0\ud615',
+  'yen/yuan character variant one':
+    '\uc5d4/\uc704\uc548 \ubb38\uc790 \ubcc0\ud615',
   'Loading emoticons...':
     '\uc774\ubaa8\ud2f0\ucf58 \ubd88\ub7ec\uc624\ub294 \uc911...',
   'Could not load emoticons':
@@ -406,7 +406,7 @@ tinymce.addI18n('ko_KR', {
   Black: '\uac80\uc740\uc0c9',
   White: '\ud770\uc0c9',
   'Switch to or from fullscreen mode':
-    '\uc804\uccb4 \ud654\uba74\uc73c\ub85c\/\uc5d0\uc11c \uc804\ud658',
+    '\uc804\uccb4 \ud654\uba74\uc73c\ub85c/\uc5d0\uc11c \uc804\ud658',
   'Open help dialog': '\ub3c4\uc6c0\ub9d0 \ub300\ud654\ucc3d \uc5f4\uae30',
   history: '\uae30\ub85d',
   styles: '\uc2a4\ud0c0\uc77c',
@@ -416,8 +416,8 @@ tinymce.addI18n('ko_KR', {
   'permanent pen': '\uc720\uc131\ud39c',
   comments: '\uc8fc\uc11d',
   'Format Painter': '\uc11c\uc2dd \ubcf5\uc0ac',
-  'Insert\/edit iframe':
-    '\uc544\uc774\ud504\ub808\uc784 \uc0bd\uc785\/\ud3b8\uc9d1',
+  'Insert/edit iframe':
+    '\uc544\uc774\ud504\ub808\uc784 \uc0bd\uc785/\ud3b8\uc9d1',
   Capitalization: '\ub300\ubb38\uc790\ud654',
   lowercase: '\uc18c\ubb38\uc790',
   UPPERCASE: '\ub300\ubb38\uc790',

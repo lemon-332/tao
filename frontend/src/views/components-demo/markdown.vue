@@ -2,15 +2,16 @@
   <div class="components-container">
     <aside>
       Markdown is based on
-      <a
-        href="https://github.com/nhnent/tui.editor"
-        target="_blank"
-      >tui.editor</a>, simply wrapped with Vue.
+      <a href="https://github.com/nhnent/tui.editor" target="_blank">
+        tui.editor
+      </a>
+      , simply wrapped with Vue.
       <a
         target="_blank"
         href="https://armour.github.io/vue-typescript-admin-docs/features/components/markdown-editor.html"
       >
-        Documentation </a>
+        Documentation
+      </a>
     </aside>
 
     <div class="editor-container">
@@ -24,15 +25,11 @@
       />
     </div>
 
-    <el-button
-      type="primary"
-      icon="el-icon-document"
-      @click="getHtml"
-    >
+    <el-button type="primary" icon="el-icon-document" @click="getHtml">
       Get HTML
     </el-button>
     <!-- eslint-disable vue/no-v-html -->
-    <div v-html="html"/>
+    <div v-html="html" />
 
     <div class="editor-container" style="margin-top:20px;">
       <el-tag class="tag-title">
@@ -51,7 +48,7 @@
       </el-tag>
       <markdown-editor
         :initialValue="content3"
-        :options="{toolbarItems: ['heading','bold','italic']}"
+        :options="{toolbarItems: ['heading', 'bold', 'italic']}"
       />
     </div>
 

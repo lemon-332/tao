@@ -46,7 +46,13 @@ export default class extends Vue {
     return false
   }
 
-  private handleSuccess({ results, header }: { results: any, header: string[]}) {
+  private handleSuccess({
+    results,
+    header
+  }: {
+    results: any
+    header: string[]
+  }) {
     this.tableData = results
     this.tableHeader = header
   }

@@ -1,10 +1,9 @@
 <template>
   <div class="components-container">
     <aside>
-      <a
-        href="https://github.com/PanJiaChen/vue-countTo"
-        target="_blank"
-      >countTo-component</a>
+      <a href="https://github.com/PanJiaChen/vue-countTo" target="_blank">
+        countTo-component
+      </a>
     </aside>
     <count-to
       ref="count"
@@ -19,98 +18,62 @@
       class="count"
     />
     <div style="margin-left: 25%; margin-top: 40px;">
-      <label
-        class="label"
-        for="startValInput"
-      >
+      <label class="label" for="startValInput">
         startVal:
         <input
           v-model.number="setStartVal"
           type="number"
           name="startValInput"
-        >
+        />
       </label>
-      <label
-        class="label"
-        for="endValInput"
-      >
+      <label class="label" for="endValInput">
         endVal:
-        <input
-          v-model.number="setEndVal"
-          type="number"
-          name="endVaInput"
-        >
+        <input v-model.number="setEndVal" type="number" name="endVaInput" />
       </label>
-      <label
-        class="label"
-        for="durationInput"
-      >
+      <label class="label" for="durationInput">
         duration:
         <input
           v-model.number="setDuration"
           type="number"
           name="durationInput"
-        >
+        />
       </label>
-      <div
-        class="startBtn count-btn"
-        @click="start"
-      >
+      <div class="startBtn count-btn" @click="start">
         Start
       </div>
-      <div
-        class="pause-resume-btn count-btn"
-        @click="pauseResume"
-      >
+      <div class="pause-resume-btn count-btn" @click="pauseResume">
         pause/resume
       </div>
-      <br>
-      <label
-        class="label"
-        for="decimalsInput"
-      >
+      <br />
+      <label class="label" for="decimalsInput">
         decimals:
         <input
           v-model.number="setDecimals"
           type="number"
           name="decimalsInput"
-        >
+        />
       </label>
-      <label
-        class="label"
-        for="separatorInput"
-      >
+      <label class="label" for="separatorInput">
         separator:
-        <input
-          v-model="setSeparator"
-          name="separatorInput"
-        >
+        <input v-model="setSeparator" name="separatorInput" />
       </label>
-      <label
-        class="label"
-        for="prefixInput"
-      >
+      <label class="label" for="prefixInput">
         prefix:
-        <input
-          v-model="setPrefix"
-          name="prefixInput"
-        >
+        <input v-model="setPrefix" name="prefixInput" />
       </label>
-      <label
-        class="label"
-        for="suffixInput"
-      >
+      <label class="label" for="suffixInput">
         suffix:
-        <input
-          v-model="setSuffix"
-          name="suffixInput"
-        >
+        <input v-model="setSuffix" name="suffixInput" />
       </label>
     </div>
     <aside>
-      &lt;count-to :start-val=&#x27;{{ startVal }}&#x27; :end-val=&#x27;{{ endVal }}&#x27; :duration=&#x27;{{ duration }}&#x27;
-      :decimals=&#x27;{{ decimals }}&#x27; :separator=&#x27;{{ separator }}&#x27; :prefix=&#x27;{{ prefix }}&#x27; :suffix=&#x27;{{ suffix }}&#x27;
-      :autoplay=false&gt;
+      &lt;count-to :start-val=&#x27;{{ startVal }}&#x27; :end-val=&#x27;{{
+        endVal
+      }}&#x27; :duration=&#x27;{{ duration }}&#x27; :decimals=&#x27;{{
+        decimals
+      }}&#x27; :separator=&#x27;{{ separator }}&#x27; :prefix=&#x27;{{
+        prefix
+      }}&#x27; :suffix=&#x27;{{ suffix }}&#x27; :autoplay=false&gt;
     </aside>
   </div>
 </template>

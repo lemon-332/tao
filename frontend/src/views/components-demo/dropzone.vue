@@ -2,10 +2,10 @@
   <div class="components-container">
     <aside>
       Based on
-      <a
-        class="link-type"
-        href="https://github.com/rowanwins/vue-dropzone"
-      >vue-dropzone</a>.
+      <a class="link-type" href="https://github.com/rowanwins/vue-dropzone">
+        vue-dropzone
+      </a>
+      .
     </aside>
     <div class="editor-container">
       <dropzone

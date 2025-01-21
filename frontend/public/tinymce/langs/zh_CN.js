@@ -26,8 +26,8 @@ tinymce.addI18n('zh_CN', {
   'Increase indent': '\u589e\u52a0\u7f29\u8fdb',
   Close: '\u5173\u95ed',
   Formats: '\u683c\u5f0f',
-  "Your browser doesn't support direct access to the clipboard. Please use the Ctrl+X\/C\/V keyboard shortcuts instead.":
-    '\u4f60\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u6253\u5f00\u526a\u8d34\u677f\uff0c\u8bf7\u4f7f\u7528Ctrl+X\/C\/V\u7b49\u5feb\u6377\u952e\u3002',
+  "Your browser doesn't support direct access to the clipboard. Please use the Ctrl+X/C/V keyboard shortcuts instead.":
+    '\u4f60\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u6253\u5f00\u526a\u8d34\u677f\uff0c\u8bf7\u4f7f\u7528Ctrl+X/C/V\u7b49\u5feb\u6377\u952e\u3002',
   Headers: '\u6807\u9898',
   'Header 1': '\u6807\u98981',
   'Header 2': '\u6807\u98982',
@@ -80,8 +80,8 @@ tinymce.addI18n('zh_CN', {
   'Restore last draft': '\u6062\u590d\u4e0a\u6b21\u7684\u8349\u7a3f',
   'Special character...': '\u7279\u6b8a\u5b57\u7b26...',
   'Source code': '\u6e90\u4ee3\u7801',
-  'Insert\/Edit code sample':
-    '\u63d2\u5165\/\u7f16\u8f91\u4ee3\u7801\u793a\u4f8b',
+  'Insert/Edit code sample':
+    '\u63d2\u5165/\u7f16\u8f91\u4ee3\u7801\u793a\u4f8b',
   Language: '\u8bed\u8a00',
   'Code sample...': '\u793a\u4f8b\u4ee3\u7801...',
   'Color Picker': '\u9009\u8272\u5668',
@@ -123,7 +123,7 @@ tinymce.addI18n('zh_CN', {
   Plugins: '\u63d2\u4ef6',
   'Handy Shortcuts': '\u5feb\u6377\u952e',
   'Horizontal line': '\u6c34\u5e73\u5206\u5272\u7ebf',
-  'Insert\/edit image': '\u63d2\u5165\/\u7f16\u8f91\u56fe\u7247',
+  'Insert/edit image': '\u63d2\u5165/\u7f16\u8f91\u56fe\u7247',
   'Image description': '\u56fe\u7247\u63cf\u8ff0',
   Source: '\u5730\u5740',
   Dimensions: '\u5927\u5c0f',
@@ -156,10 +156,10 @@ tinymce.addI18n('zh_CN', {
   Invert: '\u53cd\u8f6c',
   Apply: '\u5e94\u7528',
   Back: '\u540e\u9000',
-  'Insert date\/time': '\u63d2\u5165\u65e5\u671f\/\u65f6\u95f4',
-  'Date\/time': '\u65e5\u671f\/\u65f6\u95f4',
-  'Insert\/Edit Link': '\u63d2\u5165\/\u7f16\u8f91\u94fe\u63a5',
-  'Insert\/edit link': '\u63d2\u5165\/\u7f16\u8f91\u94fe\u63a5',
+  'Insert date/time': '\u63d2\u5165\u65e5\u671f/\u65f6\u95f4',
+  'Date/time': '\u65e5\u671f/\u65f6\u95f4',
+  'Insert/Edit Link': '\u63d2\u5165/\u7f16\u8f91\u94fe\u63a5',
+  'Insert/edit link': '\u63d2\u5165/\u7f16\u8f91\u94fe\u63a5',
   'Text to display': '\u663e\u793a\u6587\u5b57',
   Url: '\u5730\u5740',
   'Open link in...': '\u94fe\u63a5\u6253\u5f00\u4f4d\u7f6e...',
@@ -172,12 +172,12 @@ tinymce.addI18n('zh_CN', {
   'Paste or type a link': '\u7c98\u8d34\u6216\u8f93\u5165\u94fe\u63a5',
   'The URL you entered seems to be an email address. Do you want to add the required mailto: prefix?':
     '\u4f60\u6240\u586b\u5199\u7684URL\u5730\u5740\u4e3a\u90ae\u4ef6\u5730\u5740\uff0c\u9700\u8981\u52a0\u4e0amailto:\u524d\u7f00\u5417\uff1f',
-  'The URL you entered seems to be an external link. Do you want to add the required http:\/\/ prefix?':
-    '\u4f60\u6240\u586b\u5199\u7684URL\u5730\u5740\u5c5e\u4e8e\u5916\u90e8\u94fe\u63a5\uff0c\u9700\u8981\u52a0\u4e0ahttp:\/\/:\u524d\u7f00\u5417\uff1f',
+  'The URL you entered seems to be an external link. Do you want to add the required http:// prefix?':
+    '\u4f60\u6240\u586b\u5199\u7684URL\u5730\u5740\u5c5e\u4e8e\u5916\u90e8\u94fe\u63a5\uff0c\u9700\u8981\u52a0\u4e0ahttp://:\u524d\u7f00\u5417\uff1f',
   'Link list': '\u94fe\u63a5\u5217\u8868',
   'Insert video': '\u63d2\u5165\u89c6\u9891',
-  'Insert\/edit video': '\u63d2\u5165\/\u7f16\u8f91\u89c6\u9891',
-  'Insert\/edit media': '\u63d2\u5165\/\u7f16\u8f91\u5a92\u4f53',
+  'Insert/edit video': '\u63d2\u5165/\u7f16\u8f91\u89c6\u9891',
+  'Insert/edit media': '\u63d2\u5165/\u7f16\u8f91\u5a92\u4f53',
   'Alternative source': '\u955c\u50cf',
   'Alternative source URL': '\u66ff\u4ee3\u6765\u6e90\u7f51\u5740',
   'Media poster (Image URL)': '\u5c01\u9762(\u56fe\u7247\u5730\u5740)',
@@ -346,7 +346,7 @@ tinymce.addI18n('zh_CN', {
   'yuan character': '\u4eba\u6c11\u5e01\u5143\u5b57\u6837',
   'yuan character, in hong kong and taiwan':
     '\u5143\u5b57\u6837\uff08\u6e2f\u53f0\u5730\u533a\uff09',
-  'yen\/yuan character variant one':
+  'yen/yuan character variant one':
     '\u5143\u5b57\u6837\uff08\u5927\u5199\uff09',
   'Loading emoticons...': '\u52a0\u8f7d\u8868\u60c5\u7b26\u53f7...',
   'Could not load emoticons':
@@ -406,7 +406,7 @@ tinymce.addI18n('zh_CN', {
   'permanent pen': '\u8bb0\u53f7\u7b14',
   comments: '\u5907\u6ce8',
   'Format Painter': '\u683c\u5f0f\u5237',
-  'Insert\/edit iframe': '\u63d2\u5165\/\u7f16\u8f91\u6846\u67b6',
+  'Insert/edit iframe': '\u63d2\u5165/\u7f16\u8f91\u6846\u67b6',
   Capitalization: '\u5927\u5199',
   lowercase: '\u5c0f\u5199',
   UPPERCASE: '\u5927\u5199',

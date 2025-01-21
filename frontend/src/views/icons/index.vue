@@ -4,7 +4,8 @@
       <a
         href="https://armour.github.io/vue-typescript-admin-docs/guide/advanced/icon.html"
         target="_blank"
-      >Add and use
+      >
+        Add and use
       </a>
     </aside>
     <el-tabs type="border-card">
@@ -13,17 +14,14 @@
           <div
             v-for="item of svgIcons"
             :key="item"
-            @click="handleClipboard(generateSvgIconCode(item),$event)"
+            @click="handleClipboard(generateSvgIconCode(item), $event)"
           >
             <el-tooltip placement="top">
               <div slot="content">
                 {{ generateSvgIconCode(item) }}
               </div>
               <div class="icon-item">
-                <svg-icon
-                  :name="item"
-                  class="disabled"
-                />
+                <svg-icon :name="item" class="disabled" />
                 <span>{{ item }}</span>
               </div>
             </el-tooltip>
@@ -35,7 +33,7 @@
           <div
             v-for="item of elementIcons"
             :key="item"
-            @click="handleClipboard(generateElementIconCode(item),$event)"
+            @click="handleClipboard(generateElementIconCode(item), $event)"
           >
             <el-tooltip placement="top">
               <div slot="content">

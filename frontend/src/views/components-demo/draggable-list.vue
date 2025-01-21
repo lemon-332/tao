@@ -2,10 +2,9 @@
   <div class="components-container">
     <aside>
       draggable-list base on
-      <a
-        href="https://github.com/SortableJS/Vue.Draggable"
-        target="_blank"
-      >Vue.Draggable</a>
+      <a href="https://github.com/SortableJS/Vue.Draggable" target="_blank">
+        Vue.Draggable
+      </a>
     </aside>
     <div class="editor-container">
       <draggable-list
@@ -38,7 +37,9 @@ export default class extends Vue {
   }
 
   private async fetchData() {
-    const { data } = await getArticles({ /* Your params here */ })
+    const { data } = await getArticles({
+      /* Your params here */
+    })
     this.list1 = data.items.splice(0, 5)
     this.list2 = data.items
   }

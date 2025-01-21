@@ -1,24 +1,16 @@
 <template>
-  <div v-if="errorLogs.length>0">
+  <div v-if="errorLogs.length > 0">
     <el-badge
       :is-dot="true"
       style="line-height: 25px; margin-top: -5px;"
-      @click.native="dialogTableVisible=true"
+      @click.native="dialogTableVisible = true"
     >
-      <el-button
-        style="padding: 8px 10px;"
-        size="small"
-        type="danger"
-      >
+      <el-button style="padding: 8px 10px;" size="small" type="danger">
         <svg-icon name="bug" />
       </el-button>
     </el-badge>
 
-    <el-dialog
-      :visible.sync="dialogTableVisible"
-      width="80%"
-      append-to-body
-    >
+    <el-dialog :visible.sync="dialogTableVisible" width="80%" append-to-body>
       <div slot="title">
         <span style="padding-right: 10px;">Error Log</span>
         <el-button
@@ -30,10 +22,7 @@
           Clear All
         </el-button>
       </div>
-      <el-table
-        :data="errorLogs"
-        border
-      >
+      <el-table :data="errorLogs" border>
         <el-table-column label="Message">
           <template slot-scope="{row}">
             <div>
@@ -42,22 +31,20 @@
                 {{ row.err.message }}
               </el-tag>
             </div>
-            <br>
+            <br />
             <div>
-              <span
-                class="message-title"
-                style="padding-right: 10px;"
-              >Info: </span>
+              <span class="message-title" style="padding-right: 10px;">
+                Info:
+              </span>
               <el-tag type="warning">
                 {{ row.vm.$vnode.tag }} error in {{ row.info }}
               </el-tag>
             </div>
-            <br>
+            <br />
             <div>
-              <span
-                class="message-title"
-                style="padding-right: 16px;"
-              >Url: </span>
+              <span class="message-title" style="padding-right: 16px;">
+                Url:
+              </span>
               <el-tag type="success">
                 {{ row.url }}
               </el-tag>

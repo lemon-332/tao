@@ -1,7 +1,16 @@
 <template>
   <el-color-picker
     v-model="theme"
-    :predefine="['#409EFF', '#1890ff', '#304156','#212121','#11a983', '#13c2c2', '#6959CD', '#f5222d']"
+    :predefine="[
+      '#409EFF',
+      '#1890ff',
+      '#304156',
+      '#212121',
+      '#11a983',
+      '#13c2c2',
+      '#6959CD',
+      '#f5222d'
+    ]"
     class="theme-picker"
     popper-class="theme-picker-dropdown"
   />
@@ -52,8 +61,14 @@ export default class extends Vue {
 
     const getHandler = (variable: string, id: string) => {
       return () => {
-        const originalCluster = this.getThemeCluster(ORIGINAL_THEME.replace('#', ''))
-        const newStyle = this.updateStyle((this as any)[variable], originalCluster, themeCluster)
+        const originalCluster = this.getThemeCluster(
+          ORIGINAL_THEME.replace('#', '')
+        )
+        const newStyle = this.updateStyle(
+          (this as any)[variable],
+          originalCluster,
+          themeCluster
+        )
 
         let styleTag = document.getElementById(id)
         if (!styleTag) {
@@ -67,23 +82,34 @@ export default class extends Vue {
     const chalkHandler = getHandler('chalk', 'chalk-style')
     chalkHandler()
 
-    let styles: HTMLElement[] = [].slice.call(document.querySelectorAll('style'))
-    styles = styles
-      .filter(style => {
-        const text = style.innerText
-        return new RegExp(oldValue, 'i').test(text) && !/Chalk Variables/.test(text)
-      })
+    let styles: HTMLElement[] = [].slice.call(
+      document.querySelectorAll('style')
+    )
+    styles = styles.filter(style => {
+      const text = style.innerText
+      return (
+        new RegExp(oldValue, 'i').test(text) && !/Chalk Variables/.test(text)
+      )
+    })
     styles.forEach(style => {
       const { innerText } = style
       if (typeof innerText !== 'string') return
-      style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
+      style.innerText = this.updateStyle(
+        innerText,
+        originalCluster,
+        themeCluster
+      )
     })
 
     this.$emit('change', value)
     message.close()
   }
 
-  private updateStyle(style: string, oldCluster: string[], newCluster: string[]) {
+  private updateStyle(
+    style: string,
+    oldCluster: string[],
+    newCluster: string[]
+  ) {
     let newStyle = style
     oldCluster.forEach((color, index) => {
       newStyle = newStyle.replace(new RegExp(color, 'ig'), newCluster[index])
@@ -96,7 +122,10 @@ export default class extends Vue {
       const xhr = new XMLHttpRequest()
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          (this as any)[variable] = xhr.responseText.replace(/@font-face{[^}]+}/, '')
+          (this as any)[variable] = xhr.responseText.replace(
+            /@font-face{[^}]+}/,
+            ''
+          )
           resolve()
         }
       }
@@ -110,7 +139,8 @@ export default class extends Vue {
       let red = parseInt(color.slice(0, 2), 16)
       let green = parseInt(color.slice(2, 4), 16)
       let blue = parseInt(color.slice(4, 6), 16)
-      if (tint === 0) { // when primary color is in its rgb space
+      if (tint === 0) {
+        // when primary color is in its rgb space
         return [red, green, blue].join(',')
       } else {
         red += Math.round(tint * (255 - red))

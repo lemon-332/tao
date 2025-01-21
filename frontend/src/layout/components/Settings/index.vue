@@ -15,34 +15,22 @@
 
       <div class="drawer-item">
         <span>{{ $t('settings.showTagsView') }}</span>
-        <el-switch
-          v-model="showTagsView"
-          class="drawer-switch"
-        />
+        <el-switch v-model="showTagsView" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>{{ $t('settings.showSidebarLogo') }}</span>
-        <el-switch
-          v-model="showSidebarLogo"
-          class="drawer-switch"
-        />
+        <el-switch v-model="showSidebarLogo" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>{{ $t('settings.fixedHeader') }}</span>
-        <el-switch
-          v-model="fixedHeader"
-          class="drawer-switch"
-        />
+        <el-switch v-model="fixedHeader" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>{{ $t('settings.sidebarTextTheme') }}</span>
-        <el-switch
-          v-model="sidebarTextTheme"
-          class="drawer-switch"
-        />
+        <el-switch v-model="sidebarTextTheme" class="drawer-switch" />
       </div>
     </div>
   </div>
@@ -107,19 +95,19 @@ export default class extends Vue {
 
   .drawer-title {
     margin-bottom: 12px;
-    color: rgba(0, 0, 0, .85);
+    color: rgba(0, 0, 0, 0.85);
     font-size: 14px;
     line-height: 22px;
   }
 
   .drawer-item {
-    color: rgba(0, 0, 0, .65);
+    color: rgba(0, 0, 0, 0.65);
     font-size: 14px;
     padding: 12px 0;
   }
 
   .drawer-switch {
-    float: right
+    float: right;
   }
 }
 </style>

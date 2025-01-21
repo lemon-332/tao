@@ -1,9 +1,6 @@
 <template>
   <div class="components-container">
-    <el-button
-      type="primary"
-      @click="dialogTableVisible=true"
-    >
+    <el-button type="primary" @click="dialogTableVisible = true">
       Open a Draggable Dialog
     </el-button>
     <el-dialog
@@ -12,11 +9,7 @@
       title="Shipping address"
       @on-dialog-drag="handleDialogDrag"
     >
-      <el-select
-        ref="select"
-        v-model="value"
-        placeholder="Please select"
-      >
+      <el-select ref="select" v-model="value" placeholder="Please select">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -25,20 +18,9 @@
         />
       </el-select>
       <el-table :data="gridData">
-        <el-table-column
-          property="date"
-          label="Date"
-          width="150"
-        />
-        <el-table-column
-          property="name"
-          label="Name"
-          width="200"
-        />
-        <el-table-column
-          property="address"
-          label="Address"
-        />
+        <el-table-column property="date" label="Date" width="150" />
+        <el-table-column property="name" label="Name" width="200" />
+        <el-table-column property="address" label="Address" />
       </el-table>
     </el-dialog>
   </div>
@@ -61,23 +43,28 @@ export default class extends Vue {
   ]
 
   private value = ''
-  private gridData = [{
-    date: '2016-05-02',
-    name: 'John Smith',
-    address: 'No.1518,  Jinshajiang Road, Putuo District'
-  }, {
-    date: '2016-05-04',
-    name: 'John Smith',
-    address: 'No.1518,  Jinshajiang Road, Putuo District'
-  }, {
-    date: '2016-05-01',
-    name: 'John Smith',
-    address: 'No.1518,  Jinshajiang Road, Putuo District'
-  }, {
-    date: '2016-05-03',
-    name: 'John Smith',
-    address: 'No.1518,  Jinshajiang Road, Putuo District'
-  }]
+  private gridData = [
+    {
+      date: '2016-05-02',
+      name: 'John Smith',
+      address: 'No.1518,  Jinshajiang Road, Putuo District'
+    },
+    {
+      date: '2016-05-04',
+      name: 'John Smith',
+      address: 'No.1518,  Jinshajiang Road, Putuo District'
+    },
+    {
+      date: '2016-05-01',
+      name: 'John Smith',
+      address: 'No.1518,  Jinshajiang Road, Putuo District'
+    },
+    {
+      date: '2016-05-03',
+      name: 'John Smith',
+      address: 'No.1518,  Jinshajiang Road, Putuo District'
+    }
+  ]
 
   // v-el-dialog-draggable on-dialog-drag callback function
   private handleDialogDrag() {

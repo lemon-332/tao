@@ -1,60 +1,31 @@
 <template>
   <div class="app-container">
-    <el-button
-      type="primary"
-      @click="handleCreateRole"
-    >
+    <el-button type="primary" @click="handleCreateRole">
       {{ $t('permission.createRole') }}
     </el-button>
 
-    <el-table
-      :data="rolesList"
-      style="width: 100%;margin-top:30px;"
-      border
-    >
-      <el-table-column
-        align="center"
-        label="Role Key"
-        width="220"
-      >
+    <el-table :data="rolesList" style="width: 100%;margin-top:30px;" border>
+      <el-table-column align="center" label="Role Key" width="220">
         <template slot-scope="{row}">
           {{ row.key }}
         </template>
       </el-table-column>
-      <el-table-column
-        align="center"
-        label="Role Name"
-        width="220"
-      >
+      <el-table-column align="center" label="Role Name" width="220">
         <template slot-scope="{row}">
           {{ row.name }}
         </template>
       </el-table-column>
-      <el-table-column
-        align="header-center"
-        label="Description"
-      >
+      <el-table-column align="header-center" label="Description">
         <template slot-scope="{row}">
           {{ row.description }}
         </template>
       </el-table-column>
-      <el-table-column
-        align="center"
-        label="Operations"
-      >
+      <el-table-column align="center" label="Operations">
         <template slot-scope="scope">
-          <el-button
-            type="primary"
-            size="small"
-            @click="handleEdit(scope)"
-          >
+          <el-button type="primary" size="small" @click="handleEdit(scope)">
             {{ $t('permission.editPermission') }}
           </el-button>
-          <el-button
-            type="danger"
-            size="small"
-            @click="handleDelete(scope)"
-          >
+          <el-button type="danger" size="small" @click="handleDelete(scope)">
             {{ $t('permission.delete') }}
           </el-button>
         </template>
@@ -63,18 +34,11 @@
 
     <el-dialog
       :visible.sync="dialogVisible"
-      :title="dialogType==='edit'?'Edit Role':'New Role'"
+      :title="dialogType === 'edit' ? 'Edit Role' : 'New Role'"
     >
-      <el-form
-        :model="role"
-        label-width="80px"
-        label-position="left"
-      >
+      <el-form :model="role" label-width="80px" label-position="left">
         <el-form-item label="Name">
-          <el-input
-            v-model="role.name"
-            placeholder="Role Name"
-          />
+          <el-input v-model="role.name" placeholder="Role Name" />
         </el-form-item>
         <el-form-item label="Desc">
           <el-input
@@ -97,16 +61,10 @@
         </el-form-item>
       </el-form>
       <div style="text-align:right;">
-        <el-button
-          type="danger"
-          @click="dialogVisible=false"
-        >
+        <el-button type="danger" @click="dialogVisible = false">
           {{ $t('permission.cancel') }}
         </el-button>
-        <el-button
-          type="primary"
-          @click="confirmRole"
-        >
+        <el-button type="primary" @click="confirmRole">
           {{ $t('permission.confirm') }}
         </el-button>
       </div>
@@ -120,7 +78,13 @@ import { cloneDeep } from 'lodash'
 import { Component, Vue } from 'vue-property-decorator'
 import { RouteConfig } from 'vue-router'
 import { Tree } from 'element-ui'
-import { getRoutes, getRoles, createRole, deleteRole, updateRole } from '@/api/roles'
+import {
+  getRoutes,
+  getRoles,
+  createRole,
+  deleteRole,
+  updateRole
+} from '@/api/roles'
 
 interface IRole {
   key: number
@@ -169,13 +133,17 @@ export default class extends Vue {
   }
 
   private async getRoutes() {
-    const { data } = await getRoutes({ /* Your params here */ })
+    const { data } = await getRoutes({
+      /* Your params here */
+    })
     this.serviceRoutes = data.routes
     this.reshapedRoutes = this.reshapeRoutes(data.routes)
   }
 
   private async getRoles() {
-    const { data } = await getRoles({ /* Your params here */ })
+    const { data } = await getRoles({
+      /* Your params here */
+    })
     this.rolesList = data.items
   }
 
@@ -205,8 +173,15 @@ export default class extends Vue {
       if (route.meta && route.meta.hidden) {
         continue
       }
-      const onlyOneShowingChild = this.onlyOneShowingChild(route.children, route)
-      if (route.children && onlyOneShowingChild && (!route.meta || !route.meta.alwaysShow)) {
+      const onlyOneShowingChild = this.onlyOneShowingChild(
+        route.children,
+        route
+      )
+      if (
+        route.children &&
+        onlyOneShowingChild &&
+        (!route.meta || !route.meta.alwaysShow)
+      ) {
         route = onlyOneShowingChild
       }
       const data: RouteConfig = {
@@ -255,8 +230,8 @@ export default class extends Vue {
     this.$nextTick(() => {
       const routes = this.flattenRoutes(this.reshapeRoutes(this.role.routes))
       const treeData = this.generateTreeData(routes)
-      const treeDataKeys = treeData.map(t => t.path);
-      (this.$refs.tree as Tree).setCheckedKeys(treeDataKeys)
+      const treeDataKeys = treeData.map(t => t.path)
+      ;(this.$refs.tree as Tree).setCheckedKeys(treeDataKeys)
       // set checked state of a node not affects its father and child nodes
       this.checkStrictly = false
     })
@@ -277,18 +252,31 @@ export default class extends Vue {
           message: 'Deleted!'
         })
       })
-      .catch(err => { console.error(err) })
+      .catch(err => {
+        console.error(err)
+      })
   }
 
-  private generateTree(routes: RouteConfig[], basePath = '/', checkedKeys: string[]) {
+  private generateTree(
+    routes: RouteConfig[],
+    basePath = '/',
+    checkedKeys: string[]
+  ) {
     const res: RouteConfig[] = []
     for (const route of routes) {
       const routePath = path.resolve(basePath, route.path)
       // recursive child routes
       if (route.children) {
-        route.children = this.generateTree(route.children, routePath, checkedKeys)
+        route.children = this.generateTree(
+          route.children,
+          routePath,
+          checkedKeys
+        )
       }
-      if (checkedKeys.includes(routePath) || (route.children && route.children.length >= 1)) {
+      if (
+        checkedKeys.includes(routePath) ||
+        (route.children && route.children.length >= 1)
+      ) {
         res.push(route)
       }
     }
@@ -299,7 +287,11 @@ export default class extends Vue {
     const isEdit = this.dialogType === 'edit'
     const checkedKeys = (this.$refs.tree as Tree).getCheckedKeys()
 
-    this.role.routes = this.generateTree(cloneDeep(this.serviceRoutes), '/', checkedKeys)
+    this.role.routes = this.generateTree(
+      cloneDeep(this.serviceRoutes),
+      '/',
+      checkedKeys
+    )
 
     if (isEdit) {
       await updateRole(this.role.key, { role: this.role })
@@ -330,9 +322,14 @@ export default class extends Vue {
   }
 
   // Reference: src/layout/components/Sidebar/SidebarItem.vue
-  private onlyOneShowingChild(children: RouteConfig[] = [], parent: RouteConfig) {
+  private onlyOneShowingChild(
+    children: RouteConfig[] = [],
+    parent: RouteConfig
+  ) {
     let onlyOneChild = null
-    const showingChildren = children.filter(item => !item.meta || !item.meta.hidden)
+    const showingChildren = children.filter(
+      item => !item.meta || !item.meta.hidden
+    )
     // When there is only one child route, the child route is displayed by default
     if (showingChildren.length === 1) {
       onlyOneChild = showingChildren[0]

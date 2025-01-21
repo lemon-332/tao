@@ -14,6 +14,8 @@ module.exports = {
   rules: {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'space-before-function-paren': ['error', 'never'],
+    'vue/object-curly-spacing': ['error', 'never'],
     '@typescript-eslint/member-delimiter-style': [
       'error',
       {
@@ -29,7 +31,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'space-before-function-paren': ['error', 'never'],
     'vue/array-bracket-spacing': 'error',
     'vue/arrow-spacing': 'error',
     'vue/block-spacing': 'error',
@@ -39,8 +40,7 @@ module.exports = {
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/eqeqeq': 'error',
     'vue/key-spacing': 'error',
-    'vue/match-component-file-name': 'error',
-    'vue/object-curly-spacing': 'error'
+    'vue/match-component-file-name': 'error'
   },
   overrides: [
     {

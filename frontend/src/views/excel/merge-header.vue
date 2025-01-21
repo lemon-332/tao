@@ -19,48 +19,29 @@
       fit
       highlight-current-row
     >
-      <el-table-column
-        align="center"
-        label="Id"
-        width="95"
-      >
+      <el-table-column align="center" label="Id" width="95">
         <template slot-scope="{$index}">
           {{ $index }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="Main Information"
-        align="center"
-      >
+      <el-table-column label="Main Information" align="center">
         <el-table-column label="Title">
           <template slot-scope="{row}">
             {{ row.title }}
           </template>
         </el-table-column>
-        <el-table-column
-          label="Author"
-          align="center"
-          width="180"
-        >
+        <el-table-column label="Author" align="center" width="180">
           <template slot-scope="{row}">
             <el-tag>{{ row.author }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column
-          label="Readings"
-          align="center"
-          width="115"
-        >
+        <el-table-column label="Readings" align="center" width="115">
           <template slot-scope="{row}">
             {{ row.pageviews }}
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column
-        align="center"
-        label="Date"
-        width="220"
-      >
+      <el-table-column align="center" label="Date" width="220">
         <template slot-scope="{row}">
           <i class="el-icon-time" />
           <span>{{ row.timestamp | parseTime }}</span>
@@ -91,7 +72,9 @@ export default class extends Vue {
 
   private async fetchData() {
     this.listLoading = true
-    const { data } = await getArticles({ /* Your params here */ })
+    const { data } = await getArticles({
+      /* Your params here */
+    })
     this.list = data.items
     // Just to simulate the time of the request
     setTimeout(() => {

@@ -90,7 +90,8 @@ export default {
     editPermission: 'ロール変更',
     roles: 'ロール',
     switchRoles: 'ロール切替',
-    tips: 'v-permissionは使えない時があります。例えば: Element-UI の el-tab、 el-table-column 及び他の dom。v-ifを使う必要があります。',
+    tips:
+      'v-permissionは使えない時があります。例えば: Element-UI の el-tab、 el-table-column 及び他の dom。v-ifを使う必要があります。',
     delete: '削除',
     confirm: '確認',
     cancel: 'キャンセル'
@@ -162,7 +163,8 @@ export default {
   theme: {
     change: 'テーマ切替',
     documentation: 'ドキュメント',
-    tips: 'Tips: テーマの切り替え方法はnavbarのtheme-pickと異なります、使い方はドキュメントを確認してください。'
+    tips:
+      'Tips: テーマの切り替え方法はnavbarのtheme-pickと異なります、使い方はドキュメントを確認してください。'
   },
   tagsView: {
     refresh: '更新',

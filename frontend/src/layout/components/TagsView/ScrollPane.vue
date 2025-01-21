@@ -65,7 +65,8 @@ export default class extends Vue {
       const prevTag = tagList[currentIndex - 1]
       const nextTag = tagList[currentIndex + 1]
       // the tag's offsetLeft after of nextTag
-      const afterNextTagOffsetLeft = nextTag.$el.offsetLeft + nextTag.$el.offsetWidth + tagSpacing
+      const afterNextTagOffsetLeft =
+        nextTag.$el.offsetLeft + nextTag.$el.offsetWidth + tagSpacing
       // the tag's offsetLeft before of prevTag
       const beforePrevTagOffsetLeft = prevTag.$el.offsetLeft - tagSpacing
 

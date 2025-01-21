@@ -91,7 +91,8 @@ export default {
     editPermission: 'Permiso de edición',
     roles: 'Tus permisos',
     switchRoles: 'Cambiar permisos',
-    tips: 'In some cases it is not suitable to use v-permission, such as element Tab component or el-table-column and other asynchronous rendering dom cases which can only be achieved by manually setting the v-if.',
+    tips:
+      'In some cases it is not suitable to use v-permission, such as element Tab component or el-table-column and other asynchronous rendering dom cases which can only be achieved by manually setting the v-if.',
     delete: 'Borrar',
     confirm: 'Confirmar',
     cancel: 'Cancelar'
@@ -161,12 +162,14 @@ export default {
     placeholder: 'Por favor escribe un nombre de fichero'
   },
   pdf: {
-    tips: 'Here we use window.print() to implement the feature of downloading PDF.'
+    tips:
+      'Here we use window.print() to implement the feature of downloading PDF.'
   },
   theme: {
     change: 'Cambiar tema',
     documentation: 'Documentación del tema',
-    tips: 'Tips: It is different from the theme-pick on the navbar is two different skinning methods, each with different application scenarios. Refer to the documentation for details.'
+    tips:
+      'Tips: It is different from the theme-pick on the navbar is two different skinning methods, each with different application scenarios. Refer to the documentation for details.'
   },
   tagsView: {
     refresh: 'Actualizar',

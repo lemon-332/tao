@@ -3,16 +3,8 @@
     <div class="board-column-header">
       {{ headerText }}
     </div>
-    <draggable
-      :list="list"
-      v-bind="$attrs"
-      class="board-column-content"
-    >
-      <div
-        v-for="element in list"
-        :key="element.id"
-        class="board-item"
-      >
+    <draggable :list="list" v-bind="$attrs" class="board-column-content">
+      <div v-for="element in list" :key="element.id" class="board-item">
         {{ element.name }} {{ element.id }}
       </div>
     </draggable>

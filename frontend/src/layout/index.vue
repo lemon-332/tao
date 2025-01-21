@@ -1,18 +1,12 @@
 <template>
-  <div
-    :class="classObj"
-    class="app-wrapper"
-  >
+  <div :class="classObj" class="app-wrapper">
     <div
       v-if="classObj.mobile && sidebar.opened"
       class="drawer-bg"
       @click="handleClickOutside"
     />
     <sidebar class="sidebar-container" />
-    <div
-      :class="{hasTagsView: showTagsView}"
-      class="main-container"
-    >
+    <div :class="{hasTagsView: showTagsView}" class="main-container">
       <div :class="{'fixed-header': fixedHeader}">
         <navbar />
         <tags-view v-if="showTagsView" />
@@ -93,7 +87,7 @@ export default class extends mixins(ResizeMixin) {
 
 .main-container {
   min-height: 100%;
-  transition: margin-left .28s;
+  transition: margin-left 0.28s;
   margin-left: $sideBarWidth;
   position: relative;
 }
@@ -130,7 +124,7 @@ export default class extends mixins(ResizeMixin) {
   }
 
   .fixed-header {
-    width: calc(100% - 54px)
+    width: calc(100% - 54px);
   }
 }
 
@@ -141,7 +135,7 @@ export default class extends mixins(ResizeMixin) {
   }
 
   .sidebar-container {
-    transition: transform .28s;
+    transition: transform 0.28s;
     width: $sideBarWidth !important;
   }
 

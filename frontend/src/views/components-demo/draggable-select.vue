@@ -15,11 +15,7 @@
     </draggable-select>
 
     <div style="margin-top:30px;">
-      <el-tag
-        v-for="item of value"
-        :key="item"
-        style="margin-right:15px;"
-      >
+      <el-tag v-for="item of value" :key="item" style="margin-right:15px;">
         {{ item }}
       </el-tag>
     </div>
@@ -38,21 +34,27 @@ import DraggableSelect from '@/components/DraggableSelect/index.vue'
 })
 export default class extends Vue {
   private value = ['Apple', 'Banana', 'Orange']
-  private options = [{
-    value: 'Apple',
-    label: 'Apple'
-  }, {
-    value: 'Banana',
-    label: 'Banana'
-  }, {
-    value: 'Orange',
-    label: 'Orange'
-  }, {
-    value: 'Pear',
-    label: 'Pear'
-  }, {
-    value: 'Strawberry',
-    label: 'Strawberry'
-  }]
+  private options = [
+    {
+      value: 'Apple',
+      label: 'Apple'
+    },
+    {
+      value: 'Banana',
+      label: 'Banana'
+    },
+    {
+      value: 'Orange',
+      label: 'Orange'
+    },
+    {
+      value: 'Pear',
+      label: 'Pear'
+    },
+    {
+      value: 'Strawberry',
+      label: 'Strawberry'
+    }
+  ]
 }
 </script>

@@ -37,13 +37,16 @@ export default class extends Vue {
   }
 
   mounted() {
-    this.jsonEditor = CodeMirror.fromTextArea(this.$refs.textarea as HTMLTextAreaElement, {
-      lineNumbers: true,
-      mode: 'application/json',
-      gutters: ['CodeMirror-lint-markers'],
-      theme: 'rubyblue',
-      lint: true
-    })
+    this.jsonEditor = CodeMirror.fromTextArea(
+      this.$refs.textarea as HTMLTextAreaElement,
+      {
+        lineNumbers: true,
+        mode: 'application/json',
+        gutters: ['CodeMirror-lint-markers'],
+        theme: 'rubyblue',
+        lint: true
+      }
+    )
 
     this.jsonEditor.setValue(JSON.stringify(this.value, null, 2))
     this.jsonEditor.on('change', editor => {
@@ -79,7 +82,7 @@ export default class extends Vue {
 }
 
 .cm span.cm-string {
-  color: #F08047;
+  color: #f08047;
 }
 </style>
 

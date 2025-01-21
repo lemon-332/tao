@@ -32,7 +32,7 @@ for (let i = 0; i < articleCount; i++) {
 export const getArticles = (req: Request, res: Response) => {
   const { importance, type, title, page = 1, limit = 20, sort } = req.query
 
-  let mockList = articleList.filter((item) => {
+  let mockList = articleList.filter(item => {
     if (importance && item.importance !== +importance) return false
     if (type && item.type !== type) return false
     if (title && item.title.indexOf(title as string) < 0) return false

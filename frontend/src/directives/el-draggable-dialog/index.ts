@@ -7,7 +7,7 @@ export const elDraggableDialog: DirectiveOptions = {
     dragDom.style.cssText += ';top:0px;'
     dialogHeaderEl.style.cssText += ';cursor:move;'
 
-    dialogHeaderEl.onmousedown = (e) => {
+    dialogHeaderEl.onmousedown = e => {
       const disX = e.clientX - dialogHeaderEl.offsetLeft
       const disY = e.clientY - dialogHeaderEl.offsetTop
 
@@ -40,7 +40,7 @@ export const elDraggableDialog: DirectiveOptions = {
         styleTop = +styleTopStr.replace(/px/g, '')
       }
 
-      document.onmousemove = (e) => {
+      document.onmousemove = e => {
         let left = e.clientX - disX
         let top = e.clientY - disY
 
@@ -57,7 +57,8 @@ export const elDraggableDialog: DirectiveOptions = {
         }
 
         // Move current element
-        dragDom.style.cssText += `;left:${left + styleLeft}px;top:${top + styleTop}px;`
+        dragDom.style.cssText += `;left:${left + styleLeft}px;top:${top +
+          styleTop}px;`
 
         // Emit on-dialog-drag event
         // See https://stackoverflow.com/questions/49264426/vuejs-custom-directive-emit-event

@@ -1,15 +1,8 @@
 <template>
   <div class="draggableList">
-    <div
-      :style="{width: list1width}"
-      class="draggableList-list"
-    >
+    <div :style="{width: list1width}" class="draggableList-list">
       <h3>{{ list1Title }}</h3>
-      <draggable
-        :list="list1"
-        group="article"
-        class="dragArea"
-      >
+      <draggable :list="list1" group="article" class="dragArea">
         <div
           v-for="element in list1"
           :key="element.id"
@@ -23,34 +16,21 @@
               style="float: right ;margin-top: -20px;margin-right:5px;"
               @click="deleteEle(element)"
             >
-              <i
-                style="color:#ff4949"
-                class="el-icon-delete"
-              />
+              <i style="color:#ff4949" class="el-icon-delete" />
             </span>
           </div>
         </div>
       </draggable>
     </div>
-    <div
-      :style="{width: list2width}"
-      class="draggableList-list"
-    >
+    <div :style="{width: list2width}" class="draggableList-list">
       <h3>{{ list2Title }}</h3>
-      <draggable
-        :list="list2"
-        group="article"
-        class="dragArea"
-      >
+      <draggable :list="list2" group="article" class="dragArea">
         <div
           v-for="element in list2"
           :key="element.id"
           class="list-complete-item"
         >
-          <div
-            class="list-complete-item-handle2"
-            @click="pushEle(element)"
-          >
+          <div class="list-complete-item-handle2" @click="pushEle(element)">
             {{ element.id }} [{{ element.author }}] {{ element.title }}
           </div>
         </div>
@@ -120,7 +100,7 @@ export default class extends Vue {
   padding-bottom: 40px;
 
   &:after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
@@ -166,11 +146,11 @@ export default class extends Vue {
 }
 
 .list-complete-item.sortable-chosen {
-  background: #4AB7BD;
+  background: #4ab7bd;
 }
 
 .list-complete-item.sortable-ghost {
-  background: #30B08F;
+  background: #30b08f;
 }
 
 .list-complete-enter,
