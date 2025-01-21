@@ -1,31 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-    |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <el-config-provider :locale="locale">
+    <router-view></router-view>
+  </el-config-provider>
 </template>
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@Options({
+  name: 'App',
+  components: {}
+})
+export default class HomeView extends Vue {
+  private locale = zhCn
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
