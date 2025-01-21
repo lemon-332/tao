@@ -1,281 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hjj.mapper.SellerMapper">
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tao.mapper.SellerMapper">
 
-	<!--实体映射-->
-	<resultMap id="seller" type="com.hjj.entity.po.Seller">
-		<!--商家Id-->
-		<result column="sellerId" property="sellerId"/>
-		<!--所有商品的id-->
-		<result column="godIds" property="godIds"/>
-		<!--商家地址-->
-		<result column="sellerAdress" property="sellerAdress"/>
-		<!--商家图片-->
-		<result column="sellerImage" property="sellerImage"/>
-		<!--商家的star个数-->
-		<result column="sellerStar" property="sellerStar"/>
-		<!--商家开业时间-->
-		<result column="startTime" property="startTime"/>
-		<!--商家闭业时间-->
-		<result column="endTime" property="endTime"/>
-	</resultMap>
+    <!--实体映射-->
+    <resultMap id="seller" type="com.tao.entity.po.Seller">
+        <!--商家Id-->
+        <result column="sellerId" property="sellerId"/>
+        <!--所有商品的id-->
+        <result column="godIds" property="godIds"/>
+        <!--商家地址-->
+        <result column="sellerAdress" property="sellerAdress"/>
+        <!--商家图片-->
+        <result column="sellerImage" property="sellerImage"/>
+        <!--商家的star个数-->
+        <result column="sellerStar" property="sellerStar"/>
+        <!--商家开业时间-->
+        <result column="startTime" property="startTime"/>
+        <!--商家闭业时间-->
+        <result column="endTime" property="endTime"/>
+    </resultMap>
 
-	<!--通用查询结果列-->
-	<sql id="base_column_list">
-		sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime
-	</sql>
+    <!--通用查询结果列-->
+    <sql id="base_column_list">
+        sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime
+    </sql>
 
-	<!--基本条件查询-->
-	<sql id="base_condition">
-		<if test="query.sellerId != null">
-			and sellerId = #{query.sellerId}
-		</if>
-		<if test="query.godIds != null">
-			and godIds = #{query.godIds}
-		</if>
-		<if test="query.sellerAdress != null">
-			and sellerAdress = #{query.sellerAdress}
-		</if>
-		<if test="query.sellerImage != null">
-			and sellerImage = #{query.sellerImage}
-		</if>
-		<if test="query.sellerStar != null">
-			and sellerStar = #{query.sellerStar}
-		</if>
-		<if test="query.startTime != null">
-			and startTime = #{query.startTime}
-		</if>
-		<if test="query.endTime != null">
-			and endTime = #{query.endTime}
-		</if>
-	</sql>
+    <!--基本条件查询-->
+    <sql id="base_condition">
+        <if test="query.sellerId != null">
+            and sellerId = #{query.sellerId}
+        </if>
+        <if test="query.godIds != null">
+            and godIds = #{query.godIds}
+        </if>
+        <if test="query.sellerAdress != null">
+            and sellerAdress = #{query.sellerAdress}
+        </if>
+        <if test="query.sellerImage != null">
+            and sellerImage = #{query.sellerImage}
+        </if>
+        <if test="query.sellerStar != null">
+            and sellerStar = #{query.sellerStar}
+        </if>
+        <if test="query.startTime != null">
+            and startTime = #{query.startTime}
+        </if>
+        <if test="query.endTime != null">
+            and endTime = #{query.endTime}
+        </if>
+    </sql>
 
-	<!--扩展条件查询-->
-	<sql id="extend_condition">
-		<if test="query.sellerIdFuzzy != null and query.sellerIdFuzzy!=''">
-			and sellerId like concat('%', #{query.sellerIdFuzzy}, '%')
-		</if>
-		<if test="query.godIdsFuzzy != null and query.godIdsFuzzy!=''">
-			and godIds like concat('%', #{query.godIdsFuzzy}, '%')
-		</if>
-		<if test="query.sellerAdressFuzzy != null and query.sellerAdressFuzzy!=''">
-			and sellerAdress like concat('%', #{query.sellerAdressFuzzy}, '%')
-		</if>
-		<if test="query.sellerImageFuzzy != null and query.sellerImageFuzzy!=''">
-			and sellerImage like concat('%', #{query.sellerImageFuzzy}, '%')
-		</if>
-		<if test="query.startTimeStart != null and query.startTimeStart!=''">
-			<![CDATA[and startTime>=str_to_date(#{query.startTimeStart}, '%Y-%m-%d')]]>
-		</if>
-		<if test="query.startTimeEnd != null and query.startTimeEnd!=''">
-			<![CDATA[and startTime<date_sub(str_to_date(#{query.startTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
-		</if>
-		<if test="query.endTimeStart != null and query.endTimeStart!=''">
-			<![CDATA[and endTime>=str_to_date(#{query.endTimeStart}, '%Y-%m-%d')]]>
-		</if>
-		<if test="query.endTimeEnd != null and query.endTimeEnd!=''">
-			<![CDATA[and endTime<date_sub(str_to_date(#{query.endTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
-		</if>
-	</sql>
+    <!--扩展条件查询-->
+    <sql id="extend_condition">
+        <if test="query.sellerIdFuzzy != null and query.sellerIdFuzzy!=''">
+            and sellerId like concat('%', #{query.sellerIdFuzzy}, '%')
+        </if>
+        <if test="query.godIdsFuzzy != null and query.godIdsFuzzy!=''">
+            and godIds like concat('%', #{query.godIdsFuzzy}, '%')
+        </if>
+        <if test="query.sellerAdressFuzzy != null and query.sellerAdressFuzzy!=''">
+            and sellerAdress like concat('%', #{query.sellerAdressFuzzy}, '%')
+        </if>
+        <if test="query.sellerImageFuzzy != null and query.sellerImageFuzzy!=''">
+            and sellerImage like concat('%', #{query.sellerImageFuzzy}, '%')
+        </if>
+        <if test="query.startTimeStart != null and query.startTimeStart!=''">
+            <![CDATA[and startTime>=str_to_date(#{query.startTimeStart}, '%Y-%m-%d')]]>
+        </if>
+        <if test="query.startTimeEnd != null and query.startTimeEnd!=''">
+            <![CDATA[and startTime<date_sub(str_to_date(#{query.startTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
+        </if>
+        <if test="query.endTimeStart != null and query.endTimeStart!=''">
+            <![CDATA[and endTime>=str_to_date(#{query.endTimeStart}, '%Y-%m-%d')]]>
+        </if>
+        <if test="query.endTimeEnd != null and query.endTimeEnd!=''">
+            <![CDATA[and endTime<date_sub(str_to_date(#{query.endTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
+        </if>
+    </sql>
 
-	<!--通用查询条件-->
-	<sql id="base_query">
-		<where>
-			<include refid="base_condition"/>
-			<include refid="extend_condition"/>
-		</where>
-	</sql>
+    <!--通用查询条件-->
+    <sql id="base_query">
+        <where>
+            <include refid="base_condition"/>
+            <include refid="extend_condition"/>
+        </where>
+    </sql>
 
-	<select id="selectList" resultMap="seller">
-		SELECT
-		<include refid="base_column_list"/>
-		FROM seller
-		<include refid="base_query"/>
-		<if test="query.orderBy!=null">
-			order by ${query.orderBy}
-		</if>
-		<if test="query.simplePage!=null">
-			limit #{query.simplePage.start},#{query.simplePage.end}
-		</if>
-	</select>
+    <select id="selectList" resultMap="seller">
+        SELECT
+        <include refid="base_column_list"/>
+        FROM seller
+        <include refid="base_query"/>
+        <if test="query.orderBy!=null">
+            order by ${query.orderBy}
+        </if>
+        <if test="query.simplePage!=null">
+            limit #{query.simplePage.start},#{query.simplePage.end}
+        </if>
+    </select>
 
-	<!--查询数量-->
-	<select id="selectCount" resultType="java.lang.Integer">
-		SELECT count(1) FROM seller
-		<include refid="base_query"/>
-	</select>
+    <!--查询数量-->
+    <select id="selectCount" resultType="java.lang.Integer">
+        SELECT count(1) FROM seller
+        <include refid="base_query"/>
+    </select>
 
-	<!--插入数据-->
-	<insert id="insert" parameterType="com.hjj.entity.po.Seller">
-		INSERT INTO seller
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="bean.sellerId!= null">
-				sellerId,
-			</if>
-			<if test="bean.godIds!= null">
-				godIds,
-			</if>
-			<if test="bean.sellerAdress!= null">
-				sellerAdress,
-			</if>
-			<if test="bean.sellerImage!= null">
-				sellerImage,
-			</if>
-			<if test="bean.sellerStar!= null">
-				sellerStar,
-			</if>
-			<if test="bean.startTime!= null">
-				startTime,
-			</if>
-			<if test="bean.endTime!= null">
-				endTime,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="bean.sellerId!= null">
-				#{bean.sellerId},
-			</if>
-			<if test="bean.godIds!= null">
-				#{bean.godIds},
-			</if>
-			<if test="bean.sellerAdress!= null">
-				#{bean.sellerAdress},
-			</if>
-			<if test="bean.sellerImage!= null">
-				#{bean.sellerImage},
-			</if>
-			<if test="bean.sellerStar!= null">
-				#{bean.sellerStar},
-			</if>
-			<if test="bean.startTime!= null">
-				#{bean.startTime},
-			</if>
-			<if test="bean.endTime!= null">
-				#{bean.endTime},
-			</if>
-		</trim>
-	</insert>
+    <!--插入数据-->
+    <insert id="insert" parameterType="com.tao.entity.po.Seller">
+        INSERT INTO seller
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bean.sellerId!= null">
+                sellerId,
+            </if>
+            <if test="bean.godIds!= null">
+                godIds,
+            </if>
+            <if test="bean.sellerAdress!= null">
+                sellerAdress,
+            </if>
+            <if test="bean.sellerImage!= null">
+                sellerImage,
+            </if>
+            <if test="bean.sellerStar!= null">
+                sellerStar,
+            </if>
+            <if test="bean.startTime!= null">
+                startTime,
+            </if>
+            <if test="bean.endTime!= null">
+                endTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bean.sellerId!= null">
+                #{bean.sellerId},
+            </if>
+            <if test="bean.godIds!= null">
+                #{bean.godIds},
+            </if>
+            <if test="bean.sellerAdress!= null">
+                #{bean.sellerAdress},
+            </if>
+            <if test="bean.sellerImage!= null">
+                #{bean.sellerImage},
+            </if>
+            <if test="bean.sellerStar!= null">
+                #{bean.sellerStar},
+            </if>
+            <if test="bean.startTime!= null">
+                #{bean.startTime},
+            </if>
+            <if test="bean.endTime!= null">
+                #{bean.endTime},
+            </if>
+        </trim>
+    </insert>
 
-	<!--插入或者更新-->
-	<insert id="insertOrUpdate" parameterType="com.hjj.entity.po.Seller">
-		INSERT INTO seller
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="bean.sellerId!= null">
-				sellerId,
-			</if>
-			<if test="bean.godIds!= null">
-				godIds,
-			</if>
-			<if test="bean.sellerAdress!= null">
-				sellerAdress,
-			</if>
-			<if test="bean.sellerImage!= null">
-				sellerImage,
-			</if>
-			<if test="bean.sellerStar!= null">
-				sellerStar,
-			</if>
-			<if test="bean.startTime!= null">
-				startTime,
-			</if>
-			<if test="bean.endTime!= null">
-				endTime,
-			</if>
-		</trim>
-		on DUPLICATE key update
-		<trim prefix="" suffix="" suffixOverrides=",">
-			<if test="bean.sellerId!= null">
-				sellerId = VALUES(sellerId),
-			</if>
-			<if test="bean.godIds!= null">
-				godIds = VALUES(godIds),
-			</if>
-			<if test="bean.sellerAdress!= null">
-				sellerAdress = VALUES(sellerAdress),
-			</if>
-			<if test="bean.sellerImage!= null">
-				sellerImage = VALUES(sellerImage),
-			</if>
-			<if test="bean.sellerStar!= null">
-				sellerStar = VALUES(sellerStar),
-			</if>
-			<if test="bean.startTime!= null">
-				startTime = VALUES(startTime),
-			</if>
-			<if test="bean.endTime!= null">
-				endTime = VALUES(endTime),
-			</if>
-		</trim>
-	</insert>
+    <!--插入或者更新-->
+    <insert id="insertOrUpdate" parameterType="com.tao.entity.po.Seller">
+        INSERT INTO seller
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bean.sellerId!= null">
+                sellerId,
+            </if>
+            <if test="bean.godIds!= null">
+                godIds,
+            </if>
+            <if test="bean.sellerAdress!= null">
+                sellerAdress,
+            </if>
+            <if test="bean.sellerImage!= null">
+                sellerImage,
+            </if>
+            <if test="bean.sellerStar!= null">
+                sellerStar,
+            </if>
+            <if test="bean.startTime!= null">
+                startTime,
+            </if>
+            <if test="bean.endTime!= null">
+                endTime,
+            </if>
+        </trim>
+        on DUPLICATE key update
+        <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="bean.sellerId!= null">
+                sellerId = VALUES(sellerId),
+            </if>
+            <if test="bean.godIds!= null">
+                godIds = VALUES(godIds),
+            </if>
+            <if test="bean.sellerAdress!= null">
+                sellerAdress = VALUES(sellerAdress),
+            </if>
+            <if test="bean.sellerImage!= null">
+                sellerImage = VALUES(sellerImage),
+            </if>
+            <if test="bean.sellerStar!= null">
+                sellerStar = VALUES(sellerStar),
+            </if>
+            <if test="bean.startTime!= null">
+                startTime = VALUES(startTime),
+            </if>
+            <if test="bean.endTime!= null">
+                endTime = VALUES(endTime),
+            </if>
+        </trim>
+    </insert>
 
-	<!--批量添加-->
-	<insert id="insertBatch" parameterType="com.hjj.entity.po.Seller">
-		INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime)
-		<foreach collection="list" item="item" separator=",">
-			(
-			#{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime}
-			)
-		</foreach>
-	</insert>
+    <!--批量添加-->
+    <insert id="insertBatch" parameterType="com.tao.entity.po.Seller">
+        INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime)
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime}
+            )
+        </foreach>
+    </insert>
 
-	<!--批量新增或修改-->
-	<insert id="insertOrUpdateBatch" parameterType="com.hjj.entity.po.Seller">
-		INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime)
-		<foreach collection="list" item="item" separator=",">
-			(
-			#{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime}
-			)
-		</foreach>
-		on DUPLICATE key update
-		sellerId = VALUES(sellerId),
-		godIds = VALUES(godIds),
-		sellerAdress = VALUES(sellerAdress),
-		sellerImage = VALUES(sellerImage),
-		sellerStar = VALUES(sellerStar),
-		startTime = VALUES(startTime),
-		endTime = VALUES(endTime)
-	</insert>
+    <!--批量新增或修改-->
+    <insert id="insertOrUpdateBatch" parameterType="com.tao.entity.po.Seller">
+        INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime)
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime}
+            )
+        </foreach>
+        on DUPLICATE key update
+        sellerId = VALUES(sellerId),
+        godIds = VALUES(godIds),
+        sellerAdress = VALUES(sellerAdress),
+        sellerImage = VALUES(sellerImage),
+        sellerStar = VALUES(sellerStar),
+        startTime = VALUES(startTime),
+        endTime = VALUES(endTime)
+    </insert>
 
-	<!--根据SellerId删除-->
-	<delete id="deleteBySellerId">
-		delete from seller where sellerId=#{sellerId}
-	</delete>
+    <!--根据SellerId删除-->
+    <delete id="deleteBySellerId">
+        delete from seller where sellerId=#{sellerId}
+    </delete>
 
-	<!--根据SellerId查询对象-->
-	<select id="selectBySellerId" resultMap="seller">
-		select
-		<include refid="base_column_list"/>
-		from seller where sellerId=#{sellerId}
-	</select>
+    <!--根据SellerId查询对象-->
+    <select id="selectBySellerId" resultMap="seller">
+        select
+        <include refid="base_column_list"/>
+        from seller where sellerId=#{sellerId}
+    </select>
 
-	<!--根据SellerId修改-->
-	<update id="updateBySellerId" parameterType="com.hjj.entity.po.Seller">
-		UPDATE seller
-		<set>
-			<if test="bean.sellerId!= null">
-				sellerId = #{bean.sellerId},
-			</if>
-			<if test="bean.godIds!= null">
-				godIds = #{bean.godIds},
-			</if>
-			<if test="bean.sellerAdress!= null">
-				sellerAdress = #{bean.sellerAdress},
-			</if>
-			<if test="bean.sellerImage!= null">
-				sellerImage = #{bean.sellerImage},
-			</if>
-			<if test="bean.sellerStar!= null">
-				sellerStar = #{bean.sellerStar},
-			</if>
-			<if test="bean.startTime!= null">
-				startTime = #{bean.startTime},
-			</if>
-			<if test="bean.endTime!= null">
-				endTime = #{bean.endTime},
-			</if>
-		</set>
-		where sellerId=#{sellerId}
-	</update>
+    <!--根据SellerId修改-->
+    <update id="updateBySellerId" parameterType="com.tao.entity.po.Seller">
+        UPDATE seller
+        <set>
+            <if test="bean.sellerId!= null">
+                sellerId = #{bean.sellerId},
+            </if>
+            <if test="bean.godIds!= null">
+                godIds = #{bean.godIds},
+            </if>
+            <if test="bean.sellerAdress!= null">
+                sellerAdress = #{bean.sellerAdress},
+            </if>
+            <if test="bean.sellerImage!= null">
+                sellerImage = #{bean.sellerImage},
+            </if>
+            <if test="bean.sellerStar!= null">
+                sellerStar = #{bean.sellerStar},
+            </if>
+            <if test="bean.startTime!= null">
+                startTime = #{bean.startTime},
+            </if>
+            <if test="bean.endTime!= null">
+                endTime = #{bean.endTime},
+            </if>
+        </set>
+        where sellerId=#{sellerId}
+    </update>
 
 </mapper>

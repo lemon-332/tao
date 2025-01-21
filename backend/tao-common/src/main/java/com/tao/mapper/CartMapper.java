@@ -23,4 +23,5 @@ public interface CartMapper<T, P> extends BaseMapper {
      */
     Integer deleteByCartIdAndUserIdAndGodIds(@Param("cartId") String cartId, @Param("userId") String userId, @Param("godIds") String godIds);
 
+    T selectByUserId(String userId);
 }

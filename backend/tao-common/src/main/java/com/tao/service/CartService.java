@@ -1,5 +1,6 @@
 package com.tao.service;
 
+import com.tao.dto.CartDto;
 import com.tao.entity.po.Cart;
 import com.tao.entity.query.CartQuery;
 import com.tao.entity.vo.PaginationResultVo;
@@ -58,4 +59,9 @@ public interface CartService {
      */
     public Integer deleteCartByCartIdAndUserIdAndGodIds(String cartId, String userId, String godIds);
 
+    CartDto cartList(String userId);
+
+    void cartDeleteGod(String userId, String godIds);
+
+    void cartAddGod(String userId, String godId);
 }
