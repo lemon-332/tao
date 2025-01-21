@@ -1,9 +1,11 @@
+// store/indx.ts
 import { createStore } from 'vuex'
+import { IUserState } from './modules/user'
 
-export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {}
-})
+export interface IRootState {
+  user: IUserState
+}
+
+const store = createStore<IRootState>({})
+
+export default store
