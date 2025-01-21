@@ -1,99 +1,67 @@
-2025-01-20 12:15:03 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 22508 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
-2025-01-20 12:15:03 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
-2025-01-20 12:15:04 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
-2025-01-20 12:15:04 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
-2025-01-20 12:15:04 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
-2025-01-20 12:15:04 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2025-01-20 12:15:04 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
-2025-01-20 12:15:04 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-8848"]
-2025-01-20 12:15:04 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
-2025-01-20 12:15:04 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.58]
-2025-01-20 12:15:04 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
-2025-01-20 12:15:04 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 753 ms
-2025-01-20 12:15:04 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-8848"]
-2025-01-20 12:15:04 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 8848 (http) with context path '/api'
-2025-01-20 12:15:04 [INFO][com.tao.TaoWebApplication][logStarted][61]-> Started TaoWebApplication in 1.699 seconds (JVM running for 2.34)
-2025-01-20 12:15:24 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 14884 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
-2025-01-20 12:15:24 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
-2025-01-20 12:15:25 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
-2025-01-20 12:15:25 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
-2025-01-20 12:15:25 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
-2025-01-20 12:15:25 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2025-01-20 12:15:25 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
-2025-01-20 12:15:25 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-8848"]
-2025-01-20 12:15:25 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
-2025-01-20 12:15:25 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.58]
-2025-01-20 12:15:25 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
-2025-01-20 12:15:25 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 911 ms
-2025-01-20 12:15:25 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-8848"]
-2025-01-20 12:15:25 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 8848 (http) with context path '/api'
-2025-01-20 12:15:25 [INFO][com.tao.TaoWebApplication][logStarted][61]-> Started TaoWebApplication in 1.954 seconds (JVM running for 2.909)
-2025-01-20 12:18:31 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-01-20 12:18:31 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
-2025-01-20 12:18:31 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 0 ms
-2025-01-20 12:18:31 [WARN][org.springframework.web.servlet.PageNotFound][noHandlerFound][1278]-> No mapping for GET /api//user/loadDataList
-2025-01-20 12:18:50 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][110]-> HikariCPDatasource - Starting...
-2025-01-20 12:18:50 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][123]-> HikariCPDatasource - Start completed.
-2025-01-20 12:18:57 [INFO][com.zaxxer.hikari.HikariDataSource][close][350]-> HikariCPDatasource - Shutdown initiated...
-2025-01-20 12:18:57 [INFO][com.zaxxer.hikari.HikariDataSource][close][352]-> HikariCPDatasource - Shutdown completed.
-2025-01-20 12:20:03 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 19908 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
-2025-01-20 12:20:03 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
-2025-01-20 12:20:04 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
-2025-01-20 12:20:04 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
-2025-01-20 12:20:04 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
-2025-01-20 12:20:04 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2025-01-20 12:20:04 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
-2025-01-20 12:20:04 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-8848"]
-2025-01-20 12:20:04 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
-2025-01-20 12:20:04 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.58]
-2025-01-20 12:20:04 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
-2025-01-20 12:20:04 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 791 ms
-2025-01-20 12:20:05 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-8848"]
-2025-01-20 12:20:05 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 8848 (http) with context path '/api'
-2025-01-20 12:20:05 [INFO][com.tao.TaoWebApplication][logStarted][61]-> Started TaoWebApplication in 1.687 seconds (JVM running for 2.175)
-2025-01-20 12:20:06 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-01-20 12:20:06 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
-2025-01-20 12:20:06 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 1 ms
-2025-01-20 16:19:22 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 748 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
-2025-01-20 16:19:22 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
-2025-01-20 16:19:24 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
-2025-01-20 16:19:24 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 1894 ms
-2025-01-20 16:19:24 [WARN][org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext][__refresh][591]-> Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'UserService': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userMapper' defined in file [C:\Users\lemon\Desktop\tao\backend\tao-common\target\classes\com\tao\mapper\UserMapper.class]: Invocation of init method failed; nested exception is java.lang.ClassCastException: class org.apache.ibatis.type.TypeAliasRegistry cannot be cast to class org.zeroturnaround.jrebel.mybatis.JrTypeAliasRegistry (org.apache.ibatis.type.TypeAliasRegistry and org.zeroturnaround.jrebel.mybatis.JrTypeAliasRegistry are in unnamed module of loader 'app')
-2025-01-20 17:50:14 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 21404 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
-2025-01-20 17:50:14 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
-2025-01-20 17:50:16 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
-2025-01-20 17:50:16 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
-2025-01-20 17:50:16 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
-2025-01-20 17:50:16 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2025-01-20 17:50:16 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
-2025-01-20 17:50:16 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-8848"]
-2025-01-20 17:50:16 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
-2025-01-20 17:50:16 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.58]
-2025-01-20 17:50:17 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
-2025-01-20 17:50:17 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 1944 ms
-2025-01-20 17:50:18 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-8848"]
-2025-01-20 17:50:18 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 8848 (http) with context path '/api'
-2025-01-20 17:50:18 [INFO][com.tao.TaoWebApplication][logStarted][61]-> Started TaoWebApplication in 3.798 seconds (JVM running for 6.293)
-2025-01-20 17:51:15 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 17:51:55 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-01-20 17:51:55 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
-2025-01-20 17:51:55 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 2 ms
-2025-01-20 17:51:55 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][110]-> HikariCPDatasource - Starting...
-2025-01-20 17:51:55 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][123]-> HikariCPDatasource - Start completed.
-2025-01-20 17:53:40 [WARN][com.zaxxer.hikari.pool.HikariPool][run][788]-> HikariCPDatasource - Thread starvation or clock leap detected (housekeeper delta=1m15s294ms619µs).
-2025-01-20 17:59:01 [WARN][com.zaxxer.hikari.pool.HikariPool][run][788]-> HikariCPDatasource - Thread starvation or clock leap detected (housekeeper delta=1m20s902ms240µs300ns).
-2025-01-20 18:14:48 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:15:19 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:17:46 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:18:04 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:21:52 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:22:46 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:23:44 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:25:14 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:30:27 [WARN][com.zaxxer.hikari.pool.HikariPool][run][788]-> HikariCPDatasource - Thread starvation or clock leap detected (housekeeper delta=1m18s77ms581µs).
-2025-01-20 18:30:32 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:32:52 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:40:50 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 18:45:48 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.
-2025-01-20 19:03:19 [INFO][com.zaxxer.hikari.HikariDataSource][close][350]-> HikariCPDatasource - Shutdown initiated...
-2025-01-20 19:03:19 [INFO][com.zaxxer.hikari.HikariDataSource][close][352]-> HikariCPDatasource - Shutdown completed.
+2025-01-21 12:54:39 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 24276 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
+2025-01-21 12:54:39 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
+2025-01-21 12:54:41 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
+2025-01-21 12:54:41 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2025-01-21 12:54:41 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2025-01-21 12:54:41 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2025-01-21 12:54:41 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2025-01-21 12:54:41 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-8848"]
+2025-01-21 12:54:41 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2025-01-21 12:54:41 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.58]
+2025-01-21 12:54:41 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2025-01-21 12:54:41 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 1985 ms
+2025-01-21 12:54:43 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-8848"]
+2025-01-21 12:54:43 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 8848 (http) with context path '/api'
+2025-01-21 12:54:43 [INFO][com.tao.TaoWebApplication][logStarted][61]-> Started TaoWebApplication in 4.599 seconds (JVM running for 8.773)
+2025-01-21 12:54:59 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-21 12:54:59 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
+2025-01-21 12:54:59 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 0 ms
+2025-01-21 12:54:59 [WARN][org.springframework.web.servlet.PageNotFound][noHandlerFound][1278]-> No mapping for OPTIONS /api/users/login
+2025-01-21 13:28:23 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 23672 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
+2025-01-21 13:28:23 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
+2025-01-21 13:28:23 [WARN][org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext][__refresh][591]-> Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.tao.TaoWebApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'webConfig' for bean class [com.tao.entity.config.WebConfig] conflicts with existing, non-compatible bean definition of same name and class [com.tao.config.WebConfig]
+2025-01-21 13:28:23 [ERROR][org.springframework.boot.SpringApplication][reportFailure][830]-> Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.tao.TaoWebApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'webConfig' for bean class [com.tao.entity.config.WebConfig] conflicts with existing, non-compatible bean definition of same name and class [com.tao.config.WebConfig]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:189)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:331)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:247)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:311)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:112)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:746)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:564)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:41002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:42008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.tao.TaoWebApplication.main(TaoWebApplication.java:12)
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'webConfig' for bean class [com.tao.entity.config.WebConfig] conflicts with existing, non-compatible bean definition of same name and class [com.tao.config.WebConfig]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:349)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:287)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:128)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:296)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:250)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:207)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:175)
+	... 15 common frames omitted
+2025-01-21 13:29:05 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 9600 (C:\Users\lemon\Desktop\tao\backend\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\backend)
+2025-01-21 13:29:05 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
+2025-01-21 13:29:07 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
+2025-01-21 13:29:07 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2025-01-21 13:29:07 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2025-01-21 13:29:07 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2025-01-21 13:29:07 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2025-01-21 13:29:07 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-8848"]
+2025-01-21 13:29:07 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2025-01-21 13:29:07 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.58]
+2025-01-21 13:29:07 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2025-01-21 13:29:07 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 1734 ms
+2025-01-21 13:29:08 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-8848"]
+2025-01-21 13:29:08 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 8848 (http) with context path '/api'
+2025-01-21 13:29:08 [INFO][com.tao.TaoWebApplication][logStarted][61]-> Started TaoWebApplication in 3.41 seconds (JVM running for 5.12)
+2025-01-21 13:29:15 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-21 13:29:15 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
+2025-01-21 13:29:15 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 1 ms
