@@ -172,3 +172,26 @@
 2025-01-22 18:02:42 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 2 ms
 2025-01-22 18:02:58 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][110]-> HikariCPDatasource - Starting...
 2025-01-22 18:02:58 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][123]-> HikariCPDatasource - Start completed.
+2025-01-22 18:14:02 [INFO][com.zaxxer.hikari.HikariDataSource][close][350]-> HikariCPDatasource - Shutdown initiated...
+2025-01-22 18:14:02 [INFO][com.zaxxer.hikari.HikariDataSource][close][352]-> HikariCPDatasource - Shutdown completed.
+2025-01-22 18:42:23 [INFO][com.tao.TaoWebApplication][logStarting][55]-> Starting TaoWebApplication using Java 21.0.5 on lemon with PID 27576 (C:\Users\lemon\Desktop\tao\back\tao-web\target\classes started by lemon in C:\Users\lemon\Desktop\tao\back)
+2025-01-22 18:42:23 [INFO][com.tao.TaoWebApplication][logStartupProfileInfo][640]-> No active profile set, falling back to 1 default profile: "default"
+2025-01-22 18:42:25 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 8848 (http)
+2025-01-22 18:42:25 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2025-01-22 18:42:25 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2025-01-22 18:42:25 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2025-01-22 18:42:25 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2025-01-22 18:42:25 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-8848"]
+2025-01-22 18:42:25 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2025-01-22 18:42:25 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.58]
+2025-01-22 18:42:25 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2025-01-22 18:42:25 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 2061 ms
+2025-01-22 18:42:26 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-8848"]
+2025-01-22 18:42:26 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 8848 (http) with context path '/api'
+2025-01-22 18:42:26 [INFO][com.tao.TaoWebApplication][logStarted][61]-> Started TaoWebApplication in 4.259 seconds (JVM running for 6.801)
+2025-01-22 18:56:38 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-22 18:56:38 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][525]-> Initializing Servlet 'dispatcherServlet'
+2025-01-22 18:56:38 [INFO][org.springframework.web.servlet.DispatcherServlet][initServletBean][547]-> Completed initialization in 1 ms
+2025-01-22 18:56:38 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][110]-> HikariCPDatasource - Starting...
+2025-01-22 18:56:38 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][123]-> HikariCPDatasource - Start completed.
+2025-01-22 19:22:13 [WARN][org.mybatis.spring.mapper.ClassPathMapperScanner][warn][44]-> No MyBatis mapper was found in '[com.tao.mapper]' package. Please check your configuration.

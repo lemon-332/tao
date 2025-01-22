@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
-// import VueCookies from 'vue-cookies'
+import { useCookies } from 'vue3-cookies'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,11 +30,15 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
-// router.beforeEach((to, from, next) => {
-//   const userInfo = VueCookies.VueCookies.get('userInfo')
-//   if (!userInfo && to.path != '/login') {
-//     router.push('/login')
-//   }
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  const { cookies } = useCookies()
+  const userInfo = cookies.get('userInfo')
+  if (!userInfo && to.path != '/login') {
+    router.push('/login')
+  }
+  if (userInfo && to.path == '/login') {
+    router.push(from.path)
+  }
+  next()
+})
 export default router

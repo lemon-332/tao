@@ -4,13 +4,21 @@
     <div class="form sign-in">
       <h2>Welcome back,</h2>
       <label>
-        <span>Email</span>
-        <input type="email" />
+        <span>Account</span>
+        <input v-model="userName" type="email" />
       </label>
       <label>
         <span>Password</span>
-        <input type="password" />
+        <input v-model="password" type="password" />
       </label>
+      <label class="role">
+        <el-radio-group v-model="role">
+          <el-radio value="1">用户</el-radio>
+          <el-radio value="2">管理员</el-radio>
+          <el-radio value="3">会员</el-radio>
+        </el-radio-group>
+      </label>
+
       <p class="forgot-pass">Forgot password?</p>
       <button type="button" class="submit" @click="handleLogin">Sign In</button>
       <button type="button" class="fb-btn">
@@ -60,14 +68,29 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import { login } from '@/api/user'
+import { useCookies } from 'vue3-cookies'
+import { ElMessage } from 'element-plus'
 
 @Options({
   components: {}
 })
-export default class Login extends Vue {
+export default class Login extends Vue { 
+  private userName = ''
+  private password = ''
+  private role = '1'
+
   private async handleLogin() {
-    const res = await login({ userName: 'admin', password: '1234256', role: 1 })
+    const { userName, password, role } = this
+    const res = await login({ userName, password, role: Number(role) })
+    if (res.code !== 200) {
+      ElMessage({
+        message: res.info,
+        type: 'error'
+      })
+    }
     if (res.code === 200) {
+      const { cookies } = useCookies()
+      cookies.set('userInfo', res.data, '1d')
       this.$router.push('/')
     }
   }
@@ -109,6 +132,18 @@ $diffRatio: calc(($contW - $imgW) / $contW);
 @mixin signUpActive {
   .cont.s--signup & {
     @content;
+  }
+}
+
+.role {
+  display: flex;
+  justify-content: space-around;
+  .el-radio {
+    width: auto;
+    &:nth-of-type(2) {
+      margin-left: 8px;
+      margin-right: 8px;
+    }
   }
 }
 

@@ -36,6 +36,9 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new BusinessException(ResponseCode.CODE_904);
         }
+        if (!user.getRole().equals(role)) {
+            throw new BusinessException("用户角色不匹配");
+        }
         if (!user.getPassword().equals(password)) {
             throw new BusinessException(ResponseCode.CODE_902);
         }

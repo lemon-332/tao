@@ -8,5 +8,13 @@ module.exports = defineConfig({
         changeOrigin: true
       }
     }
+  },
+  configureWebpack: {
+    // Feature flag VUE_PROD_HYDRATION_MISMATCH_DETAILS is not explicitly defined
+    plugins: [
+      new (require('webpack').DefinePlugin)({
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false)
+      })
+    ]
   }
 })
