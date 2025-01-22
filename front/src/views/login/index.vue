@@ -12,7 +12,7 @@
         <input type="password" />
       </label>
       <p class="forgot-pass">Forgot password?</p>
-      <button type="button" class="submit">Sign In</button>
+      <button type="button" class="submit" @click="handleLogin">Sign In</button>
       <button type="button" class="fb-btn">
         Connect with
         <span>facebook</span>
@@ -59,20 +59,22 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
-import { UserModule } from '@/store/modules/user'
+import { login } from '@/api/user'
 
 @Options({
-  components: {
-    HelloWorld
-  }
+  components: {}
 })
-export default class HomeView extends Vue {
-  private value = new Date()
-  private haha = UserModule.currentCount
+export default class Login extends Vue {
+  private async handleLogin() {
+    const res = await login({ userName: 'admin', password: '1234256', role: 1 })
+    if (res.code === 200) {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
+@use 'sass:color';
 *,
 *:before,
 *:after {
@@ -102,7 +104,7 @@ $switchAT: 1.2s;
 $inputW: 260px;
 $btnH: 36px;
 
-$diffRatio: ($contW - $imgW) / $contW;
+$diffRatio: calc(($contW - $imgW) / $contW);
 
 @mixin signUpActive {
   .cont.s--signup & {
@@ -332,11 +334,11 @@ input {
 
 .fb-btn {
   border: 2px solid #d3dae9;
-  color: darken(#d3dae9, 20%);
+  color: color.adjust(#768cb6, $lightness: -20%);
 
   span {
     font-weight: bold;
-    color: darken(#768cb6, 20%);
+    color: color.adjust(#768cb6, $lightness: -20%);
   }
 }
 

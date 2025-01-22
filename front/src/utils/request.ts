@@ -1,5 +1,5 @@
 import axios from 'axios'
-const ConfigBaseURL = 'http://localhost:8848/api/' //默认路径，这里也可以使用env来判断环境
+const ConfigBaseURL = '/api' //默认路径，这里也可以使用env来判断环境
 import { ElLoading, ElMessage } from 'element-plus'
 
 let loadingInstance: any = null //这里是loading

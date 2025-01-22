@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -34,9 +35,10 @@ public class UserController extends ABaseController {
      */
     @RequestMapping("login")
     @GlobalInterceptor(checkParams = true)
-    public ResponseVo login(@VerifyParam(required = true) String userName,
-                            @VerifyParam(required = true) String password,
-                            @VerifyParam(required = true) Integer role) {
+    public ResponseVo login(HttpServletRequest request) {
+        String userName = (String) request.getAttribute("userName");
+        String password = (String) request.getAttribute("password");
+        int role = (int) request.getAttribute("role");
         User user = userService.login(userName, password, role);
         return getSuccessResponseVo(user);
     }
