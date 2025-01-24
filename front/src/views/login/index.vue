@@ -26,14 +26,12 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { Component, Vue } from 'vue-facing-decorator'
 import { login } from '@/api/user'
 import { useCookies } from 'vue3-cookies'
 import { ElMessage } from 'element-plus'
 
-@Options({
-  components: {}
-})
+@Component
 export default class Login extends Vue {
   private dialogFormVisible = false
 

@@ -13,13 +13,11 @@
   </div>
 </template>
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { Component, Vue } from 'vue-facing-decorator'
 import { ElNotification as notify } from 'element-plus'
 import { useRoute } from 'vue-router'
 
-@Options({
-  components: {}
-})
+@Component
 export default class Header extends Vue {
   router = useRoute()
   onBack = () => {

@@ -15,12 +15,12 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { Component, Vue } from 'vue-facing-decorator'
 
 import Header from '@/components/Header.vue'
 import Menu from '@/components/Menu.vue'
 
-@Options({
+@Component({
   components: {
     Header,
     Menu
@@ -35,6 +35,7 @@ export default class Home extends Vue {}
   height: 100%;
   .menu {
     // width: 10%;
+    width: 200px;
     height: 100%;
   }
   .content-wrapper {

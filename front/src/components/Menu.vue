@@ -8,11 +8,14 @@
     >
       <el-sub-menu
         v-for="(route, index) in routes"
-        :key="index"
+        :key="route.name"
         :index="String(index + 1)"
       >
         <template #title>
-          <component :is="iconComponent(route.name)" class="icon"></component>
+          <component
+            :is="iconComponent(String(route.name))"
+            class="icon"
+          ></component>
           <span>{{ route.meta.title }}</span>
         </template>
         <el-menu-item
@@ -21,7 +24,10 @@
           :index="item.meta.index"
         >
           <el-icon>
-            <component :is="iconComponent(item.name)" class="icon"></component>
+            <component
+              :is="iconComponent(String(item.name))"
+              class="icon"
+            ></component>
           </el-icon>
           <RouterLink :to="item.path">{{ item.meta.title }}</RouterLink>
         </el-menu-item>
@@ -31,74 +37,68 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { RouterLink, useRouter } from 'vue-router'
-import {
-  UserFilled,
-  ShoppingCartFull,
-  Goods,
-  Stamp,
-  BellFilled,
-  List,
-  PieChart,
-  OfficeBuilding,
-  SuitcaseLine,
-  Sell
-} from '@element-plus/icons-vue'
+import { Component, Vue } from 'vue-facing-decorator'
+import { RouterLink, useRouter, RouteRecordRaw } from 'vue-router'
+import * as ElementIcons from '@element-plus/icons-vue'
 
-@Options({
+// 定义图标映射接口
+interface IconMapping {
+  [key: string]: (typeof ElementIcons)[keyof typeof ElementIcons]
+}
+
+@Component({
   components: {
-    UserFilled,
-    ShoppingCartFull,
-    Goods,
-    Stamp,
-    BellFilled,
-    List,
-    PieChart,
-    OfficeBuilding,
-    SuitcaseLine,
-    Sell
+    ...ElementIcons,
+    RouterLink
   }
 })
-export default class Login extends Vue {
-  private routes = []
+export default class Menu extends Vue {
+  private routes: RouteRecordRaw[] = []
 
-  private handleOpen = (key: string, keyPath: string[]) => {
-    // console.log(key, keyPath)
-  }
-  private handleClose = (key: string, keyPath: string[]) => {
-    // console.log(key, keyPath)
+  private handleOpen(key: string, keyPath: string[]): void {
+    console.debug('Menu opened:', key, keyPath)
   }
 
-  private iconComponent(name) {
-    const icons = {
-      user: UserFilled,
-      god: Goods,
-      seller: ShoppingCartFull,
-      userList: Stamp,
-      activityLog: BellFilled,
-      godList: Sell,
-      godReport: PieChart,
-      sellerList: List,
-      cartList: SuitcaseLine,
-      sellerRegister: OfficeBuilding
+  private handleClose(key: string, keyPath: string[]): void {
+    console.debug('Menu closed:', key, keyPath)
+  }
+
+  private iconComponent(
+    name: string
+  ): (typeof ElementIcons)[keyof typeof ElementIcons] {
+    const icons: IconMapping = {
+      user: ElementIcons.UserFilled,
+      god: ElementIcons.Goods,
+      seller: ElementIcons.ShoppingCartFull,
+      userList: ElementIcons.Stamp,
+      activityLog: ElementIcons.BellFilled,
+      godList: ElementIcons.Sell,
+      godReport: ElementIcons.PieChart,
+      sellerList: ElementIcons.List,
+      cartList: ElementIcons.SuitcaseLine,
+      sellerRegister: ElementIcons.OfficeBuilding
     }
 
-    return icons[name]
+    return icons[name] || ElementIcons.Document // 提供一个默认图标
   }
 
-  created() {
+  created(): void {
     const router = useRouter()
-    this.routes = router.options.routes[0].children
+    // 确保路由配置存在
+    if (router.options.routes?.[0]?.children) {
+      this.routes = router.options.routes[0].children
+    }
   }
 }
 </script>
 <style lang="scss" scoped>
 .menu-wrapper {
   height: 100%;
+  background-color: #f5f5f5;
   // width: 100%;
   .el-menu-vertical {
     height: 100%;
+    background-color: #f5f5f5;
     &:not(.el-menu--collapse) {
       width: 200px;
     }

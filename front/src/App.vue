@@ -4,14 +4,13 @@
   </el-config-provider>
 </template>
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { Component, Vue } from 'vue-facing-decorator'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-@Options({
-  name: 'App',
-  components: {}
+@Component({
+  name: 'App'
 })
-export default class HomeView extends Vue {
+export default class App extends Vue {
   private locale = zhCn
 }
 </script>
