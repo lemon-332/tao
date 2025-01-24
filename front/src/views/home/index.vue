@@ -1,29 +1,49 @@
 <template>
-  <el-container>
-    <el-aside width="200px">
-      <router-link to="/about">about</router-link>
-      <el-button type="primary" size="default" @click="haha">haha</el-button>
-    </el-aside>
-    <el-container>
-      <el-header>Header</el-header>
-      <el-main>
-        <router-view />
-      </el-main>
-    </el-container>
-  </el-container>
+  <div class="main">
+    <div class="menu">
+      <Menu />
+    </div>
+    <div class="content-wrapper">
+      <div class="header">
+        <Header />
+      </div>
+      <div class="content">
+        <RouterView></RouterView>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 
-@Options({
-  components: {}
-})
-export default class HomeView extends Vue {
-  private value = new Date()
+import Header from '@/components/Header.vue'
+import Menu from '@/components/Menu.vue'
 
-  private haha() {
-    this.$router.push('/about')
+@Options({
+  components: {
+    Header,
+    Menu
+  }
+})
+export default class Home extends Vue {}
+</script>
+
+<style lang="scss" scoped>
+.main {
+  display: flex;
+  height: 100%;
+  .menu {
+    // width: 10%;
+    height: 100%;
+  }
+  .content-wrapper {
+    width: 100%;
+    .content {
+    }
+    .header {
+      margin: 10px 10px;
+    }
   }
 }
-</script>
+</style>
