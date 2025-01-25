@@ -75,15 +75,17 @@ export default class Login extends Vue {
   border-radius: 6px;
   position: relative;
   top: 30%;
+  padding: 24px;
 }
 
 .login .formLogin .title {
-  padding: 24px 0;
+  padding: 24px;
+  text-align: center;
 }
 
 .login .formLogin .submit {
   width: 50%;
-  margin: 24px auto;
+  margin: 24px 150px;
 }
 
 .message {
