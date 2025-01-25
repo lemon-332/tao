@@ -1,7 +1,7 @@
 package com.tao.myEnum;
 
 public enum UserStatus {
-    ACTIVE(1), DEACTIVE(2), DELETE(3);
+    DEACTIVE(0), ACTIVE(1), DELETE(2);
 
 
     Integer status;

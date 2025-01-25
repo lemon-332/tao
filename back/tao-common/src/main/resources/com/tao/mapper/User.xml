@@ -95,6 +95,7 @@
     <!--通用查询条件-->
     <sql id="base_query">
         <where>
+            and (status = 0 or status = 1)
             <include refid="base_condition"/>
             <include refid="extend_condition"/>
         </where>

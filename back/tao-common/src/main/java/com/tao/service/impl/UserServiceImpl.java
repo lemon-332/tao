@@ -146,6 +146,9 @@ public class UserServiceImpl implements UserService {
      * 根据UserId更新对象
      */
     public Integer updateUserByUserId(User bean, String userId) {
+        if (bean.getStatus().equals(UserStatus.DEACTIVE.getUserStatus())) {
+            bean.setDisableTime(new Date());
+        }
         return userMapper.updateByUserId(bean, userId);
     }
 

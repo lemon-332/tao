@@ -104,4 +104,10 @@ public class UserController extends ABaseController {
         userService.add(user);
         return getSuccessResponseVo(null);
     }
+
+    @RequestMapping("userDelete")
+    public ResponseVo UserDelete(String userId) {
+        userService.deleteUserByUserId(userId);
+        return getSuccessResponseVo(null);
+    }
 }
