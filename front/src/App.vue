@@ -34,8 +34,13 @@ html {
   height: 100%;
 }
 
-a{
+a {
   text-decoration: none;
   color: #000;
+}
+
+.el-form-item {
+  margin-right: 8px !important;
+  margin-bottom: 0px;
 }
 </style>

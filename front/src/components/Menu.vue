@@ -94,13 +94,26 @@ export default class Menu extends Vue {
 <style lang="scss" scoped>
 .menu-wrapper {
   height: 100%;
-  background-color: #f5f5f5;
-  // width: 100%;
+  background-color: rgb(49, 65, 89);
+  color: #fff;
+
   .el-menu-vertical {
     height: 100%;
-    background-color: #f5f5f5;
+    background-color: rgb(49, 65, 89);
+    svg {
+      color: #fff;
+    }
+    span {
+      color: #fff;
+    }
     &:not(.el-menu--collapse) {
       width: 200px;
+    }
+    .el-menu-item {
+      background-color: rgb(49, 65, 89);
+      a {
+        color: #fff;
+      }
     }
   }
 }

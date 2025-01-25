@@ -18,6 +18,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
@@ -52,21 +53,20 @@ public class OperationAspect {
             }
             return point.proceed();
 
-        } catch (BusinessException  e) {
+        } catch (BusinessException e) {
             throw e;
         } catch (Exception e) {
             throw new BusinessException(ResponseCode.CODE_500);
-        }
-        catch (Throwable e) {
+        } catch (Throwable e) {
             throw new BusinessException(ResponseCode.CODE_500);
         }
     }
 
-    public void checkLogin(){
+    public void checkLogin() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         HttpSession session = request.getSession();
         Object userDto = session.getAttribute("userDto");
-        if(userDto==null){
+        if (userDto == null) {
             throw new BusinessException(ResponseCode.CODE_901);
         }
     }
@@ -83,9 +83,8 @@ public class OperationAspect {
             if (ArrayUtils.contains(TYPE_BASE, parameter.getParameterizedType().getTypeName())) {
                 checkValue(value, verifyParam);
             } else {
-
+                checkObjectValue(parameter, value);
             }
-
         }
     }
 
@@ -107,12 +106,38 @@ public class OperationAspect {
         /**
          * 检验正则
          */
-        if(!StringUtils.isEmpty(verifyParam.regx().getRegex())&& VerifyUtils.Verify(verifyParam.regx(),String.valueOf(value))){
+        if (!StringUtils.isEmpty(verifyParam.regx().getRegex()) && VerifyUtils.Verify(verifyParam.regx(), String.valueOf(value))) {
             throw new BusinessException(ResponseCode.CODE_500);
         }
 
     }
-    private void checkObjectValue(Parameter parameter,Object obj){
 
+    private void checkObjectValue(Parameter parameter, Object obj) {
+        if (obj == null) {
+            return;
+        }
+        // 获取对象的所有字段
+        Field[] fields = obj.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            // 获取字段上的VerifyParam注解
+            VerifyParam fieldVerify = field.getAnnotation(VerifyParam.class);
+            if (fieldVerify == null) {
+                continue;
+            }
+            // 设置字段可访问
+            field.setAccessible(true);
+            try {
+                Object value = field.get(obj);
+                // 如果字段是基本类型或String，直接校验
+                if (ArrayUtils.contains(TYPE_BASE, field.getType().getName())) {
+                    checkValue(value, fieldVerify);
+                } else {
+                    // 如果是对象，递归校验
+                    checkObjectValue(parameter, value);
+                }
+            } catch (IllegalAccessException e) {
+                throw new BusinessException(ResponseCode.CODE_500);
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import('../views/AboutView.vue'),
+        component: () => import('../views/user/index.vue'),
         children: [
           {
             path: '/user/userList',
@@ -26,8 +26,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '用户列表',
               index: '1-1'
             },
-            component: () =>
-              import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+            component: () => import('../views/user/userList/index.vue')
           },
           {
             path: '/user/activityLog',
@@ -36,8 +35,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '活动日志',
               index: '1-2'
             },
-            component: () =>
-              import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+            component: () => import('../views/user/activityLog/index.vue')
           }
         ]
       },
@@ -47,8 +45,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '商品管理'
         },
-        component: () =>
-          import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+        component: () => import('../views/AboutView.vue'),
 
         children: [
           {
@@ -58,8 +55,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '商品列表',
               index: '2-1'
             },
-            component: () =>
-              import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+            component: () => import('../views/AboutView.vue')
           },
           {
             path: '/god/godReport',
@@ -68,8 +64,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '报告与分析',
               index: '2-2'
             },
-            component: () =>
-              import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+            component: () => import('../views/AboutView.vue')
           }
         ]
       },
@@ -88,8 +83,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '商家列表',
               index: '3-1'
             },
-            component: () =>
-              import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+            component: () => import('../views/AboutView.vue')
           },
           {
             path: '/seller/cartList',
@@ -98,8 +92,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '订单管理',
               index: '3-2'
             },
-            component: () =>
-              import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+            component: () => import('../views/AboutView.vue')
           },
           {
             path: '/seller/sellerRegister',
@@ -108,8 +101,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '商家注册与审核',
               index: '3-3'
             },
-            component: () =>
-              import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+            component: () => import('../views/AboutView.vue')
           }
         ]
       }

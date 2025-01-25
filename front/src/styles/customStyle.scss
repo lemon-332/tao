@@ -35,7 +35,7 @@
 }
 
 .flex-end-center {
-  display: flex;
+  display: flex !important;
   justify-content: flex-end;
   align-items: center;
 }
@@ -86,3 +86,5 @@
 .d-flex {
   display: flex;
 }
+
+
