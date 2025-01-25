@@ -30,12 +30,62 @@
       </el-button>
     </el-col>
   </el-row>
-  <AddUserDialog v-model:visible="visible" />
+  <div class="table-container mt-4">
+    <el-table :data="tableData" stripe border style="width: 100%">
+      <el-table-column prop="userName" label="账号" />
+      <el-table-column prop="phone" label="电话" />
+      <el-table-column prop="displayName" label="昵称" />
+      <el-table-column prop="password" label="密码" />
+      <el-table-column prop="status" label="状态">
+        <template #default="scope">
+          <el-tag
+            :type="scope.row.status === 1 ? 'primary' : 'warning'"
+            disable-transitions
+          >
+            {{ scope.row.status === 1 ? '启用' : '禁用' }}
+          </el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column prop="role" label="角色">
+        <template #default="scope">
+          <el-tag :type="getUserRoleTag(scope.row.role)" disable-transitions>
+            {{ getUserRole(scope.row.role) }}
+          </el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column prop="startTime" label="创建时间" width="180" />
+      <el-table-column fixed="right" label="操作" min-width="120">
+        <template #default="{ row }">
+          <el-popconfirm
+            title="你确定要删除这条数据吗?"
+            @confirm="handleDelete(row)"
+          >
+            <template #reference>
+              <el-button link type="danger" size="small">删除</el-button>
+            </template>
+          </el-popconfirm>
+          <el-button link type="primary" size="small" @click="handleEdit(row)">
+            编辑
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
+  <AddUserDialog
+    v-model:visible="visible"
+    :type="userDiaType"
+    :edit-user="editUser"
+    @refresh="getList"
+  />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-facing-decorator'
 import AddUserDialog from './components/AddUserDialog.vue'
+
+import { ElMessage } from 'element-plus'
+
+import { userList, userDelete } from '@/api/user'
 @Component({
   components: {
     AddUserDialog
@@ -48,12 +98,56 @@ export default class UserList extends Vue {
   }
   private visible = false
 
+  private editUser = {}
+
+  private userDiaType = 'add'
+
+  private tableData = []
+
+  private getUserRole(role: number) {
+    if (role === 1) return '用户'
+    else if (role === 2) return '管理员'
+    else return '会员'
+  }
+
+  private getUserRoleTag(role: number) {
+    if (role === 1) return 'primary'
+    else if (role === 2) return 'success'
+    else return 'warning'
+  }
+
   private addUser() {
+    this.userDiaType = 'add'
     this.visible = true
   }
 
   private search() {
-    console.log(this.searchForm.startTime)
+    this.getList()
+  }
+
+  private async getList() {
+    const res = await userList({ userNameFuzzy: this.searchForm.userName })
+    if (res.code === 200) {
+      this.tableData = res.data.list
+    }
+  }
+
+  private async handleDelete(row) {
+    const res = await userDelete({ userId: row.userId })
+    if (res.code === 200) {
+      ElMessage.success('删除成功')
+      this.getList()
+    }
+  }
+
+  private handleEdit(row) {
+    this.editUser = row
+    this.userDiaType = 'edit'
+    this.visible = true
+  }
+
+  created() {
+    this.getList()
   }
 }
 </script>

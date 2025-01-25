@@ -11,10 +11,10 @@ export function login(data: IUserLogin): Promise<IResponse> {
   })
 }
 
-export function userList(params): Promise<IResponse> {
+export function userList(data): Promise<IResponse> {
   return Service({
     url: `${BASE_URL}/userList`,
-    params
+    data
   })
 }
 
@@ -22,6 +22,20 @@ export function userList(params): Promise<IResponse> {
 export function addUser(data): Promise<IResponse> {
   return Service({
     url: `${BASE_URL}/userAdd`,
+    data
+  })
+}
+
+export function userUpdate(data): Promise<IResponse> {
+  return Service({
+    url: `${BASE_URL}/userUpdate`,
+    data
+  })
+}
+
+export function userDelete(data): Promise<IResponse> {
+  return Service({
+    url: `${BASE_URL}/userDelete`,
     data
   })
 }

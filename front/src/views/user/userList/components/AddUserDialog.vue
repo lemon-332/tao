@@ -1,10 +1,10 @@
 <template>
   <el-dialog
-    title="添加用户"
+    :title="type === 'add' ? '添加用户' : '编辑用户'"
     width="500px"
     :model-value="visible"
     @update:model-value="$emit('update:visible', $event)"
-    @close="$emit('update:visible', false)"
+    @close="handleClose"
   >
     <el-form ref="formRef" :model="form" label-width="120px" :rules="rules">
       <el-form-item label="用户名" prop="userName">
@@ -46,14 +46,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Ref } from 'vue-facing-decorator'
+import { Component, Vue, Prop, Ref, Watch } from 'vue-facing-decorator'
+import { addUser, userUpdate } from '@/api/user'
+import { ElMessage } from 'element-plus'
 
-import { addUser } from '@/api/user'
+const defaultForm = {
+  userName: '',
+  phone: '',
+  password: Math.random().toString(36).substr(2, 8),
+  displayName: '',
+  role: 1,
+  status: 1
+}
 
 @Component({
   name: 'AddUserDialog',
   components: {},
-  emits: ['update:visible']
+  emits: ['update:visible', 'refresh']
 })
 export default class AddUserDialog extends Vue {
   @Prop({
@@ -62,16 +71,31 @@ export default class AddUserDialog extends Vue {
   })
   private visible!: boolean
 
+  @Prop({
+    type: String,
+    default: 'add'
+  })
+  private type!: string
+
+  @Prop({
+    type: Object,
+    default: () => ({ ...defaultForm })
+  })
+  private editUser!: any
+
+  private form = { ...defaultForm }
+
   @Ref()
   private formRef
 
-  private form = {
-    userName: '',
-    phone: '',
-    password: Math.random().toString(36).substr(2, 8),
-    displayName: '',
-    role: 1,
-    status: 1
+  @Watch('editUser', { deep: true })
+  onEditUserChange(newVal: any) {
+    this.form = { ...newVal }
+  }
+
+  private handleClose() {
+    this.$emit('update:visible', false)
+    this.form = { ...defaultForm }
   }
 
   private rules = {
@@ -103,12 +127,24 @@ export default class AddUserDialog extends Vue {
 
     await this.formRef.validate(async (valid, fields) => {
       if (valid) {
-        const res = await addUser(this.form)
+        const res = await (this.type === 'add'
+          ? addUser(this.form)
+          : userUpdate(this.form))
         if (res.code === 200) {
           this.$emit('update:visible', false)
+          ElMessage({
+            message: this.type === 'add' ? '添加成功' : '编辑成功',
+            type: 'success'
+          })
+          this.$emit('refresh')
+          this.form = { ...defaultForm }
         }
       }
     })
+  }
+
+  created() {
+    this.form = { ...this.editUser }
   }
 }
 </script>
