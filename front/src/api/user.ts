@@ -17,3 +17,11 @@ export function userList(params): Promise<IResponse> {
     params
   })
 }
+
+// 导出一个函数，用于添加用户
+export function addUser(data): Promise<IResponse> {
+  return Service({
+    url: `${BASE_URL}/userAdd`,
+    data
+  })
+}

@@ -9,13 +9,14 @@ import com.tao.entity.vo.ResponseVo;
 import com.tao.exception.BusinessException;
 import com.tao.myEnum.ResponseCode;
 import com.tao.service.UserService;
+import com.tao.utils.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * @author lemon
@@ -36,8 +37,8 @@ public class UserController extends ABaseController {
     @RequestMapping("login")
     @GlobalInterceptor(checkParams = true)
     public ResponseVo login(@VerifyParam(required = true) String userName,
-                          @VerifyParam(required = true) String password,
-                          @VerifyParam(required = true) Integer role) {
+                            @VerifyParam(required = true) String password,
+                            @VerifyParam(required = true) Integer role) {
         User user = userService.login(userName, password, role);
         return getSuccessResponseVo(user);
     }
@@ -96,9 +97,11 @@ public class UserController extends ABaseController {
         return getSuccessResponseVo(null);
     }
 
-    @RequestMapping("userDelete")
-    public ResponseVo userDelete(String userId) {
-        userService.deleteUserByUserId(userId);
+    @RequestMapping("userAdd")
+    public ResponseVo userAdd(User user) {
+        user.setUserId(StringUtils.random16());
+        user.setStartTime(new Date());
+        userService.add(user);
         return getSuccessResponseVo(null);
     }
 }

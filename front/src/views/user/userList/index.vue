@@ -61,5 +61,9 @@ export default class UserList extends Vue {
 .search-form {
   display: flex;
   align-items: center;
+
+  .el-form-item {
+    margin-bottom: 0px;
+  }
 }
 </style>
