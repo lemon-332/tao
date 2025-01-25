@@ -1,1 +1,6 @@
 logs/*
+// ... existing code ...
+# Ignore all log files in logs directory
+logs/
+*.log
+// ... existing code ...
