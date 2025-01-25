@@ -35,10 +35,9 @@ public class UserController extends ABaseController {
      */
     @RequestMapping("login")
     @GlobalInterceptor(checkParams = true)
-    public ResponseVo login(HttpServletRequest request) {
-        String userName = (String) request.getAttribute("userName");
-        String password = (String) request.getAttribute("password");
-        int role = (int) request.getAttribute("role");
+    public ResponseVo login(@VerifyParam(required = true) String userName,
+                          @VerifyParam(required = true) String password,
+                          @VerifyParam(required = true) Integer role) {
         User user = userService.login(userName, password, role);
         return getSuccessResponseVo(user);
     }

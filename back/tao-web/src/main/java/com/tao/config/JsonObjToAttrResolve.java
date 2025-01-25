@@ -10,7 +10,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Map;
 
-public class MyInterceptor extends HandlerInterceptorAdapter {
+public class JsonObjToAttrResolve extends HandlerInterceptorAdapter {
+
+    private static final String CACHED_REQUEST_BODY_MAP_ATTR = "CACHED_REQUEST_BODY_MAP";
 
     private String getRequestBody(HttpServletRequest request) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -29,6 +31,9 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
         try {
             // 将 JSON 字符串解析为 Map
             Map<String, Object> map = objectMapper.readValue(jsonBody, Map.class);
+
+            // 将解析后的Map存储到request attributes中
+            request.setAttribute(CACHED_REQUEST_BODY_MAP_ATTR, map);
 
             // 将每个键值对设置到请求属性中
             for (Map.Entry<String, Object> entry : map.entrySet()) {
