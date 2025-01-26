@@ -38,4 +38,20 @@ public class GodController extends ABaseController {
         godService.add(god);
         return getSuccessResponseVo(null);
     }
+
+    @RequestMapping("godDelete")
+    public ResponseVo godDelete(String godId, String sellerId) {
+        God god = godService.getGodByGodIdAndSellerId(godId, sellerId);
+        if (god == null) {
+            throw new RuntimeException("商品不存在");
+        }
+        godService.deleteGodByGodIdAndSellerId(godId, sellerId);
+        return getSuccessResponseVo(null);
+    }
+
+    @RequestMapping("godUpdate")
+    public ResponseVo godUpdate(God god, String sellerId, String godId) {
+        godService.updateGodByGodIdAndSellerId(god, godId, sellerId);
+        return getSuccessResponseVo(null);
+    }
 }

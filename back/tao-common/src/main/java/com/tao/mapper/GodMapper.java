@@ -26,4 +26,6 @@ public interface GodMapper<T, P> extends BaseMapper {
     Integer deleteByGodIdAndSellerId(@Param("godId") String godId, @Param("sellerId") String sellerId);
 
     List<T> selectBySellerId(String sellerId);
+
+    T selectByGodId(String godId);
 }

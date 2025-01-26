@@ -302,10 +302,15 @@
         <include refid="base_column_list"/>
         from god where godId=#{godId} and sellerId=#{sellerId}
     </select>
-    <select id="selectBySellerId">
+    <select id="selectBySellerId" resultMap="god">
         select
         <include refid="base_column_list"/>
         from god where sellerId=#{sellerId}
+    </select>
+    <select id="selectByGodId" resultMap="god">
+        select
+        <include refid="base_column_list"/>
+        from god where godId=#{godId}
     </select>
 
     <!--根据GodIdAndSellerId修改-->
