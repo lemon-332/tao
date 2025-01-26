@@ -7,8 +7,9 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>tao-common</artifactId>
     <packaging>jar</packaging>
+    
+    <artifactId>tao-common</artifactId>
     <version>0.0.1</version>
 
     <name>tao-common</name>

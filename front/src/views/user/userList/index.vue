@@ -121,12 +121,36 @@ export default class UserList extends Vue {
     this.visible = true
   }
 
-  private search() {
-    this.getList()
+  private formatDate(date) {
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1 // 月份从 0 开始
+    const day = date.getDate()
+
+    return `${year}-${month}-${day}`
+  }
+
+  private async search() {
+    if (this.searchForm.startTime !== '') {
+      const date = new Date(this.searchForm.startTime)
+      this.searchForm.startTime = this.formatDate(date)
+    }
+
+    const res = await userList({
+      userNameFuzzy: this.searchForm.userName,
+      startTimeStart: this.searchForm.startTime
+    })
+    if (res.code === 200) {
+      this.tableData = res.data.list
+    }
   }
 
   private async getList() {
-    const res = await userList({ userNameFuzzy: this.searchForm.userName })
+    console.log('22')
+
+    const res = await userList({
+      userNameFuzzy: this.searchForm.userName,
+      startTimeStart: ''
+    })
     if (res.code === 200) {
       this.tableData = res.data.list
     }

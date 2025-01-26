@@ -73,9 +73,10 @@ public class UserController extends ABaseController {
 
     @RequestMapping("userList")
     // todo 登录校验
-    public ResponseVo userList(String userNameFuzzy) {
+    public ResponseVo userList(String userNameFuzzy, String startTimeStart) {
         UserQuery userQuery = new UserQuery();
         userQuery.setUserNameFuzzy(userNameFuzzy);
+        userQuery.setStartTimeStart(startTimeStart);
         PaginationResultVo<User> listByPage = userService.findListByPage(userQuery);
         return getSuccessResponseVo(listByPage);
     }
