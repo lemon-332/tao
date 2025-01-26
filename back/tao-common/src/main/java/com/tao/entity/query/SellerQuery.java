@@ -47,6 +47,12 @@ public class SellerQuery extends BaseParam {
     public String endTimeStart;
 
     public String endTimeEnd;
+    /**
+     * 商家名称
+     */
+    public String sellerName;
+
+    public String sellerNameFuzzy;
 
     public String getSellerId() {
         return sellerId;
@@ -102,6 +108,14 @@ public class SellerQuery extends BaseParam {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
     }
 
     public String getSellerIdFuzzy() {
@@ -166,6 +180,14 @@ public class SellerQuery extends BaseParam {
 
     public void setEndTimeEnd(String endTimeEnd) {
         this.endTimeEnd = endTimeEnd;
+    }
+
+    public String getSellerNameFuzzy() {
+        return sellerNameFuzzy;
+    }
+
+    public void setSellerNameFuzzy(String sellerNameFuzzy) {
+        this.sellerNameFuzzy = sellerNameFuzzy;
     }
 
 }

@@ -1,9 +1,13 @@
 package com.tao.service.impl;
 
+import com.tao.entity.po.God;
 import com.tao.entity.po.Seller;
+import com.tao.entity.query.GodQuery;
 import com.tao.entity.query.SellerQuery;
 import com.tao.entity.query.SimplePage;
 import com.tao.entity.vo.PaginationResultVo;
+import com.tao.exception.BusinessException;
+import com.tao.mapper.GodMapper;
 import com.tao.mapper.SellerMapper;
 import com.tao.myEnum.PageSize;
 import com.tao.service.SellerService;
@@ -14,7 +18,7 @@ import java.util.List;
 
 /**
  * @author lemon
- * @date 2025-01-20 20:21
+ * @date 2025-01-26 11:57
  * @desc
  */
 
@@ -23,6 +27,18 @@ public class SellerServiceImpl implements SellerService {
 
     @Resource
     private SellerMapper<Seller, SellerQuery> sellerMapper;
+
+    @Resource
+    private GodMapper<God, GodQuery> godMapper;
+
+    @Override
+    public void sellerDelete(String sellerId) {
+        List<God> gods = godMapper.selectBySellerId(sellerId);
+        if (!gods.isEmpty()) {
+            throw new BusinessException("该商家下有商品，不能删除");
+        }
+        sellerMapper.deleteBySellerId(sellerId);
+    }
 
     /**
      * 根据条件查询列表

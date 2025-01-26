@@ -46,7 +46,7 @@ public class CartServiceImpl implements CartService {
         cartDto.setCartId(cartDto.getCartId());
         String godIds = cart.getGodIds();
         List<God> gods = new ArrayList<>();
-        if (!godIds.equals("")) {
+        if (!godIds.isEmpty()) {
             String[] godList = godIds.split(",");
             for (String godId : godList) {
                 God god = godMapper.selectByGodIdAndSellerId(userId, godId);

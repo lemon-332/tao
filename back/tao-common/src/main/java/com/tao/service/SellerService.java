@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author lemon
- * @date 2025-01-20 20:21
+ * @date 2025-01-26 11:57
  * @desc
  */
 public interface SellerService {
@@ -59,4 +59,5 @@ public interface SellerService {
     public Integer deleteSellerBySellerId(String sellerId);
 
 
+    void sellerDelete(String sellerId);
 }

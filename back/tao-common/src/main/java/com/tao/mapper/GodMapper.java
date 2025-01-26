@@ -2,6 +2,8 @@ package com.tao.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author lemon
  * @date 2025-01-20 20:21
@@ -23,4 +25,5 @@ public interface GodMapper<T, P> extends BaseMapper {
      */
     Integer deleteByGodIdAndSellerId(@Param("godId") String godId, @Param("sellerId") String sellerId);
 
+    List<T> selectBySellerId(String sellerId);
 }

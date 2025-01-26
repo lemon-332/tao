@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * @author lemon
- * @date 2025-01-20 20:21
+ * @date 2025-01-26 11:57
  * @desc
  */
 public class Seller implements Serializable {
@@ -45,6 +45,10 @@ public class Seller implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date endTime;
+    /**
+     * 商家名称
+     */
+    public String sellerName;
 
     public String getSellerId() {
         return sellerId;
@@ -102,6 +106,14 @@ public class Seller implements Serializable {
         this.endTime = endTime;
     }
 
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
+
     @Override
     public String toString() {
         return "Seller{" +
@@ -112,6 +124,7 @@ public class Seller implements Serializable {
                 ", sellerStar = " + sellerStar +
                 ", startTime = " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(startTime) +
                 ", endTime = " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(endTime) +
+                ", sellerName = " + sellerName +
                 '}';
     }
 }

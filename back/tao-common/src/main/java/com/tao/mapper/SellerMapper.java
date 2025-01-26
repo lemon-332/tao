@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * @author lemon
- * @date 2025-01-20 20:21
+ * @date 2025-01-26 11:57
  * @desc
  */
 public interface SellerMapper<T, P> extends BaseMapper {
