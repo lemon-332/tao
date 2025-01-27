@@ -45,7 +45,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '商品管理'
         },
-        component: () => import('../views/AboutView.vue'),
+        component: () => import('../views/god/index.vue'),
 
         children: [
           {
@@ -55,7 +55,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '商品列表',
               index: '2-1'
             },
-            component: () => import('../views/AboutView.vue')
+            component: () => import('../views/god/godList/index.vue')
           },
           {
             path: '/god/godReport',
@@ -64,7 +64,7 @@ const routes: Array<RouteRecordRaw> = [
               title: '报告与分析',
               index: '2-2'
             },
-            component: () => import('../views/AboutView.vue')
+            component: () => import('../views/god/report/index.vue')
           }
         ]
       },

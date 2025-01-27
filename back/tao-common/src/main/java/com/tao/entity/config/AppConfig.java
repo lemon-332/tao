@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AppConfig {
-//    @Value("${project.folder}")
+    @Value("${project.folder}")
     private String projectFolder;
 
     public String getProjectFolder() {
