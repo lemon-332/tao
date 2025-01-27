@@ -4,6 +4,7 @@ import com.tao.entity.po.God;
 import com.tao.entity.query.GodQuery;
 import com.tao.entity.vo.PaginationResultVo;
 import com.tao.entity.vo.ResponseVo;
+import com.tao.exception.BusinessException;
 import com.tao.service.GodService;
 import com.tao.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Date;
 
 @RestController
@@ -66,6 +72,31 @@ public class GodController extends ABaseController {
             return getSuccessResponseVo("Files uploaded successfully");
         } catch (Exception e) {
             return getSuccessResponseVo("File upload failed: " + e.getMessage());
+        }
+    }
+
+    @RequestMapping("/download")
+    public void fileDownLoad(HttpServletResponse response, @RequestParam("fileName") String fileName) {
+        File file = new File(projectFolder + '/' + fileName);
+        if (!file.exists()) {
+            throw new BusinessException("文件不存在");
+        }
+        response.reset();
+        response.setContentType("application/octet-stream");
+        response.setCharacterEncoding("utf-8");
+        response.setContentLength((int) file.length());
+        response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
+
+        try (BufferedInputStream bis = new BufferedInputStream(Files.newInputStream(file.toPath()))) {
+            byte[] buff = new byte[1024];
+            OutputStream os = response.getOutputStream();
+            int i = 0;
+            while ((i = bis.read(buff)) != -1) {
+                os.write(buff, 0, i);
+                os.flush();
+            }
+        } catch (IOException e) {
+            throw new BusinessException("下载失败：" + e.getMessage());
         }
     }
 
