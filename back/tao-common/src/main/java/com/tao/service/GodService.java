@@ -5,6 +5,7 @@ import com.tao.entity.query.GodQuery;
 import com.tao.entity.vo.PaginationResultVo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lemon
@@ -58,4 +59,5 @@ public interface GodService {
      */
     public Integer deleteGodByGodIdAndSellerId(String godId, String sellerId);
 
+    Map<Integer, List<Integer>> statisticCount(List<God> godList);
 }

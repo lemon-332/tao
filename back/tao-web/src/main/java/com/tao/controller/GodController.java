@@ -22,6 +22,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("god")
@@ -120,8 +121,8 @@ public class GodController extends ABaseController {
     @RequestMapping("godReport")
     public ResponseVo godReport() {
         List<God> godList = godService.findListByQuery(new GodQuery());
-        
-        return getSuccessResponseVo(null);
+        Map<Integer, List<Integer>> map = godService.statisticCount(godList);
+        return getSuccessResponseVo(map);
     }
 
 }

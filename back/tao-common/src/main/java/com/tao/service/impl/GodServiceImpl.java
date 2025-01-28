@@ -10,7 +10,7 @@ import com.tao.service.GodService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author lemon
@@ -101,4 +101,24 @@ public class GodServiceImpl implements GodService {
         return godMapper.deleteByGodIdAndSellerId(godId, sellerId);
     }
 
+    @Override
+    public Map<Integer, List<Integer>> statisticCount(List<God> godList) {
+        HashMap<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < godList.size(); i++) {
+            God god = godList.get(i);
+            Date startTime = god.getStartTime();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startTime);
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            if (map.get(year) == null) {
+                List<Integer> monthList = new ArrayList<>(Collections.nCopies(12, 0));
+                monthList.set(month, monthList.get(month) + 1);
+                map.put(year, monthList);
+            } else {
+                map.get(year).set(month, map.get(year).get(month) + 1);
+            }
+        }
+        return map;
+    }
 }
