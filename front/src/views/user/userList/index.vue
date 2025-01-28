@@ -129,31 +129,39 @@ export default class UserList extends Vue {
     return `${year}-${month}-${day}`
   }
 
-  private async search() {
-    if (this.searchForm.startTime !== '') {
-      const date = new Date(this.searchForm.startTime)
-      this.searchForm.startTime = this.formatDate(date)
-    }
-
-    const res = await userList({
-      userNameFuzzy: this.searchForm.userName,
-      startTimeStart: this.searchForm.startTime
-    })
-    if (res.code === 200) {
-      this.tableData = res.data.list
+  private async fetchUserList(params: {
+    userNameFuzzy: string
+    startTimeStart: string
+  }) {
+    try {
+      const res = await userList(params)
+      if (res.code === 200) {
+        this.tableData = res.data.list
+      } else {
+        ElMessage.error(res.info || '获取用户列表失败')
+      }
+    } catch (error) {
+      ElMessage.error('获取用户列表失败')
+      console.error('获取用户列表错误:', error)
     }
   }
 
-  private async getList() {
-    console.log('22')
+  private async search() {
+    const startTime = this.searchForm.startTime
+      ? this.formatDate(new Date(this.searchForm.startTime))
+      : ''
 
-    const res = await userList({
+    await this.fetchUserList({
+      userNameFuzzy: this.searchForm.userName,
+      startTimeStart: startTime
+    })
+  }
+
+  private async getList() {
+    await this.fetchUserList({
       userNameFuzzy: this.searchForm.userName,
       startTimeStart: ''
     })
-    if (res.code === 200) {
-      this.tableData = res.data.list
-    }
   }
 
   private async handleDelete(row) {

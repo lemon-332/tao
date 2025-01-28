@@ -3,9 +3,16 @@ import { IResponse } from '@/types/response'
 
 const BASE_URL = '/seller'
 
-export function userList(data): Promise<IResponse> {
+export function sellerList(data): Promise<IResponse> {
   return Service({
-    url: `${BASE_URL}/userList`,
+    url: `${BASE_URL}/sellerList`,
+    data
+  })
+}
+
+export function sellerInfo(data): Promise<IResponse> {
+  return Service({
+    url: `${BASE_URL}/sellerInfo`,
     data
   })
 }

@@ -39,6 +39,7 @@
       <el-table-column prop="godCount" label="商品数量" />
       <el-table-column prop="godBoughtCount" label="商品已卖出数量" />
       <el-table-column prop="godStar" label="商品点赞数" />
+      <el-table-column prop="startTime" label="上架时间" width="180" />
       <el-table-column fixed="right" label="操作" min-width="120">
         <template #default="{ row }">
           <el-popconfirm
@@ -68,7 +69,8 @@
 import { Component, Vue } from 'vue-facing-decorator'
 import GodDialog from './components/GodDialog.vue'
 import { ElMessage } from 'element-plus'
-// import { godList, godDelete } from '@/api/god'
+import { godList, godDelete, godAdd, godUpload } from '@/api/god'
+import { sellerInfo } from '@/api/seller'
 
 @Component({
   components: {
@@ -97,37 +99,73 @@ export default class GodList extends Vue {
     return `${year}-${month}-${day}`
   }
 
+  private async fetchSellerName(sellerId: number): Promise<string> {
+    try {
+      const sellerRes = await sellerInfo({ sellerId })
+      return sellerRes.code === 200 ? sellerRes.data.sellerName : '未知'
+    } catch (error) {
+      console.error('获取卖家信息失败:', error)
+      return '未知'
+    }
+  }
+
+  private async processGodList(list: any[]): Promise<any[]> {
+    try {
+      return await Promise.all(
+        list.map(async (item) => ({
+          ...item,
+          sellerName: await this.fetchSellerName(item.sellerId)
+        }))
+      )
+    } catch (error) {
+      console.error('处理商品列表失败:', error)
+      return list.map((item) => ({ ...item, sellerName: '未知' }))
+    }
+  }
+
+  private async fetchList(params: {
+    godNameFuzzy: string
+    startTimeStart: string
+  }) {
+    try {
+      const res = await godList(params)
+      if (res.code === 200) {
+        this.tableData = await this.processGodList(res.data.list)
+      } else {
+        ElMessage.error(res.info || '获取列表失败')
+      }
+    } catch (error) {
+      console.error('获取列表失败:', error)
+      ElMessage.error('获取列表失败')
+    }
+  }
+
   private async search() {
-    if (this.searchForm.startTime !== '') {
+    let startTimeStart = ''
+    if (this.searchForm.startTime) {
       const date = new Date(this.searchForm.startTime)
-      this.searchForm.startTime = this.formatDate(date)
+      startTimeStart = this.formatDate(date)
     }
 
-    // const res = await godList({
-    //   godNameFuzzy: this.searchForm.godName,
-    //   startTimeStart: this.searchForm.startTime
-    // })
-    // if (res.code === 200) {
-    //   this.tableData = res.data.list
-    // }
+    await this.fetchList({
+      godNameFuzzy: this.searchForm.godName,
+      startTimeStart
+    })
   }
 
   private async getList() {
-    // const res = await godList({
-    //   godNameFuzzy: this.searchForm.godName,
-    //   startTimeStart: ''
-    // })
-    // if (res.code === 200) {
-    //   this.tableData = res.data.list
-    // }
+    await this.fetchList({
+      godNameFuzzy: this.searchForm.godName,
+      startTimeStart: ''
+    })
   }
 
   private async handleDelete(row) {
-    // const res = await godDelete({ godId: row.godId })
-    // if (res.code === 200) {
-    //   ElMessage.success('删除成功')
-    //   this.getList()
-    // }
+    const res = await godDelete({ godId: row.godId })
+    if (res.code === 200) {
+      ElMessage.success('删除成功')
+      this.getList()
+    }
   }
 
   private handleEdit(row) {

@@ -19,11 +19,13 @@
         <result column="startTime" property="startTime"/>
         <!--商家闭业时间-->
         <result column="endTime" property="endTime"/>
+        <!--商家名称-->
+        <result column="sellerName" property="sellerName"/>
     </resultMap>
 
     <!--通用查询结果列-->
     <sql id="base_column_list">
-        sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime
+        sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName
     </sql>
 
     <!--基本条件查询-->
@@ -48,6 +50,9 @@
         </if>
         <if test="query.endTime != null">
             and endTime = #{query.endTime}
+        </if>
+        <if test="query.sellerName != null">
+            and sellerName = #{query.sellerName}
         </if>
     </sql>
 
@@ -76,6 +81,9 @@
         </if>
         <if test="query.endTimeEnd != null and query.endTimeEnd!=''">
             <![CDATA[and endTime<date_sub(str_to_date(#{query.endTimeEnd}, '%Y-%m-%d'),interval -1 day)]]>
+        </if>
+        <if test="query.sellerNameFuzzy != null and query.sellerNameFuzzy!=''">
+            and sellerName like concat('%', #{query.sellerNameFuzzy}, '%')
         </if>
     </sql>
 
@@ -131,6 +139,9 @@
             <if test="bean.endTime!= null">
                 endTime,
             </if>
+            <if test="bean.sellerName!= null">
+                sellerName,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="bean.sellerId!= null">
@@ -153,6 +164,9 @@
             </if>
             <if test="bean.endTime!= null">
                 #{bean.endTime},
+            </if>
+            <if test="bean.sellerName!= null">
+                #{bean.sellerName},
             </if>
         </trim>
     </insert>
@@ -182,6 +196,9 @@
             <if test="bean.endTime!= null">
                 endTime,
             </if>
+            <if test="bean.sellerName!= null">
+                sellerName,
+            </if>
         </trim>
         on DUPLICATE key update
         <trim prefix="" suffix="" suffixOverrides=",">
@@ -206,25 +223,28 @@
             <if test="bean.endTime!= null">
                 endTime = VALUES(endTime),
             </if>
+            <if test="bean.sellerName!= null">
+                sellerName = VALUES(sellerName),
+            </if>
         </trim>
     </insert>
 
     <!--批量添加-->
     <insert id="insertBatch" parameterType="com.tao.entity.po.Seller">
-        INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime)
+        INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName)
         <foreach collection="list" item="item" separator=",">
             (
-            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime}
+            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime},#{item.sellerName}
             )
         </foreach>
     </insert>
 
     <!--批量新增或修改-->
     <insert id="insertOrUpdateBatch" parameterType="com.tao.entity.po.Seller">
-        INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime)
+        INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName)
         <foreach collection="list" item="item" separator=",">
             (
-            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime}
+            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime},#{item.sellerName}
             )
         </foreach>
         on DUPLICATE key update
@@ -234,7 +254,8 @@
         sellerImage = VALUES(sellerImage),
         sellerStar = VALUES(sellerStar),
         startTime = VALUES(startTime),
-        endTime = VALUES(endTime)
+        endTime = VALUES(endTime),
+        sellerName = VALUES(sellerName)
     </insert>
 
     <!--根据SellerId删除-->
@@ -273,6 +294,9 @@
             </if>
             <if test="bean.endTime!= null">
                 endTime = #{bean.endTime},
+            </if>
+            <if test="bean.sellerName!= null">
+                sellerName = #{bean.sellerName},
             </if>
         </set>
         where sellerId=#{sellerId}

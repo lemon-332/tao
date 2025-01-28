@@ -20,9 +20,9 @@ public class SellerController extends ABaseController {
     private SellerService sellerService;
 
     @RequestMapping("sellerList")
-    public ResponseVo sellerList(String sellerName, String startTimeStart) {
+    public ResponseVo sellerList(String sellerNameFuzzy, String startTimeStart) {
         SellerQuery sellerQuery = new SellerQuery();
-        sellerQuery.setSellerName(sellerName);
+        sellerQuery.setSellerNameFuzzy(sellerNameFuzzy);
         sellerQuery.setStartTimeStart(startTimeStart);
         PaginationResultVo<Seller> resultVo = sellerService.findListByPage(sellerQuery);
         return getSuccessResponseVo(resultVo);
@@ -49,5 +49,11 @@ public class SellerController extends ABaseController {
     public ResponseVo sellerDelete(String sellerId) {
         sellerService.sellerDelete(sellerId);
         return getSuccessResponseVo(null);
+    }
+
+    @RequestMapping("sellerInfo")
+    public ResponseVo sellerInfo(String sellerId) {
+        Seller seller = sellerService.getSellerBySellerId(sellerId);
+        return getSuccessResponseVo(seller);
     }
 }

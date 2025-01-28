@@ -33,9 +33,9 @@ public class GodController extends ABaseController {
     private String projectFolder;
 
     @RequestMapping("godList")
-    public ResponseVo godList(String godName, String startTimeStart) {
+    public ResponseVo godList(String godNameFuzzy, String startTimeStart) {
         GodQuery godQuery = new GodQuery();
-        godQuery.setGodName(godName);
+        godQuery.setGodNameFuzzy(godNameFuzzy);
         godQuery.setStartTimeStart(startTimeStart);
 
         PaginationResultVo<God> list = godService.findListByPage(godQuery);
@@ -44,16 +44,16 @@ public class GodController extends ABaseController {
     }
 
     @RequestMapping("godAdd")
-    public ResponseVo godAdd(God god, String sellerId) {
+    public ResponseVo godAdd(God god) {
         god.setGodId(StringUtils.random16());
-        god.setSellerId(sellerId);
+        god.setSellerId(god.getSellerId());
         god.setStartTime(new Date());
         god.setGodStar(0);
         godService.add(god);
         return getSuccessResponseVo(null);
     }
 
-    @RequestMapping("/upload")
+    @RequestMapping("/godUpload")
     public ResponseVo httpUpload(@RequestParam("files") MultipartFile[] files) {
         try {
             for (MultipartFile file : files) {
@@ -75,7 +75,7 @@ public class GodController extends ABaseController {
         }
     }
 
-    @RequestMapping("/download")
+    @RequestMapping("/godDownload")
     public void fileDownLoad(HttpServletResponse response, @RequestParam("fileName") String fileName) {
         File file = new File(projectFolder + '/' + fileName);
         if (!file.exists()) {
@@ -115,4 +115,5 @@ public class GodController extends ABaseController {
         godService.updateGodByGodIdAndSellerId(god, godId, sellerId);
         return getSuccessResponseVo(null);
     }
+
 }
