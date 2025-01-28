@@ -32,7 +32,11 @@
   </el-row>
   <div class="table-container mt-4">
     <el-table :data="tableData" stripe border style="width: 100%">
-      <el-table-column prop="godImage" label="商品快照" />
+      <el-table-column prop="godImage" label="商品快照">
+        <template #default="{ row }">
+          <img class="god-img" :src="getGodImage(row)" alt="" srcset="" />
+        </template>
+      </el-table-column>
       <el-table-column prop="sellerName" label="卖家名称" />
       <el-table-column prop="godName" label="商品名称" />
       <el-table-column prop="godDesc" label="描述" />
@@ -90,6 +94,10 @@ export default class GodList extends Vue {
   private addGod() {
     this.godDiaType = 'add'
     this.visible = true
+  }
+
+  private getGodImage(row) {
+    return `/api/god/godDownload/?fileName=${row.godImage.split(',')[0]}`
   }
 
   private formatDate(date) {
@@ -161,7 +169,7 @@ export default class GodList extends Vue {
   }
 
   private async handleDelete(row) {
-    const res = await godDelete({ godId: row.godId })
+    const res = await godDelete({ godId: row.godId, sellerId: row.sellerId })
     if (res.code === 200) {
       ElMessage.success('删除成功')
       this.getList()
@@ -188,5 +196,9 @@ export default class GodList extends Vue {
   .el-form-item {
     margin-bottom: 0px;
   }
+}
+.god-img {
+  width: 100px;
+  height: auto;
 }
 </style>

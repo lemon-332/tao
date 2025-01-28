@@ -63,8 +63,8 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Ref, Watch } from 'vue-facing-decorator'
-import { godAdd, godUpdate, godUpload } from '@/api/god'
-import type { UploadProps, UploadUserFile } from 'element-plus'
+import { godAdd, godUpdate } from '@/api/god'
+import type { UploadUserFile } from 'element-plus'
 
 import { sellerList } from '@/api/seller'
 
@@ -111,8 +111,13 @@ export default class GodDialog extends Vue {
   @Watch('editGod', { deep: true })
   onEditGodChange(newVal: any) {
     this.form = { ...newVal }
-    if (this.type === 'edit' && newVal.sellerName) {
+    if (this.type === 'edit' && newVal.sellerName && newVal.godImage) {
       this.sellerName = newVal.sellerName
+      this.fileList = newVal.godImage.split(',').map((imageName) => ({
+        name: imageName,
+        url: `/api/god/godDownload/?fileName=${imageName}`,
+        status: 'success'
+      }))
     }
   }
 

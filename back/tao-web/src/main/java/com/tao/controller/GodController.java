@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("god")
@@ -113,6 +114,13 @@ public class GodController extends ABaseController {
     @RequestMapping("godUpdate")
     public ResponseVo godUpdate(God god, String sellerId, String godId) {
         godService.updateGodByGodIdAndSellerId(god, godId, sellerId);
+        return getSuccessResponseVo(null);
+    }
+
+    @RequestMapping("godReport")
+    public ResponseVo godReport() {
+        List<God> godList = godService.findListByQuery(new GodQuery());
+        
         return getSuccessResponseVo(null);
     }
 
