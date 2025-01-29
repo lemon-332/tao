@@ -46,7 +46,6 @@ const routes: Array<RouteRecordRaw> = [
           title: '商品管理'
         },
         component: () => import('../views/god/index.vue'),
-
         children: [
           {
             path: '/god/godList',
@@ -74,7 +73,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '商家管理'
         },
-        component: () => import('../views/AboutView.vue'),
+        component: () => import('../views/seller/index.vue'),
         children: [
           {
             path: '/seller/sellerList',
@@ -83,25 +82,36 @@ const routes: Array<RouteRecordRaw> = [
               title: '商家列表',
               index: '3-1'
             },
-            component: () => import('../views/AboutView.vue')
+            component: () => import('../views/seller/sellerList/index.vue')
           },
-          {
-            path: '/seller/cartList',
-            name: 'cartList',
-            meta: {
-              title: '订单管理',
-              index: '3-2'
-            },
-            component: () => import('../views/AboutView.vue')
-          },
+
           {
             path: '/seller/sellerRegister',
             name: 'sellerRegister',
             meta: {
               title: '商家注册与审核',
-              index: '3-3'
+              index: '3-2'
             },
-            component: () => import('../views/AboutView.vue')
+            component: () => import('../views/seller/sellerRegister/index.vue')
+          }
+        ]
+      },
+      {
+        path: '/cart',
+        name: 'cart',
+        meta: {
+          title: '订单管理'
+        },
+        component: () => import('../views/cart/index.vue'),
+        children: [
+          {
+            path: '/cart/cartList',
+            name: 'cartList',
+            meta: {
+              title: '购物车列表',
+              index: '4-1'
+            },
+            component: () => import('../views/cart/cartList/index.vue')
           }
         ]
       }

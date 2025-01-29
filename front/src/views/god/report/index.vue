@@ -17,6 +17,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-facing-decorator'
 import * as echarts from 'echarts'
+import { godReport } from '@/api/god'
 
 @Component({
   components: {}
@@ -24,10 +25,8 @@ import * as echarts from 'echarts'
 export default class Report extends Vue {
   private chart: echarts.ECharts | null = null
   private selectedYear = new Date().getFullYear()
-  private years = Array.from(
-    { length: 5 },
-    (_, i) => this.selectedYear - i
-  )
+  private years: number[] = []
+  private reportData: Record<string, number[]> = {}
 
   mounted() {
     this.initChart()
@@ -52,7 +51,7 @@ export default class Report extends Vue {
 
     const option = {
       title: {
-        text: `Product Growth Trend (${this.selectedYear})`
+        text: `商品出售情况(${this.selectedYear})`
       },
       tooltip: {
         trigger: 'axis'
@@ -61,7 +60,7 @@ export default class Report extends Vue {
         type: 'category',
         data: Array.from({ length: 12 }, (_, i) => {
           const date = new Date(this.selectedYear, i)
-          return date.toLocaleString('en', { month: 'short' })
+          return date.toLocaleString('zh-CN', { month: 'long' })
         })
       },
       yAxis: {
@@ -81,10 +80,21 @@ export default class Report extends Vue {
   }
 
   private getYearData(year: number): number[] {
-    if (year === new Date().getFullYear()) {
-      return [150, 230, 224, 218, 335, 400, 0, 0, 0, 0, 0, 0]
-    }
-    return Array.from({ length: 12 }, () => Math.floor(Math.random() * 500))
+    return this.reportData[year] || Array(12).fill(0)
+  }
+
+  private async getReportData() {
+    const res = await godReport()
+    this.reportData = res.data
+    this.years = Object.keys(res.data)
+      .map(Number)
+      .sort((a, b) => b - a)
+    this.selectedYear = this.years[0]
+    this.updateChart()
+  }
+
+  created() {
+    this.getReportData()
   }
 }
 </script>

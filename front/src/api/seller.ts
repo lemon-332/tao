@@ -32,9 +32,9 @@ export function userUpdate(data): Promise<IResponse> {
   })
 }
 
-export function userDelete(data): Promise<IResponse> {
+export function sellerDelete(data): Promise<IResponse> {
   return Service({
-    url: `${BASE_URL}/userDelete`,
+    url: `${BASE_URL}/sellerDelete`,
     data
   })
 }

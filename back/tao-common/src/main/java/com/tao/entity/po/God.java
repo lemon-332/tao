@@ -1,6 +1,7 @@
 package com.tao.entity.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.util.Date;
  * @date 2025-01-20 20:21
  * @desc
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class God implements Serializable {
     /**
      * 商品Id

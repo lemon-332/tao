@@ -1,11 +1,13 @@
 package com.tao.controller;
 
 import com.tao.entity.po.God;
+import com.tao.entity.po.Seller;
 import com.tao.entity.query.GodQuery;
 import com.tao.entity.vo.PaginationResultVo;
 import com.tao.entity.vo.ResponseVo;
 import com.tao.exception.BusinessException;
 import com.tao.service.GodService;
+import com.tao.service.SellerService;
 import com.tao.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,9 @@ public class GodController extends ABaseController {
     @Resource
     private GodService godService;
 
+    @Resource
+    private SellerService sellerService;
+
 
     @Value("${project.folder}")
     private String projectFolder;
@@ -51,6 +56,13 @@ public class GodController extends ABaseController {
         god.setSellerId(god.getSellerId());
         god.setStartTime(new Date());
         god.setGodStar(0);
+        Seller seller = sellerService.getSellerBySellerId(god.getSellerId());
+        if (seller.getGodIds().isEmpty()) {
+            seller.setGodIds(god.getGodId());
+        } else {
+            seller.setGodIds(god.getGodId() + "," + seller.getGodIds());
+        }
+        sellerService.updateSellerBySellerId(seller, seller.getSellerId());
         godService.add(god);
         return getSuccessResponseVo(null);
     }
@@ -113,8 +125,8 @@ public class GodController extends ABaseController {
     }
 
     @RequestMapping("godUpdate")
-    public ResponseVo godUpdate(God god, String sellerId, String godId) {
-        godService.updateGodByGodIdAndSellerId(god, godId, sellerId);
+    public ResponseVo godUpdate(God god) {
+        godService.updateGodByGodIdAndSellerId(god, god.getGodId(), god.getSellerId());
         return getSuccessResponseVo(null);
     }
 

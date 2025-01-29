@@ -48,3 +48,9 @@ export function godDownload(data): Promise<IResponse> {
     data
   })
 }
+
+export function godReport(): Promise<IResponse> {
+  return Service({
+    url: `${BASE_URL}/godReport`
+  })
+}
