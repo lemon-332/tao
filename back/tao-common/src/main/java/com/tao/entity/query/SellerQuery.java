@@ -53,6 +53,10 @@ public class SellerQuery extends BaseParam {
     public String sellerName;
 
     public String sellerNameFuzzy;
+    /**
+     * 商家状态
+     */
+    public Integer sellerStatus;
 
     public String getSellerId() {
         return sellerId;
@@ -116,6 +120,14 @@ public class SellerQuery extends BaseParam {
 
     public void setSellerName(String sellerName) {
         this.sellerName = sellerName;
+    }
+
+    public Integer getSellerStatus() {
+        return sellerStatus;
+    }
+
+    public void setSellerStatus(Integer sellerStatus) {
+        this.sellerStatus = sellerStatus;
     }
 
     public String getSellerIdFuzzy() {

@@ -2,6 +2,8 @@ package com.tao.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author lemon
  * @date 2025-01-26 11:57
@@ -24,4 +26,5 @@ public interface SellerMapper<T, P> extends BaseMapper {
     Integer deleteBySellerId(@Param("sellerId") String sellerId);
 
 
+    List<T> selectRegisterList(@Param("query") P p);
 }

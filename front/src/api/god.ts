@@ -54,3 +54,10 @@ export function godReport(): Promise<IResponse> {
     url: `${BASE_URL}/godReport`
   })
 }
+
+export function godListByIds(data): Promise<IResponse> {
+  return Service({
+    url: `${BASE_URL}/godListByIds`,
+    data
+  })
+}

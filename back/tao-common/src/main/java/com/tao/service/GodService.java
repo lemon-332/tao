@@ -60,4 +60,6 @@ public interface GodService {
     public Integer deleteGodByGodIdAndSellerId(String godId, String sellerId);
 
     Map<Integer, List<Integer>> statisticCount(List<God> godList);
+
+    List<God> getGodsByGodIds(String godIds);
 }

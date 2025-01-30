@@ -121,4 +121,16 @@ public class GodServiceImpl implements GodService {
         }
         return map;
     }
+
+    @Override
+    public List<God> getGodsByGodIds(String godIds) {
+        String[] godIdList = godIds.split(",");
+        ArrayList<God> godList = new ArrayList<>();
+        for (String godId : godIdList) {
+            God god = godMapper.selectByGodId(godId);
+            if (god != null)
+                godList.add(god);
+        }
+        return godList;
+    }
 }

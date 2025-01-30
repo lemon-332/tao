@@ -57,7 +57,7 @@ public class GodController extends ABaseController {
         god.setStartTime(new Date());
         god.setGodStar(0);
         Seller seller = sellerService.getSellerBySellerId(god.getSellerId());
-        if (seller.getGodIds().isEmpty()) {
+        if (seller.getGodIds() == null) {
             seller.setGodIds(god.getGodId());
         } else {
             seller.setGodIds(god.getGodId() + "," + seller.getGodIds());
@@ -135,6 +135,12 @@ public class GodController extends ABaseController {
         List<God> godList = godService.findListByQuery(new GodQuery());
         Map<Integer, List<Integer>> map = godService.statisticCount(godList);
         return getSuccessResponseVo(map);
+    }
+
+    @RequestMapping("godListByIds")
+    public ResponseVo godListByIds(String godIds) {
+        List<God> gods = godService.getGodsByGodIds(godIds);
+        return getSuccessResponseVo(gods);
     }
 
 }

@@ -21,11 +21,13 @@
         <result column="endTime" property="endTime"/>
         <!--商家名称-->
         <result column="sellerName" property="sellerName"/>
+        <!--商家状态-->
+        <result column="sellerStatus" property="sellerStatus"/>
     </resultMap>
 
     <!--通用查询结果列-->
     <sql id="base_column_list">
-        sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName
+        sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName,sellerStatus
     </sql>
 
     <!--基本条件查询-->
@@ -53,6 +55,9 @@
         </if>
         <if test="query.sellerName != null">
             and sellerName = #{query.sellerName}
+        </if>
+        <if test="query.sellerStatus != null">
+            and sellerStatus = #{query.sellerStatus}
         </if>
     </sql>
 
@@ -89,6 +94,14 @@
 
     <!--通用查询条件-->
     <sql id="base_query">
+        <where>
+            and sellerStatus = 0
+            <include refid="base_condition"/>
+            <include refid="extend_condition"/>
+        </where>
+    </sql>
+
+    <sql id="register_query">
         <where>
             <include refid="base_condition"/>
             <include refid="extend_condition"/>
@@ -142,6 +155,9 @@
             <if test="bean.sellerName!= null">
                 sellerName,
             </if>
+            <if test="bean.sellerStatus!= null">
+                sellerStatus,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="bean.sellerId!= null">
@@ -167,6 +183,9 @@
             </if>
             <if test="bean.sellerName!= null">
                 #{bean.sellerName},
+            </if>
+            <if test="bean.sellerStatus!= null">
+                #{bean.sellerStatus},
             </if>
         </trim>
     </insert>
@@ -199,6 +218,9 @@
             <if test="bean.sellerName!= null">
                 sellerName,
             </if>
+            <if test="bean.sellerStatus!= null">
+                sellerStatus,
+            </if>
         </trim>
         on DUPLICATE key update
         <trim prefix="" suffix="" suffixOverrides=",">
@@ -226,25 +248,30 @@
             <if test="bean.sellerName!= null">
                 sellerName = VALUES(sellerName),
             </if>
+            <if test="bean.sellerStatus!= null">
+                sellerStatus = VALUES(sellerStatus),
+            </if>
         </trim>
     </insert>
 
     <!--批量添加-->
     <insert id="insertBatch" parameterType="com.tao.entity.po.Seller">
-        INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName)
+        INSERT INTO
+        seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName,sellerStatus)
         <foreach collection="list" item="item" separator=",">
             (
-            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime},#{item.sellerName}
+            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime},#{item.sellerName},#{item.sellerStatus}
             )
         </foreach>
     </insert>
 
     <!--批量新增或修改-->
     <insert id="insertOrUpdateBatch" parameterType="com.tao.entity.po.Seller">
-        INSERT INTO seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName)
+        INSERT INTO
+        seller(sellerId,godIds,sellerAdress,sellerImage,sellerStar,startTime,endTime,sellerName,sellerStatus)
         <foreach collection="list" item="item" separator=",">
             (
-            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime},#{item.sellerName}
+            #{item.sellerId},#{item.godIds},#{item.sellerAdress},#{item.sellerImage},#{item.sellerStar},#{item.startTime},#{item.endTime},#{item.sellerName},#{item.sellerStatus}
             )
         </foreach>
         on DUPLICATE key update
@@ -255,7 +282,8 @@
         sellerStar = VALUES(sellerStar),
         startTime = VALUES(startTime),
         endTime = VALUES(endTime),
-        sellerName = VALUES(sellerName)
+        sellerName = VALUES(sellerName),
+        sellerStatus = VALUES(sellerStatus)
     </insert>
 
     <!--根据SellerId删除-->
@@ -268,6 +296,18 @@
         select
         <include refid="base_column_list"/>
         from seller where sellerId=#{sellerId}
+    </select>
+    <select id="selectRegisterList" resultMap="seller">
+        SELECT
+        <include refid="base_column_list"/>
+        FROM seller
+        <include refid="register_query"/>
+        <if test="query.orderBy!=null">
+            order by ${query.orderBy}
+        </if>
+        <if test="query.simplePage!=null">
+            limit #{query.simplePage.start},#{query.simplePage.end}
+        </if>
     </select>
 
     <!--根据SellerId修改-->
@@ -297,6 +337,9 @@
             </if>
             <if test="bean.sellerName!= null">
                 sellerName = #{bean.sellerName},
+            </if>
+            <if test="bean.sellerStatus!= null">
+                sellerStatus = #{bean.sellerStatus},
             </if>
         </set>
         where sellerId=#{sellerId}

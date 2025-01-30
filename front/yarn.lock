@@ -2623,6 +2623,11 @@ chalk@^4.0.0, chalk@^4.0.2, chalk@^4.1.0, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+china-division@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.npmmirror.com/china-division/-/china-division-2.7.0.tgz#4060a4d243be66c7833dea64a48a4038f3e53e74"
+  integrity sha512-4uUPAT+1WfqDh5jytq7omdCmHNk3j+k76zEG/2IqaGcYB90c2SwcixttcypdsZ3T/9tN1TTpBDoeZn+Yw/qBEA==
+
 chokidar@^3.4.2, chokidar@^3.5.3:
   version "3.6.0"
   resolved "https://registry.npmmirror.com/chokidar/-/chokidar-3.6.0.tgz"
@@ -3320,6 +3325,13 @@ electron-to-chromium@^1.5.73:
   version "1.5.84"
   resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.5.84.tgz"
   integrity sha512-I+DQ8xgafao9Ha6y0qjHHvpZ9OfyA1qKlkHkjywxzniORU2awxyz7f/iVJcULmrF2yrM3nHQf+iDjJtbbexd/g==
+
+element-china-area-data@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.npmmirror.com/element-china-area-data/-/element-china-area-data-6.1.0.tgz#f14b90c0762b21432e097ed5be8423514a0b57e3"
+  integrity sha512-IkpcjwQv2A/2AxFiSoaISZ+oMw1rZCPUSOg5sOCwT5jKc96TaawmKZeY81xfxXsO0QbKxU5LLc6AirhG52hUmg==
+  dependencies:
+    china-division "^2.7.0"
 
 element-plus@^2.9.3:
   version "2.9.3"

@@ -6,6 +6,19 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-facing-decorator'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import { debounce } from 'lodash'
+
+/**
+ * ResizeObserver loop completed with undelivered notifications.
+ * 解决ResizeObserver loop completed with undelivered notifications.
+ */
+const _ = (window as any).ResizeObserver
+;(window as any).ResizeObserver = class ResizeObserver extends _ {
+  constructor(callback: (...args: any[]) => void) {
+    callback = debounce(callback, 100)
+    super(callback)
+  }
+}
 
 @Component({
   name: 'App'

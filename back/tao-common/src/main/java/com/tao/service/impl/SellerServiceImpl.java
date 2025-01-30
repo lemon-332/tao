@@ -40,6 +40,12 @@ public class SellerServiceImpl implements SellerService {
         sellerMapper.deleteBySellerId(sellerId);
     }
 
+    @Override
+    public List<Seller> findSellerRegisterList() {
+        List<Seller> sellerList = sellerMapper.selectRegisterList(new SellerQuery());
+        return sellerList;
+    }
+
     /**
      * 根据条件查询列表
      */

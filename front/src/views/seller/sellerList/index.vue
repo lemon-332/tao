@@ -29,8 +29,32 @@
     <el-table :data="tableData" stripe border style="width: 100%">
       <el-table-column prop="sellerName" label="商家名称" />
       <el-table-column prop="sellerAdress" label="地址" />
-      <el-table-column prop="godIds" label="旗下商品" />
-      <el-table-column prop="sellerStar" label="商家好评数" />
+      <el-table-column prop="godList" label="旗下商品">
+        <template #default="{ row }">
+          <el-tooltip placement="bottom" effect="light">
+            <template #content>
+              <div v-if="row.godList && row.godList.length > 0">
+                <el-table :data="row.godList" stripe style="width: 100%">
+                  <el-table-column prop="godName" label="商品名称" />
+                  <el-table-column prop="godCount" label="商品数量" />
+                  <el-table-column
+                    prop="godStar"
+                    width="100"
+                    label="商品点赞数"
+                  />
+                </el-table>
+              </div>
+              <span v-else>暂无商品数据</span>
+            </template>
+            <el-button>商品列表 ({{ row.godList?.length || 0 }})</el-button>
+          </el-tooltip>
+        </template>
+      </el-table-column>
+      <el-table-column prop="sellerStar" label="商家星级">
+        <template #default="{ row }">
+          <el-rate v-model="row.sellerStar" />
+        </template>
+      </el-table-column>
       <el-table-column prop="startTime" label="创建时间" width="180" />
       <el-table-column fixed="right" label="操作" width="80">
         <template #default="{ row }">
@@ -52,6 +76,7 @@
 import { Component, Vue } from 'vue-facing-decorator'
 import { ElMessage } from 'element-plus'
 import { sellerList, sellerDelete } from '@/api/seller'
+import { godListByIds } from '@/api/god'
 
 @Component({
   name: 'SellerList'
@@ -79,6 +104,16 @@ export default class SellerList extends Vue {
       const res = await sellerList(params)
       if (res.code === 200) {
         this.tableData = res.data.list
+        for (const item of this.tableData) {
+          if (item.godIds) {
+            const godRes = await godListByIds({ godIds: item.godIds })
+            if (godRes.code === 200) {
+              item.godList = godRes.data
+            }
+          } else {
+            item.godList = []
+          }
+        }
       } else {
         ElMessage.error(res.info || '获取商家列表失败')
       }

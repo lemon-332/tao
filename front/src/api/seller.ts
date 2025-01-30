@@ -18,17 +18,16 @@ export function sellerInfo(data): Promise<IResponse> {
 }
 
 // 导出一个函数，用于添加用户
-export function addUser(data): Promise<IResponse> {
+export function SellerAdd(data): Promise<IResponse> {
   return Service({
-    url: `${BASE_URL}/userAdd`,
+    url: `${BASE_URL}/sellerAdd`,
     data
   })
 }
 
-export function userUpdate(data): Promise<IResponse> {
+export function sellerRegisterList(): Promise<IResponse> {
   return Service({
-    url: `${BASE_URL}/userUpdate`,
-    data
+    url: `${BASE_URL}/sellerRegisterList`
   })
 }
 

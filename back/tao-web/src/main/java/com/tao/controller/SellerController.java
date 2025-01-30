@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("seller")
@@ -28,13 +29,19 @@ public class SellerController extends ABaseController {
         return getSuccessResponseVo(resultVo);
     }
 
+    @RequestMapping("sellerRegisterList")
+    public ResponseVo sellerRegisterList() {
+        List<Seller> sellerList = sellerService.findSellerRegisterList();
+        return getSuccessResponseVo(sellerList);
+    }
+
     @RequestMapping("sellerAdd")
     public ResponseVo sellerAdd(Seller seller) {
         seller.setSellerId(StringUtils.random16());
-        seller.setSellerStar(0);
         seller.setStartTime(new Date());
         seller.setSellerImage("default.png");
         seller.setGodIds("");
+        seller.setSellerStatus(1);
         sellerService.add(seller);
         return getSuccessResponseVo(null);
     }

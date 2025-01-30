@@ -60,4 +60,6 @@ public interface SellerService {
 
 
     void sellerDelete(String sellerId);
+
+    List<Seller> findSellerRegisterList();
 }
