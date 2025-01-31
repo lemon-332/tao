@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * @author lemon
- * @date 2025-01-20 20:21
+ * @date 2025-01-31 18:13
  * @desc
  */
 public class Cart implements Serializable {
@@ -31,6 +31,14 @@ public class Cart implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date startTime;
+    /**
+     * 购物车状态( 0:待发货，1：待付款，2：已取消，3：交易完成)
+     */
+    public Integer cartStatus;
+    /**
+     * 每个商品对应的购买个数
+     */
+    public String godBoughtCount;
 
     public String getCartId() {
         return cartId;
@@ -64,6 +72,22 @@ public class Cart implements Serializable {
         this.startTime = startTime;
     }
 
+    public Integer getCartStatus() {
+        return cartStatus;
+    }
+
+    public void setCartStatus(Integer cartStatus) {
+        this.cartStatus = cartStatus;
+    }
+
+    public String getGodBoughtCount() {
+        return godBoughtCount;
+    }
+
+    public void setGodBoughtCount(String godBoughtCount) {
+        this.godBoughtCount = godBoughtCount;
+    }
+
     @Override
     public String toString() {
         return "Cart{" +
@@ -71,6 +95,8 @@ public class Cart implements Serializable {
                 ", userId = " + userId +
                 ", godIds = " + godIds +
                 ", startTime = " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(startTime) +
+                ", cartStatus = " + cartStatus +
+                ", godBoughtCount = " + godBoughtCount +
                 '}';
     }
 }

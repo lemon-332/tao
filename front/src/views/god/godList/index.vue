@@ -41,7 +41,8 @@
       <el-table-column prop="godName" label="商品名称" />
       <el-table-column prop="godDesc" label="描述" />
       <el-table-column prop="godCount" label="商品数量" />
-      <el-table-column prop="godBoughtCount" label="商品已卖出数量" />
+      <el-table-column prop="godBoughtCount" label="商品已卖出" />
+      <el-table-column prop="godPrice" label="商品价格" />
       <el-table-column prop="godStar" label="商品点赞数" />
       <el-table-column prop="startTime" label="上架时间" width="180" />
       <el-table-column fixed="right" label="操作" min-width="120">

@@ -37,6 +37,14 @@
           placeholder="请输入商品描述"
         />
       </el-form-item>
+      <el-form-item label="商品价格" prop="godPrice">
+        <el-input-number
+          v-model="form.godPrice"
+          :min="0"
+          :precision="0"
+          placeholder="请输入商品价格"
+        />
+      </el-form-item>
       <el-form-item label="商品数量" prop="godCount">
         <el-input-number
           v-model="form.godCount"
@@ -75,7 +83,8 @@ const defaultForm = {
   godName: '',
   godDesc: '',
   godCount: 0,
-  sellerId: ''
+  sellerId: '',
+  godPrice: 0
 }
 
 @Component({
@@ -140,6 +149,7 @@ export default class GodDialog extends Vue {
   }
 
   private form: {
+    godPrice: number
     godImage: string
     godName: string
     godDesc: string

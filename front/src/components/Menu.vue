@@ -3,6 +3,9 @@
     <el-menu
       default-active="1"
       class="el-menu-vertical"
+      active-text-color="#ffd04b"
+      background-color="#545c64"
+      text-color="#fff"
       @open="handleOpen"
       @close="handleClose"
     >
@@ -94,26 +97,11 @@ export default class Menu extends Vue {
 <style lang="scss" scoped>
 .menu-wrapper {
   height: 100%;
-  background-color: rgb(49, 65, 89);
-  color: #fff;
 
   .el-menu-vertical {
     height: 100%;
-    background-color: rgb(49, 65, 89);
-    svg {
+    a {
       color: #fff;
-    }
-    span {
-      color: #fff;
-    }
-    &:not(.el-menu--collapse) {
-      width: 200px;
-    }
-    .el-menu-item {
-      background-color: rgb(49, 65, 89);
-      a {
-        color: #fff;
-      }
     }
   }
 }

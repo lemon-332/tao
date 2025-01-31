@@ -29,6 +29,16 @@ public class CartQuery extends BaseParam {
     public String startTimeStart;
 
     public String startTimeEnd;
+    /**
+     * 购物车状态( 0:待发货，1：待付款，2：已取消，3：交易完成)
+     */
+    public Integer cartStatus;
+    /**
+     * 每个商品对应的购买个数
+     */
+    public String godBoughtCount;
+
+    public String godBoughtCountFuzzy;
 
     public String getCartId() {
         return cartId;
@@ -60,6 +70,22 @@ public class CartQuery extends BaseParam {
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
+    }
+
+    public Integer getCartStatus() {
+        return cartStatus;
+    }
+
+    public void setCartStatus(Integer cartStatus) {
+        this.cartStatus = cartStatus;
+    }
+
+    public String getGodBoughtCount() {
+        return godBoughtCount;
+    }
+
+    public void setGodBoughtCount(String godBoughtCount) {
+        this.godBoughtCount = godBoughtCount;
     }
 
     public String getCartIdFuzzy() {
@@ -100,6 +126,14 @@ public class CartQuery extends BaseParam {
 
     public void setStartTimeEnd(String startTimeEnd) {
         this.startTimeEnd = startTimeEnd;
+    }
+
+    public String getGodBoughtCountFuzzy() {
+        return godBoughtCountFuzzy;
+    }
+
+    public void setGodBoughtCountFuzzy(String godBoughtCountFuzzy) {
+        this.godBoughtCountFuzzy = godBoughtCountFuzzy;
     }
 
 }

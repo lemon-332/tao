@@ -41,12 +41,14 @@
             <el-table-column prop="sellerAdress" label="地址" />
             <el-table-column prop="sellerStar" label="商家星级">
               <template #default="{ row }">
-                <el-rate v-model="row.sellerStar" />
+                <el-rate v-model="row.sellerStar" show-score disabled />
               </template>
             </el-table-column>
-            <el-table-column prop="sellerStatus" label="审核状态" >
+            <el-table-column prop="sellerStatus" label="审核状态">
               <template #default="{ row }">
-                <el-tag v-if="row.sellerStatus === 0" type="success">通过</el-tag>
+                <el-tag v-if="row.sellerStatus === 0" type="success">
+                  通过
+                </el-tag>
                 <el-tag v-else type="danger">未通过</el-tag>
               </template>
             </el-table-column>

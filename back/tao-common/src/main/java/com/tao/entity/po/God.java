@@ -1,19 +1,18 @@
 package com.tao.entity.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * @author lemon
- * @date 2025-01-20 20:21
+ * @date 2025-01-31 17:59
  * @desc
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class God implements Serializable {
     /**
      * 商品Id
@@ -57,6 +56,10 @@ public class God implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date startTime;
+    /**
+     * 商品价格
+     */
+    public BigDecimal godPrice;
 
     public String getGodId() {
         return godId;
@@ -138,6 +141,14 @@ public class God implements Serializable {
         this.startTime = startTime;
     }
 
+    public BigDecimal getGodPrice() {
+        return godPrice;
+    }
+
+    public void setGodPrice(BigDecimal godPrice) {
+        this.godPrice = godPrice;
+    }
+
     @Override
     public String toString() {
         return "God{" +
@@ -151,6 +162,7 @@ public class God implements Serializable {
                 ", sellerId = " + sellerId +
                 ", commentIds = " + commentIds +
                 ", startTime = " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(startTime) +
+                ", godPrice = " + godPrice +
                 '}';
     }
 }

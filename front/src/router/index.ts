@@ -89,7 +89,7 @@ const routes: Array<RouteRecordRaw> = [
             path: '/seller/sellerRegister',
             name: 'sellerRegister',
             meta: {
-              title: '商家注册与审核',
+              title: '注册与审核',
               index: '3-2'
             },
             component: () => import('../views/seller/sellerRegister/index.vue')

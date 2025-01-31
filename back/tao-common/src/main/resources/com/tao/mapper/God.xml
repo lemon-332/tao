@@ -25,11 +25,13 @@
         <result column="commentIds" property="commentIds"/>
         <!--商品上架时间-->
         <result column="startTime" property="startTime"/>
+        <!--商品价格-->
+        <result column="godPrice" property="godPrice"/>
     </resultMap>
 
     <!--通用查询结果列-->
     <sql id="base_column_list">
-        godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime
+        godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime,godPrice
     </sql>
 
     <!--基本条件查询-->
@@ -63,6 +65,9 @@
         </if>
         <if test="query.startTime != null">
             and startTime = #{query.startTime}
+        </if>
+        <if test="query.godPrice != null">
+            and godPrice = #{query.godPrice}
         </if>
     </sql>
 
@@ -155,6 +160,9 @@
             <if test="bean.startTime!= null">
                 startTime,
             </if>
+            <if test="bean.godPrice!= null">
+                godPrice,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="bean.godId!= null">
@@ -186,6 +194,9 @@
             </if>
             <if test="bean.startTime!= null">
                 #{bean.startTime},
+            </if>
+            <if test="bean.godPrice!= null">
+                #{bean.godPrice},
             </if>
         </trim>
     </insert>
@@ -224,6 +235,9 @@
             <if test="bean.startTime!= null">
                 startTime,
             </if>
+            <if test="bean.godPrice!= null">
+                godPrice,
+            </if>
         </trim>
         on DUPLICATE key update
         <trim prefix="" suffix="" suffixOverrides=",">
@@ -257,25 +271,30 @@
             <if test="bean.startTime!= null">
                 startTime = VALUES(startTime),
             </if>
+            <if test="bean.godPrice!= null">
+                godPrice = VALUES(godPrice),
+            </if>
         </trim>
     </insert>
 
     <!--批量添加-->
     <insert id="insertBatch" parameterType="com.tao.entity.po.God">
-        INSERT INTO god(godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime)
+        INSERT INTO
+        god(godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime,godPrice)
         <foreach collection="list" item="item" separator=",">
             (
-            #{item.godId},#{item.godName},#{item.godImage},#{item.godDesc},#{item.godCount},#{item.godBoughtCount},#{item.godStar},#{item.sellerId},#{item.commentIds},#{item.startTime}
+            #{item.godId},#{item.godName},#{item.godImage},#{item.godDesc},#{item.godCount},#{item.godBoughtCount},#{item.godStar},#{item.sellerId},#{item.commentIds},#{item.startTime},#{item.godPrice}
             )
         </foreach>
     </insert>
 
     <!--批量新增或修改-->
     <insert id="insertOrUpdateBatch" parameterType="com.tao.entity.po.God">
-        INSERT INTO god(godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime)
+        INSERT INTO
+        god(godId,godName,godImage,godDesc,godCount,godBoughtCount,godStar,sellerId,commentIds,startTime,godPrice)
         <foreach collection="list" item="item" separator=",">
             (
-            #{item.godId},#{item.godName},#{item.godImage},#{item.godDesc},#{item.godCount},#{item.godBoughtCount},#{item.godStar},#{item.sellerId},#{item.commentIds},#{item.startTime}
+            #{item.godId},#{item.godName},#{item.godImage},#{item.godDesc},#{item.godCount},#{item.godBoughtCount},#{item.godStar},#{item.sellerId},#{item.commentIds},#{item.startTime},#{item.godPrice}
             )
         </foreach>
         on DUPLICATE key update
@@ -288,7 +307,8 @@
         godStar = VALUES(godStar),
         sellerId = VALUES(sellerId),
         commentIds = VALUES(commentIds),
-        startTime = VALUES(startTime)
+        startTime = VALUES(startTime),
+        godPrice = VALUES(godPrice)
     </insert>
 
     <!--根据GodIdAndSellerId删除-->
@@ -296,12 +316,6 @@
         delete from god where godId=#{godId} and sellerId=#{sellerId}
     </delete>
 
-    <!--根据GodIdAndSellerId查询对象-->
-    <select id="selectByGodIdAndSellerId" resultMap="god">
-        select
-        <include refid="base_column_list"/>
-        from god where godId=#{godId} and sellerId=#{sellerId}
-    </select>
     <select id="selectBySellerId" resultMap="god">
         select
         <include refid="base_column_list"/>
@@ -311,6 +325,13 @@
         select
         <include refid="base_column_list"/>
         from god where godId=#{godId}
+    </select>
+
+    <!--根据GodIdAndSellerId查询对象-->
+    <select id="selectByGodIdAndSellerId" resultMap="god">
+        select
+        <include refid="base_column_list"/>
+        from god where godId=#{godId} and sellerId=#{sellerId}
     </select>
 
     <!--根据GodIdAndSellerId修改-->
@@ -346,6 +367,9 @@
             </if>
             <if test="bean.startTime!= null">
                 startTime = #{bean.startTime},
+            </if>
+            <if test="bean.godPrice!= null">
+                godPrice = #{bean.godPrice},
             </if>
         </set>
         where godId=#{godId} and sellerId=#{sellerId}

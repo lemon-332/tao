@@ -1,21 +1,27 @@
 package com.tao.service.impl;
 
 import com.tao.dto.CartDto;
+import com.tao.dto.CartInfoDto;
+import com.tao.dto.GodInfoDto;
 import com.tao.entity.po.Cart;
 import com.tao.entity.po.God;
+import com.tao.entity.po.User;
 import com.tao.entity.query.CartQuery;
 import com.tao.entity.query.GodQuery;
 import com.tao.entity.query.SimplePage;
+import com.tao.entity.query.UserQuery;
 import com.tao.entity.vo.PaginationResultVo;
 import com.tao.exception.BusinessException;
 import com.tao.mapper.CartMapper;
 import com.tao.mapper.GodMapper;
+import com.tao.mapper.UserMapper;
 import com.tao.myEnum.PageSize;
 import com.tao.service.CartService;
 import com.tao.utils.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +40,51 @@ public class CartServiceImpl implements CartService {
 
     @Resource
     private GodMapper<God, GodQuery> godMapper;
+
+    @Resource
+    private UserMapper<User, UserQuery> userMapper;
+
+    @Override
+    public List<CartInfoDto> findListByQueryToInfo(CartQuery cartQuery) {
+        List<CartInfoDto> results = new ArrayList<>();
+        List<Cart> list = cartMapper.selectList(cartQuery);
+        for (Cart cart : list) {
+            CartInfoDto cartInfoDto = new CartInfoDto();
+            List<GodInfoDto> godInfoDtos = new ArrayList<>();
+            String godBoughtCount = cart.getGodBoughtCount();
+            String cartId = cart.getCartId();
+            String userId = cart.getUserId();
+            String godIds = cart.getGodIds();
+            Integer cartStatus = cart.getCartStatus();
+            Date startTime = cart.getStartTime();
+            int godTotalPrice = 0;
+            cartInfoDto.setCartId(cartId);
+            User user = userMapper.selectByUserId(userId);
+            cartInfoDto.setUserName(user.getDisplayName());
+            cartInfoDto.setStartTime(startTime);
+            cartInfoDto.setCartStatus(cartStatus);
+            String[] godIdList = godIds.split(",");
+            String[] boughtCount = godBoughtCount.split(",");
+
+            for (int i = 0; i < godIdList.length; i++) {
+                GodInfoDto godInfoDto = new GodInfoDto();
+                God god = godMapper.selectByGodId(godIdList[i]);
+                BigDecimal godPrice = god.getGodPrice();
+                int godBought = Integer.parseInt(boughtCount[i]);
+                godInfoDto.setGodId(god.getGodId());
+                godInfoDto.setGodName(god.getGodName());
+                godInfoDto.setGodPrice(godPrice);
+                godInfoDto.setGodImg(god.getGodImage());
+                godInfoDto.setGodCount(godBought);
+                godTotalPrice += godPrice.multiply(new BigDecimal(godBought)).intValue();
+                godInfoDtos.add(godInfoDto);
+            }
+            cartInfoDto.setTotalPrice(godTotalPrice);
+            cartInfoDto.setGodInfoDtos(godInfoDtos);
+            results.add(cartInfoDto);
+        }
+        return results;
+    }
 
     @Override
     public CartDto cartList(String userId) {

@@ -1,5 +1,6 @@
 package com.tao.entity.query;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class GodQuery extends BaseParam {
@@ -59,6 +60,10 @@ public class GodQuery extends BaseParam {
     public String startTimeStart;
 
     public String startTimeEnd;
+    /**
+     * 商品价格
+     */
+    public BigDecimal godPrice;
 
     public String getGodId() {
         return godId;
@@ -138,6 +143,14 @@ public class GodQuery extends BaseParam {
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
+    }
+
+    public BigDecimal getGodPrice() {
+        return godPrice;
+    }
+
+    public void setGodPrice(BigDecimal godPrice) {
+        this.godPrice = godPrice;
     }
 
     public String getGodIdFuzzy() {
