@@ -20,37 +20,33 @@
   </el-row>
   <div class="table-container mt-4">
     <el-table :data="tableData" stripe border style="width: 100%">
-      <!-- <el-table-column prop="godImage" label="商品快照">
+      <el-table-column align="center" label="商品详情" width="800">
         <template #default="{ row }">
-          <img class="god-img" :src="getGodImage(row)" alt="" srcset="" />
-        </template>
-      </el-table-column> -->
-      <el-table-column prop="sellerName" label="卖家名称" />
-      <el-table-column prop="godName" label="商品名称" />
-      <el-table-column prop="cartCount" label="购买数量">
-        <template #default="{ row }">
-          <el-input-number
-            v-model="row.cartCount"
-            :min="1"
-            :max="row.godCount"
-            @change="handleCountChange(row)"
-          />
+          <div class="order-info">
+            订单号: {{ row.cartId }} &nbsp;&nbsp;&nbsp;&nbsp; 下单时间:
+            {{ formatDate(row.startTime) }}
+          </div>
+          <el-table :data="row.godInfoDtos" class="inner-table">
+            <el-table-column prop="godImg" label="商品快照">
+              <template #default="{ row: godInfoDto }">
+                <img class="god-img" :src="getGodImage(godInfoDto)" />
+              </template>
+            </el-table-column>
+            <el-table-column label="商品名称" prop="godName" />
+            <el-table-column label="商品价格" prop="godPrice" />
+            <el-table-column label="购买数量" prop="godCount" />
+          </el-table>
         </template>
       </el-table-column>
-      <el-table-column prop="godPrice" label="商品价格">
-        <template #default="{ row }">¥{{ row.godPrice }}</template>
-      </el-table-column>
-      <el-table-column prop="status" label="状态">
-        <template #default="scope">
-          <el-tag
-            :type="scope.row.status === 1 ? 'success' : 'warning'"
-            disable-transitions
-          >
-            {{ scope.row.status === 1 ? '有货' : '缺货' }}
+      <el-table-column prop="userName" label="买家" />
+      <el-table-column prop="totalPrice" label="订单总价" />
+      <el-table-column prop="cartStatus" label="状态">
+        <template #default="{ row }">
+          <el-tag :type="getStatusType(row.cartStatus)" disable-transitions>
+            {{ getStatusText(row.cartStatus) }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="createTime" label="加入时间" width="180" />
       <el-table-column fixed="right" label="操作" min-width="120">
         <template #default="{ row }">
           <el-popconfirm
@@ -74,7 +70,6 @@
 import { Component, Vue } from 'vue-facing-decorator'
 import { ElMessage } from 'element-plus'
 import { cartList, cartDelete, cartUpdate } from '@/api/cart'
-import { sellerInfo } from '@/api/seller'
 
 @Component({
   name: 'CartList'
@@ -86,25 +81,18 @@ export default class CartList extends Vue {
 
   private tableData: any[] = []
 
-  private getGodImage(row: any) {
-    return `/api/god/godDownload/?fileName=${row.godImg.split(',')[0]}`
-  }
-
   private formatDate(date: Date) {
+    if (typeof date === 'string') {
+      date = new Date(date)
+    }
     const year = date.getFullYear()
     const month = date.getMonth() + 1
     const day = date.getDate()
     return `${year}-${month}-${day}`
   }
 
-  private async fetchSellerName(sellerId: number): Promise<string> {
-    try {
-      const sellerRes = await sellerInfo({ sellerId })
-      return sellerRes.code === 200 ? sellerRes.data.sellerName : '未知'
-    } catch (error) {
-      console.error('获取卖家信息失败:', error)
-      return '未知'
-    }
+  private getGodImage(row) {
+    return `/api/god/godDownload/?fileName=${row.godImg.split(',')[0]}`
   }
 
   private async fetchList(params: { startTimeStart: string }) {
@@ -163,6 +151,26 @@ export default class CartList extends Vue {
     ElMessage.info('购买功能开发中')
   }
 
+  private getStatusType(status: number): string {
+    const statusMap: Record<number, string> = {
+      0: 'info', // 待发货
+      1: 'warning', // 待付款
+      2: 'danger', // 已取消
+      3: 'success' // 交易完成
+    }
+    return statusMap[status] || 'info'
+  }
+
+  private getStatusText(status: number): string {
+    const statusMap: Record<number, string> = {
+      0: '待发货',
+      1: '待付款',
+      2: '已取消',
+      3: '交易完成'
+    }
+    return statusMap[status] || '未知状态'
+  }
+
   created() {
     this.search()
   }
@@ -182,5 +190,13 @@ export default class CartList extends Vue {
 .god-img {
   width: 100px;
   height: auto;
+}
+
+.order-info {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #606266;
+  border-bottom: 1px solid #ebeef5;
+  margin-bottom: 8px;
 }
 </style>

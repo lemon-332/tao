@@ -41,7 +41,7 @@
             <el-table-column prop="sellerAdress" label="地址" />
             <el-table-column prop="sellerStar" label="商家星级">
               <template #default="{ row }">
-                <el-rate v-model="row.sellerStar" show-score disabled />
+                <el-rate v-model="row.sellerStar" disabled />
               </template>
             </el-table-column>
             <el-table-column prop="sellerStatus" label="审核状态">
@@ -121,6 +121,9 @@ export default class SellerRegister extends Vue {
   }
   .el-result {
     padding-left: 0px;
+  }
+  .table-container {
+    width: 100%;
   }
 }
 </style>
