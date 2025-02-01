@@ -27,4 +27,6 @@ public interface SellerMapper<T, P> extends BaseMapper {
 
 
     List<T> selectRegisterList(@Param("query") P p);
+
+    void sellerAgree(String sellerId);
 }

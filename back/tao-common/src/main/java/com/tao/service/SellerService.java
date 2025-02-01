@@ -62,4 +62,6 @@ public interface SellerService {
     void sellerDelete(String sellerId);
 
     List<Seller> findSellerRegisterList();
+
+    void sellerAgree(String sellerId);
 }

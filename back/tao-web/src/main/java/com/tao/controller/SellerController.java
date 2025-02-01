@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("seller")
@@ -27,6 +28,13 @@ public class SellerController extends ABaseController {
         sellerQuery.setStartTimeStart(startTimeStart);
         PaginationResultVo<Seller> resultVo = sellerService.findListByPage(sellerQuery);
         return getSuccessResponseVo(resultVo);
+    }
+
+    @RequestMapping("sellerNeedAgree")
+    public ResponseVo sellerNeedAgree() {
+        List<Seller> registerList = sellerService.findSellerRegisterList();
+        registerList = registerList.stream().filter(seller -> seller.getSellerStatus() == 1).collect(Collectors.toList());
+        return getSuccessResponseVo(registerList);
     }
 
     @RequestMapping("sellerRegisterList")
@@ -62,5 +70,11 @@ public class SellerController extends ABaseController {
     public ResponseVo sellerInfo(String sellerId) {
         Seller seller = sellerService.getSellerBySellerId(sellerId);
         return getSuccessResponseVo(seller);
+    }
+
+    @RequestMapping("sellerAgree")
+    public ResponseVo sellerAgree(String sellerId) {
+        sellerService.sellerAgree(sellerId);
+        return getSuccessResponseVo(null);
     }
 }

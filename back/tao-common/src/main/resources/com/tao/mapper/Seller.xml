@@ -344,5 +344,10 @@
         </set>
         where sellerId=#{sellerId}
     </update>
+    <update id="sellerAgree">
+        UPDATE seller
+        set sellerStatus = 0
+        where sellerId=#{sellerId}
+    </update>
 
 </mapper>

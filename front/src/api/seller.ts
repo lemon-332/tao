@@ -3,7 +3,7 @@ import { IResponse } from '@/types/response'
 
 const BASE_URL = '/seller'
 
-export function sellerList(data): Promise<IResponse> {
+export function sellerList(data?): Promise<IResponse> {
   return Service({
     url: `${BASE_URL}/sellerList`,
     data
@@ -25,6 +25,12 @@ export function SellerAdd(data): Promise<IResponse> {
   })
 }
 
+export function sellerNeedAgree(): Promise<IResponse> {
+  return Service({
+    url: `${BASE_URL}/sellerNeedAgree`
+  })
+}
+
 export function sellerRegisterList(): Promise<IResponse> {
   return Service({
     url: `${BASE_URL}/sellerRegisterList`
@@ -34,6 +40,13 @@ export function sellerRegisterList(): Promise<IResponse> {
 export function sellerDelete(data): Promise<IResponse> {
   return Service({
     url: `${BASE_URL}/sellerDelete`,
+    data
+  })
+}
+
+export function sellerAgree(data): Promise<IResponse> {
+  return Service({
+    url: `${BASE_URL}/sellerAgree`,
     data
   })
 }

@@ -46,6 +46,11 @@ public class SellerServiceImpl implements SellerService {
         return sellerList;
     }
 
+    @Override
+    public void sellerAgree(String sellerId) {
+        sellerMapper.sellerAgree(sellerId);
+    }
+
     /**
      * 根据条件查询列表
      */

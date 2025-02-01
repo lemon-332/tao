@@ -49,7 +49,7 @@
                 <el-tag v-if="row.sellerStatus === 0" type="success">
                   通过
                 </el-tag>
-                <el-tag v-else type="danger">未通过</el-tag>
+                <el-tag v-else type="warning">正在审核</el-tag>
               </template>
             </el-table-column>
             <el-table-column prop="startTime" label="创建时间" width="180" />
@@ -91,6 +91,7 @@ export default class SellerRegister extends Vue {
     SellerAdd(this.form).then((res) => {
       if (res.code === 200) {
         this.showSuccess = true
+        this.getList()
       }
     })
   }
