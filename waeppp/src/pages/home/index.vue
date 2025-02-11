@@ -1,5 +1,5 @@
 <template>
-  <view>首页</view>
+  <view>home</view>
 </template>
 
 <script setup>

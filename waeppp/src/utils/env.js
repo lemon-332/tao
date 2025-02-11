@@ -2,7 +2,7 @@
 export default {
   //存放变量的容器
   appid: '****',
-  baseUrl: 'http://**.***.***.***'
+  baseUrl: 'http://192.168.0.63:8848/api'
 }
 /**
  * 	appid : 		小程序appid
